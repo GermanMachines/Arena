@@ -112,7 +112,7 @@ public class ReclamationService implements IService<Reclamation> {
 
 
        
-        ResultSet rs = stm.executeQuery("select * from reclamation where title like '%"+title+"%'");
+        ResultSet rs = stm.executeQuery("select * from reclamation where titre like '%"+title+"%'");
        while (rs.next()) {
             int id = rs.getInt("id");
             String titre = rs.getString("titre");

@@ -24,6 +24,7 @@ public class AvisService implements IService<Avis>{
    Statement stm;
      public AvisService() {
         connexion = DataBase.getInstance().getConnection();
+
     }
      
     @Override
@@ -85,12 +86,13 @@ public class AvisService implements IService<Avis>{
         //AvisService AvisService = new AvisService();
         //avisProducts = AvisService.afficher();
 //        stm = connexion.createStatement();
-        PreparedStatement pre = connexion.prepareStatement("select `AVG(score)` as moyenne from `avis` where `idProduit` = ?");
+        PreparedStatement pre = connexion.prepareStatement("select AVG(score) as moyenne from `avis` where `idProduit` = ?");
         pre.setInt(1, id);
         ResultSet rs = pre.executeQuery();
-       
-        return rs.getDouble("moyenne");
+       if(rs.next()){
+           return rs.getDouble("moyenne");
+       }
     
-    
+     return 0;
     }
 }

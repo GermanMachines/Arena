@@ -150,6 +150,56 @@ public class Main {
         System.out.println(avisService.scoreAvg(42));
         
        ReclamationService reclamationService = new ReclamationService();
+       
+       List<Reclamation> list1 = new ArrayList<>();
+       List<Reclamation> list2 = new ArrayList<>();
+       List<Reclamation> list3 = new ArrayList<>();
+       
+       list1 = reclamationService.recherche("test");
+       list2 = reclamationService.recherche("t");
+       list3 = reclamationService.recherche("x");
+       //list 3 vide
+       
+       list1.forEach(r -> {
+           
+           System.out.println(r.toString());
+       });
+        System.out.println("____________________");
     
+        
+        list2.forEach(r -> {
+           
+           System.out.println(r.toString());
+       });
+        
+         System.out.println("____________________");
+    
+        
+        list3.forEach(r -> {
+           
+           System.out.println(r.toString());
+       });
+        
+        list1 = new ArrayList<>();
+        list2 = new ArrayList<>();
+        list3 = new ArrayList<>();
+        
+        list1 = reclamationService.tri(true);
+        list2 = reclamationService.tri(false);
+        
+        
+           list1.forEach(r -> {
+           
+           System.out.println(r.toString() + "tri = true");
+       });
+        System.out.println("____________________");
+    
+        
+        list2.forEach(r -> {
+           
+           System.out.println(r.toString() + "tri = false");
+       });
+           
+           
     }
 }
