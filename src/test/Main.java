@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -128,7 +130,9 @@ public class Main {
         serviceAvis.ajouter(avis2);
         serviceAvis.delete(avis.getId());
         */
-        ReclamationService rec = new ReclamationService();
+     
+        
+        /*ReclamationService rec = new ReclamationService();
          List<Reclamation> list = new ArrayList<>();
                list = rec.afficher();
                list.forEach(r -> {
@@ -141,6 +145,11 @@ public class Main {
                                           
                });
 
-    }
+    }*/
+        AvisService avisService = new AvisService();
+        System.out.println(avisService.scoreAvg(42));
+        
+       ReclamationService reclamationService = new ReclamationService();
     
+    }
 }

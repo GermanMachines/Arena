@@ -79,4 +79,18 @@ public class AvisService implements IService<Avis>{
         return avis;
     }
     
+    
+    public double scoreAvg(int id) throws SQLException{
+        //List<Avis> avisProducts = new ArrayList<>();
+        //AvisService AvisService = new AvisService();
+        //avisProducts = AvisService.afficher();
+//        stm = connexion.createStatement();
+        PreparedStatement pre = connexion.prepareStatement("select `AVG(score)` as moyenne from `avis` where `idProduit` = ?");
+        pre.setInt(1, id);
+        ResultSet rs = pre.executeQuery();
+       
+        return rs.getDouble("moyenne");
+    
+    
+    }
 }

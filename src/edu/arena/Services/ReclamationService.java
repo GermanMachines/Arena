@@ -81,6 +81,54 @@ public class ReclamationService implements IService<Reclamation> {
         }
         return list;
     }
+    
+        public List<Reclamation> tri(boolean isAsc) throws SQLException {
+        List<Reclamation> list = new ArrayList<>();
+        stm = connexion.createStatement();  
+
+         String ordre = isAsc ? "" : 
+                 "desc";
+       
+        ResultSet rs = stm.executeQuery("select * from reclamation order by `date`" + ordre );
+       while (rs.next()) {
+            int id = rs.getInt("id");
+            String titre = rs.getString("titre");
+            String message = rs.getString("message");
+            int idUser = rs.getInt("idUser");
+            int idCategoryReclamation  = rs.getInt("idCategoryReclamation");
+            boolean etat  = rs.getBoolean("etat");
+            Date date = rs.getDate("date");
+       
+            Reclamation rec = new Reclamation(id,titre,message,idUser,idCategoryReclamation,etat,date);
+            list.add(rec);
+        }
+        return list;
+        
   }
+        
+         public List<Reclamation> recherche(String title) throws SQLException {
+        List<Reclamation> list = new ArrayList<>();
+        stm = connexion.createStatement();  
+
+
+       
+        ResultSet rs = stm.executeQuery("select * from reclamation where title like '%"+title+"%'");
+       while (rs.next()) {
+            int id = rs.getInt("id");
+            String titre = rs.getString("titre");
+            String message = rs.getString("message");
+            int idUser = rs.getInt("idUser");
+            int idCategoryReclamation  = rs.getInt("idCategoryReclamation");
+            boolean etat  = rs.getBoolean("etat");
+            Date date = rs.getDate("date");
+       
+            Reclamation rec = new Reclamation(id,titre,message,idUser,idCategoryReclamation,etat,date);
+            list.add(rec);
+        }
+        return list;
+        
+  }
+
+}
     
 

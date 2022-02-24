@@ -10,7 +10,7 @@ package edu.arena.entities;
  * @author DeathKnight
  */
 public class Avis {
-    private int id;
+    public int id;
     private int score;
     private String commentaire;
     private int idUtulisateur;
@@ -60,10 +60,7 @@ public class Avis {
     public int getIdProduit() {
         return idProduit;
     }
-
-    public void setIdProduit(int idProduit) {
-        this.idProduit = idProduit;
-    }
+    
 
     @Override
     public String toString() {
