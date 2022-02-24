@@ -168,5 +168,53 @@ public class TournoisCrud {
 
     }
         
-    
+          public List<Tournois> triTournois(int n) {
+        List<Tournois> myList = new ArrayList();
+        if (n == 1) {
+            try {
+                Statement st = con.createStatement();
+                String req = "SELECT * FROM tournois ORDER BY Date_debut ASC";
+                ResultSet rs;
+                rs = st.executeQuery(req);
+                while (rs.next()) {
+
+                    Tournois per = new Tournois();
+
+                    per.setIdTournois(rs.getInt("IdTournois"));
+                    per.setTitre(rs.getString("Titre"));
+                    per.setDate_debut(rs.getString("Date_debut"));
+                    per.setDate_fin(rs.getString("Date_fin"));
+                    myList.add(per);
+                }
+                System.out.println(myList);
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+                //   return null;
+            }
+        } else if (n == 2) {
+            try {
+                Statement st = con.createStatement();
+                String req = "SELECT * FROM tournois ORDER BY Date_debut DESC";
+                ResultSet rs;
+                rs = st.executeQuery(req);
+                while (rs.next()) {
+
+                    Tournois per = new Tournois();
+
+                    per.setIdTournois(rs.getInt("IdTournois"));
+                    per.setTitre(rs.getString("Titre"));
+                    per.setDate_debut(rs.getString("Date_debut"));
+                    per.setDate_fin(rs.getString("Date_fin"));
+                    myList.add(per);
+                }
+                System.out.println(myList);
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+                //   return null;
+            }
+        } else {
+            System.out.println("parametre invalide!");
+        }
+        return myList;
+    }
 }

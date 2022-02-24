@@ -49,6 +49,9 @@ public class Tournois {
         
     }
 
+    public Tournois() {
+    }
+
     public Integer getIdTournois() {
         return IdTournois;
     }
