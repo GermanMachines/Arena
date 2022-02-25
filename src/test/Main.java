@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -199,7 +201,16 @@ public class Main {
            
            System.out.println(r.toString() + "tri = false");
        });
-           
+          
+        HashMap<String,Integer> list4 = new HashMap<>();
+        list4 = reclamationService.stat();
+        System.out.println(list4.get("nbTotal"));
+        System.out.println(list4.get("nbTrue"));
+        System.out.println(list4.get("nbFalse"));
+
+
+    
+       
            
     }
 }

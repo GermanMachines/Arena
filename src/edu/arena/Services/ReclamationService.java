@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -128,6 +130,29 @@ public class ReclamationService implements IService<Reclamation> {
         return list;
         
   }
+         
+         public HashMap<String,Integer>  stat() throws SQLException{
+              HashMap<String,Integer> stat = new HashMap<>();
+               stm = connexion.createStatement();  
+               ResultSet rs = stm.executeQuery("select COUNT(*) as nbTotal from reclamation");
+            while (rs.next()) {
+            int nbTotal = rs.getInt("nbTotal");
+            stat.put("nbTotal",nbTotal);
+        }
+            rs = stm.executeQuery("select COUNT(*) as nbTrue from reclamation where etat = 1");
+               while (rs.next()) {
+            int nbTrue = rs.getInt("nbTrue");
+            stat.put("nbTrue",nbTrue);
+        }
+               
+            rs = stm.executeQuery("select COUNT(*) as nbFalse from reclamation where etat = 0");
+                while (rs.next()) {
+            int nbFalse = rs.getInt("nbFalse");
+            stat.put("nbFalse",nbFalse);
+        }
+        return stat;
+               
+     }
 
 }
     
