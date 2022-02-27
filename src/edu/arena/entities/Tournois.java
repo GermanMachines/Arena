@@ -20,6 +20,16 @@ public class Tournois {
          String Type;
          Integer NbrParticipants;
          Integer IdJeux;
+        String NomJeux;
+        String Winner;
+        String Status;
+        
+    public Tournois() {
+    }
+         
+         
+         
+         
 
     public Tournois(Integer IdTournois, String Titre, String Date_debut, String Date_fin, String DescriptionTournois, String Type, Integer NbrParticipants, Integer IdJeux) {
         this.IdTournois = IdTournois;
@@ -49,7 +59,30 @@ public class Tournois {
         
     }
 
-    public Tournois() {
+    public Tournois(String Titre, String Date_debut, String Date_fin, String DescriptionTournois, String Type, Integer NbrParticipants, String NomJeux) {
+        this.Titre = Titre;
+        this.Date_debut = Date_debut;
+        this.Date_fin = Date_fin;
+        this.DescriptionTournois = DescriptionTournois;
+        this.Type = Type;
+        this.NbrParticipants = NbrParticipants;
+        this.NomJeux = NomJeux;
+
+
+    }
+
+    public Tournois(Integer IdTournois,String Titre, String Date_debut, String Date_fin, String DescriptionTournois, String Type, Integer NbrParticipants, Integer IdJeux , String Winner , String Status) {
+     this.IdTournois = IdTournois;
+        this.Titre = Titre;
+        this.Date_debut = Date_debut;
+        this.Date_fin = Date_fin;
+        this.DescriptionTournois = DescriptionTournois;
+        this.Type = Type;
+        this.NbrParticipants = NbrParticipants;
+        this.IdJeux = IdJeux;
+        this.Winner=Winner;
+        this.Status=Status;
+
     }
 
     public Integer getIdTournois() {
@@ -83,7 +116,16 @@ public class Tournois {
     public void setIdJeux(Integer IdJeux) {
         this.IdJeux = IdJeux;
     }
+
+    public String getNomJeux() {
+        return NomJeux;
+    }
+
+    public void setNomJeux(String NomJeux) {
+        this.NomJeux = NomJeux;
+    }
          
+    
     
 
     public String getDescriptionTournois() {
@@ -124,10 +166,29 @@ public class Tournois {
         this.Date_fin = Date_fin;
     }
 
+    public String getWinner() {
+        return Winner;
+    }
+
+    public void setWinner(String Winner) {
+        this.Winner = Winner;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String Status) {
+        this.Status = Status;
+    }
+
     @Override
     public String toString() {
-        return "Tournois{" + "IdTournois=" + IdTournois + ", Titre=" + Titre + ", Date_debut=" + Date_debut + ", Date_fin=" + Date_fin + ", DescriptionTournois=" + DescriptionTournois + ", Type=" + Type + ", NbrParticipants=" + NbrParticipants + ", IdJeux=" + IdJeux + '}';
+        return "Tournois{" + "IdTournois=" + IdTournois + ", Titre=" + Titre + ", Date_debut=" + Date_debut + ", Date_fin=" + Date_fin + ", DescriptionTournois=" + DescriptionTournois + ", Type=" + Type + ", NbrParticipants=" + NbrParticipants + ", IdJeux=" + IdJeux + ", NomJeux=" + NomJeux + ", Winner=" + Winner + ", Status=" + Status + '}';
     }
+
+    
+   
 
    
 

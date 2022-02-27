@@ -14,10 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.chart.PieChart;
 
 /**
  *
@@ -26,6 +26,10 @@ import javafx.collections.ObservableList;
 public class JeuxCrud {
          private Connection con;
     private Statement ste;
+    
+    
+
+
 
     public JeuxCrud() {
         con = DataBase.getInstance().getConnection();
@@ -121,45 +125,30 @@ public class JeuxCrud {
         
         
         
-    public List<Integer> ListJeux() {
+    public List<String> ListJeux() {
 
-        List<Integer> arr = new ArrayList<>();
+        List<String> arr = new ArrayList<>();
 
         try {
 
-            PreparedStatement pre = con.prepareStatement("SELECT IdJeux from jeux ");
+            PreparedStatement pre = con.prepareStatement("SELECT NomJeux from jeux");
             ResultSet rs = pre.executeQuery();
 
             while (rs.next()) {
 
-                int idjeux = rs.getInt("IdJeux");
+                String Nomjeux = rs.getString("NomJeux");
 
-                arr.add(idjeux);
+                arr.add(Nomjeux);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(JeuxCrud.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
 
         return arr;
 
     }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
         
 
     public String getImageJeux(int idjeux) {
@@ -179,6 +168,59 @@ public class JeuxCrud {
         return q;
     
     }
+    
+    
+    
+                public int getidJeuxbynom(String i) throws SQLException {
+        ste = con.createStatement();
+        int idjeux = 0;
+
+        try {
+
+            PreparedStatement pre = con.prepareStatement("SELECT IdJeux  from jeux where NomJeux=?");
+            pre.setString(1, i);
+   
+            ResultSet rs = pre.executeQuery();
+
+            while (rs.next()) {
+
+
+                
+                 idjeux = rs.getInt("IdJeux");
+
+            }
+        } catch (SQLException ex) {
+        }
+
+        return idjeux;
+
+    }
+                
+                
+        public String getJeuxBynom(int i) throws SQLException {
+        ste = con.createStatement();
+        String NomJeux = "";
+
+        try {
+
+            PreparedStatement pre = con.prepareStatement("SELECT NomJeux  from jeux where IdJeux=?");
+            pre.setInt(1, i);
+   
+            ResultSet rs = pre.executeQuery();
+
+            while (rs.next()) {
+
+
+                
+                 NomJeux = rs.getString("NomJeux");
+
+            }
+        } catch (SQLException ex) {
+        }
+
+        return NomJeux;
+
+    }            
         
     
     

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="1087.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.DashbordJeuxController">
+   <children>
+      <TabPane prefHeight="649.0" prefWidth="1087.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Jeux">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="17.0" prefHeight="326.0" prefWidth="83.0">
+                           <children>
+                              <Label prefHeight="86.0" prefWidth="62.0" text="NomJeux" textFill="WHITE" />
+                              <Label prefHeight="114.0" prefWidth="78.0" text="ImageJeux" textFill="WHITE" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="97.0" layoutY="44.0" prefHeight="342.0" prefWidth="244.0" spacing="80.0">
+                           <children>
+                              <TextField fx:id="tfNomJeux" prefHeight="0.0" prefWidth="244.0" />
+                              <TextField fx:id="tfImageJeux" prefHeight="31.0" prefWidth="129.0" />
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tvJeux" layoutX="400.0" layoutY="37.0" onMouseClicked="#handleMouseAction" prefHeight="345.0" prefWidth="349.0" stylesheets="@fullpackstyling.css">
+                          <columns>
+                            <TableColumn fx:id="colid" minWidth="0.0" prefWidth="0.0" text="ID" />
+                            <TableColumn fx:id="colNomJeux" prefWidth="164.0" text="NomJeux" />
+                              <TableColumn fx:id="colImageJeux" prefWidth="183.0" text="ImageJeux" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="btnInsert" layoutX="28.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="89.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="insert" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons8_add_16px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnUpdate" layoutX="130.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" styleClass="button2" stylesheets="@fullpackstyling.css" text="Update" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons8_update_16px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnDelete" layoutX="236.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="105.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="Delete" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons8_delete_16px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <ImageView fx:id="JeuxImage" fitHeight="150.0" fitWidth="200.0" layoutX="486.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button layoutX="349.0" layoutY="158.0" mnemonicParsing="false" onAction="#upload" prefHeight="39.0" prefWidth="39.0" text="upload" />
+                        <Button fx:id="btnSendMail" layoutX="235.0" layoutY="363.0" mnemonicParsing="false" onAction="#Sendmail" prefHeight="31.0" prefWidth="105.0" styleClass="button2" stylesheets="@fullpackstyling.css" text="sendmail" textFill="WHITE" />
+                        <JFXTextField fx:id="searchTF" layoutX="517.0" layoutY="3.0" onKeyTyped="#filter" promptText="Search" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Stat">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart fx:id="piechart" layoutX="225.0" layoutY="53.0" />
+                        <Text fill="#26d1dd" layoutX="14.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres du tournois par jeux :" textAlignment="CENTER" wrappingWidth="412.2958984375">
+                           <font>
+                              <Font name="MS Gothic" size="25.0" />
+                           </font></Text>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="free games">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="587.0" prefWidth="1033.0">
+                           <children>
+                              <Text fill="#ff5353" strokeType="OUTSIDE" strokeWidth="0.0" text="Free Games List">
+                                 <VBox.margin>
+                                    <Insets left="400.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Ink Free" size="60.0" />
+                                 </font>
+                              </Text>
+                              <ListView fx:id="FreeGamesList" onMouseClicked="#displaySelected" prefHeight="353.0" prefWidth="1033.0" />
+                              <ImageView fx:id="Imagejeux" fitHeight="208.0" fitWidth="983.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

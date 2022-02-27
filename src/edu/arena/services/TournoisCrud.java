@@ -53,9 +53,9 @@ public class TournoisCrud {
 
      
      
-    public boolean Update(int IdTournois ,String Titre , String Date_debut,String Date_fin,String DescriptionTournois, String Type , int NbrParticipants , int IdJeux) {
+    public boolean Update(int IdTournois ,String Titre , String Date_debut,String Date_fin,String DescriptionTournois, String Type , int NbrParticipants , int IdJeux , String Winner , String Status) {
             try {
-            PreparedStatement pre = con.prepareStatement("UPDATE tournois SET Titre= ? ,Date_debut = ? , Date_fin= ? , DescriptionTournois= ? , Type= ? , NbrParticipants= ? , IdJeux= ? where IdTournois= ? ;");
+            PreparedStatement pre = con.prepareStatement("UPDATE tournois SET Titre= ? ,Date_debut = ? , Date_fin= ? , DescriptionTournois= ? , Type= ? , NbrParticipants= ? , IdJeux= ? , Winner= ? , Status = ? where IdTournois= ? ;");
             pre.setString(1, Titre);
             pre.setString(2, Date_debut);
             pre.setString(3, Date_fin);   
@@ -63,7 +63,9 @@ public class TournoisCrud {
             pre.setString(5,Type);
             pre.setInt(6, NbrParticipants);
             pre.setInt(7, IdJeux);
-            pre.setInt(8, IdTournois);
+             pre.setString(8, Winner);
+            pre.setString(9, Status);
+            pre.setInt(10, IdTournois);
 
             if (pre.executeUpdate() != 0) {
                 System.out.println(" tournois updated");
@@ -95,7 +97,7 @@ public class TournoisCrud {
 
         List<Tournois> lu = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select IdTournois , Titre,Date_debut,Date_fin,DescriptionTournois ,Type,NbrParticipants , IdJeux from tournois");
+        ResultSet rs = ste.executeQuery("select IdTournois , Titre,Date_debut,Date_fin,DescriptionTournois ,Type,NbrParticipants , IdJeux , Winner , Status from tournois");
         while (rs.next()) {
             
             
@@ -107,10 +109,13 @@ public class TournoisCrud {
             String Type = rs.getString("Type");
             Integer NbrParticipants = rs.getInt("NbrParticipants");
             Integer IdJeux = rs.getInt("IdJeux");
+            String Winner = rs.getString("Winner");
+            String Status = rs.getString("Status");
+
 
             
             
-            Tournois t = new Tournois(IdTournois,Titre, Date_debut, Date_fin,DescriptionTournois,Type,NbrParticipants,IdJeux);
+            Tournois t = new Tournois(IdTournois,Titre, Date_debut, Date_fin,DescriptionTournois,Type,NbrParticipants,IdJeux , Winner , Status);
             lu.add(t);
         }
         return lu;
@@ -167,8 +172,9 @@ public class TournoisCrud {
         return idtournois;
 
     }
-        
-          public List<Tournois> triTournois(int n) {
+            
+
+            public List<Tournois> triTournois(int n) {
         List<Tournois> myList = new ArrayList();
         if (n == 1) {
             try {
@@ -217,4 +223,17 @@ public class TournoisCrud {
         }
         return myList;
     }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        
+    
 }

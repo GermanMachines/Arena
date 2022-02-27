@@ -16,24 +16,36 @@ public class Match {
     int IdTournois;
     String DateMatch;
     String Titre;
+    String Reference;
 
     public Match(int idMatch, int IdTournois, String DateMatch) {
         this.idMatch = idMatch;
         this.IdTournois = IdTournois;
         this.DateMatch = DateMatch;
+
     }
 
-    public Match(int IdTournois, String DateMatch) {
+    public Match(int IdTournois, String DateMatch,String Reference) {
         this.IdTournois = IdTournois;
         this.DateMatch = DateMatch;
+        this.Reference=Reference;
     }
     
-        public Match(int idMatch, String Titre , String DateMatch ) {
+        public Match(int idMatch, String Titre , String DateMatch , String Reference ) {
             
         this.idMatch = idMatch;
         this.Titre=Titre;
         this.DateMatch = DateMatch;
+        this.Reference=Reference;
+
     }
+
+    public Match() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+        
 
     public String getTitre() {
         return Titre;
@@ -68,10 +80,23 @@ public class Match {
         this.DateMatch = DateMatch;
     }
 
+    public String getReference() {
+        return Reference;
+    }
+
+    public void setReference(String Reference) {
+        this.Reference = Reference;
+    }
+
     @Override
     public String toString() {
-        return "Match{" + "idMatch=" + idMatch + ", IdTournois=" + IdTournois + ", DateMatch=" + DateMatch + '}';
+        return "Match{" + "idMatch=" + idMatch + ", IdTournois=" + IdTournois + ", DateMatch=" + DateMatch + ", Titre=" + Titre + ", Reference=" + Reference + '}';
     }
+
+    
+    
+    
+  
     
     
 
