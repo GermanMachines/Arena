@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -49,18 +51,18 @@ public class ProduitService implements IService<Produit> {
     }
 
     @Override
-    public List<Produit> afficher() throws SQLException {
-          List<Produit> products = new ArrayList<>();
+    public ObservableList<Produit> afficher() throws SQLException {
+        ObservableList<Produit> list = FXCollections.observableArrayList();
         stm = connexion.createStatement();
-        ResultSet rs = stm.executeQuery("select id,nom from categoryreclamation");
+        ResultSet rs = stm.executeQuery("select * from produit");
         while (rs.next()) {
             int id = rs.getInt("id");
             String nom = rs.getString("nom");
             //missing avis part
             Produit prod = new Produit(id,nom);
-            products.add(prod);
+            list.add(prod);
         }
-        return products;
+        return list;
     }
     
 }

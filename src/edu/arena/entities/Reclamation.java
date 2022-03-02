@@ -19,10 +19,13 @@ public class Reclamation {
     private int categoryReclamationId;
     private boolean etat;
     private Date date;
+
     
+    public Reclamation(){
+        
+    }
     //use this when constructing reclamation
-        public Reclamation(int id,String titre,String message, int userId, int categoryReclamationId) {
-        this.id = id;
+        public Reclamation(String titre,String message, int userId, int categoryReclamationId) {
         this.titre = titre;
         this.message = message;
         this.userId = userId;
@@ -97,10 +100,13 @@ public class Reclamation {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+
+    public boolean isEtat() {
+        return etat;
     }
 
+  
+   
     @Override
     public String toString() {
         return "Reclamation{" + "id=" + id + ", titre=" + titre + ", message=" + message + ", userId=" + userId + ", categoryReclamationId=" + categoryReclamationId + ", etat=" + etat + ", date=" + date + '}';

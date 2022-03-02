@@ -66,14 +66,14 @@ public class BackOfficeController implements Initializable {
     }
 
     @FXML
-    private void ReclamationCategory(ActionEvent event) throws IOException {
+    private void reclamationCategory(ActionEvent event) throws IOException {
             Parent fxml = FXMLLoader.load(getClass().getResource("ReclamationCategory.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
-    private void Reclamation(ActionEvent event) throws IOException {
+    private void reclamation(ActionEvent event) throws IOException {
             Parent fxml = FXMLLoader.load(getClass().getResource("Reclamation.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(fxml);

@@ -74,7 +74,7 @@ public class AvisService implements IService<Avis>{
             int score = rs.getInt("score");
             String commentaire = rs.getString("commentaire");
             int idProduit = rs.getInt("idProduit");
-            int idUtulisateur  = rs.getInt("idUtulisateur ");
+            int idUtulisateur  = rs.getInt("idUtulisateur");
             Avis a = new Avis(idAvis,score,commentaire,idProduit,idUtulisateur);
             avis.add(a);
         }

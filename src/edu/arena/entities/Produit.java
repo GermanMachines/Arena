@@ -15,6 +15,9 @@ public class Produit {
     //check
     private int avisId;
 
+    public Produit(String nom){
+        this.nom = nom;
+    }
      public Produit(int id, String nom) {
         this.id = id;
         this.nom = nom;   

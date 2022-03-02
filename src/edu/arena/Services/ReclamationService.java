@@ -18,6 +18,8 @@ import java.util.List;
 import edu.arena.utils.DataBase;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -65,8 +67,8 @@ public class ReclamationService implements IService<Reclamation> {
     }
 
     @Override
-    public List<Reclamation> afficher() throws SQLException {
-        List<Reclamation> list = new ArrayList<>();
+    public ObservableList<Reclamation> afficher() throws SQLException {
+        ObservableList<Reclamation> list = FXCollections.observableArrayList();
         stm = connexion.createStatement();
         ResultSet rs = stm.executeQuery("select * from reclamation");
         while (rs.next()) {

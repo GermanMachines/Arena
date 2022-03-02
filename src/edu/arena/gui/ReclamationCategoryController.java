@@ -101,10 +101,6 @@ public class ReclamationCategoryController implements Initializable {
         colId.setCellValueFactory(new PropertyValueFactory<CategoryReclamation,Integer>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<CategoryReclamation,String>("nom"));
         tfId.setVisible(false);
-        
-        
-        
-     
         tvCategoryReclamation.setItems(list);
     }
     
