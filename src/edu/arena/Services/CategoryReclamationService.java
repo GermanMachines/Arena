@@ -15,6 +15,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -28,7 +30,7 @@ public class CategoryReclamationService implements IService<CategoryReclamation>
     }
     @Override
     public void ajouter(CategoryReclamation o) throws SQLException {
-        String req = "INSERT INTO `categoriereclamation`(`nom`) VALUES ( ? ) ";
+        String req = "INSERT INTO `categoryreclamation`(`nom`) VALUES ( ? ) ";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setString(1, o.getNom());
         ps.executeUpdate();
@@ -38,7 +40,7 @@ public class CategoryReclamationService implements IService<CategoryReclamation>
     public void update(CategoryReclamation o) throws SQLException {
 
          stm = connexion.createStatement();
-         PreparedStatement pre = connexion.prepareStatement("update categoriereclamation set nom =? where id=? ");
+         PreparedStatement pre = connexion.prepareStatement("update categoryreclamation set nom =? where id=? ");
          pre.setString(1, o.getNom());
          pre.setInt(2, o.getId());
          pre.executeUpdate();
@@ -47,7 +49,7 @@ public class CategoryReclamationService implements IService<CategoryReclamation>
 
     @Override
     public void delete(int id) throws SQLException {
-       PreparedStatement pre = connexion.prepareStatement("Delete from categoriereclamation where id=? ");
+       PreparedStatement pre = connexion.prepareStatement("Delete from categoryreclamation where id=? ");
        pre.setInt(1, id);
        pre.executeUpdate();
             
@@ -55,8 +57,8 @@ public class CategoryReclamationService implements IService<CategoryReclamation>
     }
 
     @Override
-    public List<CategoryReclamation> afficher() throws SQLException {
-           List<CategoryReclamation> list = new ArrayList<>();
+    public ObservableList<CategoryReclamation> afficher() throws SQLException {
+        ObservableList<CategoryReclamation> list = FXCollections.observableArrayList();
         stm = connexion.createStatement();
         ResultSet rs = stm.executeQuery("select id,nom from categoryreclamation");
         while (rs.next()) {

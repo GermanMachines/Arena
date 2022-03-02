@@ -15,6 +15,10 @@ public class User {
     public User(){
         
     }
+     public User(String nom){
+   
+        this.nom = nom;
+    }
 
     public User(int id , String nom){
         this.id = id;

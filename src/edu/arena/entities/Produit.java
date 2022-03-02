@@ -12,6 +12,7 @@ package edu.arena.entities;
 public class Produit {
     private int id;
     private String nom;
+    //check
     private int avisId;
 
      public Produit(int id, String nom) {

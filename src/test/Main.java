@@ -22,8 +22,6 @@ import java.util.List;
 import edu.arena.utils.DataBase;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

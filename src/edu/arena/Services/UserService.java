@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -23,16 +24,16 @@ public class UserService implements IService<User> {
    Statement stm;
      public UserService() throws SQLException {
       connexion = DataBase.getInstance().getConnection();
-
     }
      
     @Override
     public void ajouter(User u) throws SQLException {
       try{
-        stm = connexion.createStatement();
-      //  String req = "INSERT INTO utulisateur (`nom`) VALUES ( '"+ u.getNom()+"') ;";
-      String req = "INSERT INTO `utulisateur`(`username`) VALUES ('"+u.getNom()+"');";
-        stm.executeUpdate(req);
+        String req = "INSERT INTO `utulisateur`(`username`) VALUES ( ? ) ";
+        PreparedStatement ps = connexion.prepareStatement(req);
+        ps.setString(1, u.getNom());
+        ps.executeUpdate();
+
       }catch(SQLException e){
           e.printStackTrace();
       }

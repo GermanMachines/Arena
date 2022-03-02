@@ -14,6 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -63,9 +65,8 @@ public class AvisService implements IService<Avis>{
     }
 
     @Override
-    public List<Avis> afficher() throws SQLException {
-   
-        List<Avis> avis = new ArrayList<>();
+    public ObservableList<Avis> afficher() throws SQLException {
+        ObservableList<Avis> avis = FXCollections.observableArrayList();
         stm = connexion.createStatement();
         ResultSet rs = stm.executeQuery("select * from avis");
         while (rs.next()) {
