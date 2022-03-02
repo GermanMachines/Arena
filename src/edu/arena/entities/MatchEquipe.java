@@ -5,6 +5,8 @@
  */
 package edu.arena.entities;
 
+import javafx.scene.control.Label;
+
 /**
  *
  * @author tarek
@@ -13,7 +15,22 @@ public class MatchEquipe {
     int idMatch ;
     int IdEquipe ;
     int Score;
+    String nomequipe;
+    String region;
+    
+      static int test;
 
+    public static int getTest() {
+        return test;
+    }
+
+    public static void setTest(int test) {
+        MatchEquipe.test = test;
+    }
+
+      
+      
+      
     public MatchEquipe(int idMatch, int IdEquipe, int Score) {
         this.idMatch = idMatch;
         this.IdEquipe = IdEquipe;
@@ -27,7 +44,32 @@ public class MatchEquipe {
     }
 
     public MatchEquipe() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+
+    public MatchEquipe(int Idmatch, String nomequipe, String region, int score) {
+       this.idMatch = Idmatch;
+        this.nomequipe=nomequipe;
+        this.region=region;
+        this.Score=score;
+
+    }
+
+    public String getNomequipe() {
+        return nomequipe;
+    }
+
+    public void setNomequipe(String nomequipe) {
+        this.nomequipe = nomequipe;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
     
 
@@ -57,8 +99,12 @@ public class MatchEquipe {
 
     @Override
     public String toString() {
-        return "MatchEquipe{" + "idMatch=" + idMatch + ", IdEquipe=" + IdEquipe + ", Score=" + Score + '}';
+        return "MatchEquipe{" + "idMatch=" + idMatch + ", IdEquipe=" + IdEquipe + ", Score=" + Score + ", nomequipe=" + nomequipe + ", region=" + region + '}';
     }
+
+  
+
+
     
     
     

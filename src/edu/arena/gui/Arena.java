@@ -32,12 +32,18 @@ public class Arena extends Application {
         
         
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("DashbordAdminHome.fxml"));
-                    
+            //Parent root = FXMLLoader.load(getClass().getResource("DashbordAdminHome.fxml"));
+              Parent root = FXMLLoader.load(getClass().getResource("Loginpage.fxml"));
+             
+
              //grab your root here
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
+            
+            
+            
+            
         });
 
         //move around here
@@ -46,7 +52,8 @@ public class Arena extends Application {
             primaryStage.setY(event.getScreenY() - yOffset);
         });
        // Scene scene = new Scene(root, 1087, 649);
-       Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 350, 350);
+      // Scene scene = new Scene(root);
         //set transparent
         scene.setFill(Color.TRANSPARENT);
           primaryStage.setTitle("Arena+");

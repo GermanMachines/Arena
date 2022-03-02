@@ -153,7 +153,7 @@ public class DashbordJeuxController implements Initializable {
                
 
                   
-        data.addAll(jcr.readAll());
+         data.addAll(jcr.readAll());
          colid.setCellValueFactory(new PropertyValueFactory<>("IdJeux"));
          colNomJeux.setCellValueFactory(new PropertyValueFactory<>("NomJeux"));
          colImageJeux.setCellValueFactory(new PropertyValueFactory<>("ImageJeux"));
@@ -208,9 +208,6 @@ public class DashbordJeuxController implements Initializable {
          
         tvJeux.setItems(jeux);
         
-        
-        
-        
     }
 
 
@@ -237,8 +234,6 @@ public class DashbordJeuxController implements Initializable {
         }else{
                   
         J = new Jeux(nom, Image);
-        
-        
         
         try{
         jcr.ajouter(J);
@@ -379,9 +374,11 @@ public class DashbordJeuxController implements Initializable {
         System.out.println("Image:"+ jeux.getImageJeux());
         tfNomJeux.setText(jeux.getNomJeux());
         tfImageJeux.setText(jeux.getImageJeux());
-//        String imagename = jcr.getImageJeux(jeux.getIdJeux());
-//        Image myImage = new Image(new FileInputStream("C:\\xampp\\htdocs\\ResourcesArena\\toy.jpg"));
-//        JeuxImage.setImage(myImage);
+        String imagename = jcr.getImageJeux(jeux.getIdJeux());
+        Image myImage = new Image(getClass().getResourceAsStream("/resources/"+imagename+""));
+            //   Image image = new Image(getClass().getResourceAsStream("/resources/fifa2022.png"));
+      //  img.setImage(image);
+        JeuxImage.setImage(myImage);
          
     }
 
@@ -393,7 +390,9 @@ public class DashbordJeuxController implements Initializable {
 
         if (f != null) {
             imageFile = f.getAbsolutePath();
-            tfImageJeux.setText(imageFile);
+            String newimageFile = imageFile.replace("C:\\Users\\tarek\\OneDrive\\Documents\\NetBeansProjects\\Arena++\\src\\resources\\","");
+
+            tfImageJeux.setText(newimageFile);
         } 
     }
 
@@ -530,7 +529,7 @@ connection.disconnect();
                   Image myImage;
                   String X=imageSource;
                   String noSpaceStr =X.replaceAll("\\s", ""); // using built in method  
-                    System.out.println(noSpaceStr);
+                    //System.out.println(noSpaceStr);
                   URI uri = URI.create("C://xampp//htdocs//ResourcesArena//");
                 URI uri2 = uri.resolve("./"+noSpaceStr+".jpg");
                String  uri_to_string= uri2.toString();
@@ -540,7 +539,7 @@ connection.disconnect();
             myImage = new Image(new FileInputStream(uri_to_string));
             Imagejeux.setImage(myImage);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(DashbordJeuxController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Image Not Found");
         }
        
     }

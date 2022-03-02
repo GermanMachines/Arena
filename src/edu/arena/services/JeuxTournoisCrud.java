@@ -83,6 +83,22 @@ public class JeuxTournoisCrud {
     }
             
             
+       public int VerifParticipation(int idEquipe , int idT) {
+          int res=0;
+        try {
+            PreparedStatement pre = con.prepareStatement("select count(*) from participation where IdEquipe=? and IdTournois=?");
+            pre.setInt(1, idEquipe);
+            pre.setInt(2, idT);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+               res = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        return res;
+    }
+            
             
             
         public List<Integer> rechercheJeuxTournois(int idTournois) {

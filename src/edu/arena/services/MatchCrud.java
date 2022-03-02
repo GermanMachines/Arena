@@ -39,9 +39,10 @@ public class MatchCrud {
     
     
      public void ajouter(Match m) throws SQLException {
-        PreparedStatement pre = con.prepareStatement("INSERT INTO matchs (IdTournois,DateMatch)VALUES (?,?);");
+        PreparedStatement pre = con.prepareStatement("INSERT INTO matchs (IdTournois,DateMatch,Reference)VALUES (?,?,?);");
         pre.setInt(1, m.getIdTournois());
         pre.setString(2, m.getDateMatch());
+        pre.setString(3,m.getReference());
         pre.executeUpdate();
     }
      
@@ -100,5 +101,32 @@ public class MatchCrud {
         }
         return arr;
     }
+             
+             
+             
+                   public List<Match> readAll(){
+
+        List<Match> lu = new ArrayList<>();
+         try {
+        ste = con.createStatement();
+        ResultSet rs = ste.executeQuery("select idMatch ,IdTournois,DateMatch,Reference from matchs");
+        while (rs.next()) {
+            int idmatch=rs.getInt("idMatch");
+            int idtouronis = rs.getInt("IdTournois");
+            String DateMatch = rs.getString("DateMatch");
+              String Reference = rs.getString("Reference");
+            Match j = new Match(idmatch,idtouronis, DateMatch , Reference);
+            lu.add(j);
+        }
+         } catch (SQLException ex) {
+        }
+        return lu;
+    }  
+             
+             
+             
+             
+             
+             
 
 }

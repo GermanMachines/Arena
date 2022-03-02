@@ -39,6 +39,19 @@ public class Match {
         this.Reference=Reference;
 
     }
+        
+           public Match(int idMatch, int IdTournois, String DateMatch, String Reference) {
+        this.idMatch = idMatch;
+        this.IdTournois = IdTournois;
+        this.DateMatch = DateMatch;
+        this.Reference=Reference;
+    }
+        
+        
+        
+        
+        
+        
 
     public Match() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

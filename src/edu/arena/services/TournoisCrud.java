@@ -6,6 +6,7 @@
 package edu.arena.services;
 
 import edu.arena.entities.Equipe;
+import edu.arena.entities.Match;
 import edu.arena.entities.Tournois;
 import edu.arena.utils.DataBase;
 import java.sql.Connection;
@@ -120,6 +121,69 @@ public class TournoisCrud {
         }
         return lu;
     }
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+            public List<Tournois> readAllbyJeux(int i) throws SQLException {
+               List<Tournois> lu = new ArrayList<>();
+                try{
+        PreparedStatement pre = con.prepareStatement("select IdTournois , Titre,Date_debut,Date_fin,DescriptionTournois ,Type,NbrParticipants , IdJeux , Winner , Status from tournois where IdJeux=?;");        
+        pre.setInt(1, i);
+        ResultSet rs = pre.executeQuery();
+        while (rs.next()) {
+            
+            
+            Integer IdTournois = rs.getInt("IdTournois");
+            String Titre = rs.getString("Titre");
+            String Date_debut = rs.getString("Date_debut");
+            String Date_fin = rs.getString("Date_fin");
+            String DescriptionTournois = rs.getString("DescriptionTournois");
+            String Type = rs.getString("Type");
+            Integer NbrParticipants = rs.getInt("NbrParticipants");
+            Integer IdJeux = rs.getInt("IdJeux");
+            String Winner = rs.getString("Winner");
+            String Status = rs.getString("Status");
+
+            Tournois t = new Tournois(IdTournois,Titre, Date_debut, Date_fin,DescriptionTournois,Type,NbrParticipants,IdJeux , Winner , Status);
+            lu.add(t);
+        }
+          } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return lu;
+    }
+        
+        
+      
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         public List<String> ListTournois() {

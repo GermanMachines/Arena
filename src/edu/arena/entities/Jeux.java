@@ -13,6 +13,15 @@ public class Jeux {
     int IdJeux;
    String NomJeux;
    String ImageJeux;
+   static String test;
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
 
     public Jeux(Integer IdJeux, String NomJeux, String ImageJeux) {
         this.IdJeux=IdJeux;
@@ -26,11 +35,14 @@ public class Jeux {
     }
 
     public Jeux() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public Jeux(int idjeux) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+this.IdJeux=IdJeux;   
+    }
+
+    public void setIdJeux(int IdJeux) {
+        this.IdJeux = IdJeux;
     }
 
     public int getIdJeux() {

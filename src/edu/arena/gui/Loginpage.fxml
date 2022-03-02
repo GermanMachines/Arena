@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="edu.arena.gui.LoginpageController">
+   <children>
+      <JFXTextField fx:id="txtusername" layoutX="151.0" layoutY="76.0" prefHeight="25.0" prefWidth="245.0" promptText="Username" />
+      <JFXPasswordField fx:id="txtpassword" layoutX="151.0" layoutY="149.0" onAction="#LoginAction" prefHeight="37.0" prefWidth="245.0" promptText="password" />
+      <JFXButton layoutX="169.0" layoutY="206.0" onAction="#LoginAction" prefHeight="25.0" prefWidth="81.0" text="Login" />
+      <JFXButton fx:id="Singup" layoutX="300.0" layoutY="206.0" onAction="#Singup" text="Sign up" />
+      <JFXButton fx:id="forgotBtn" layoutX="197.0" layoutY="254.0" onAction="#Forgot" styleClass="about-button" text="Forget Password ?" textFill="WHITE" />
+   </children>
+</AnchorPane>
