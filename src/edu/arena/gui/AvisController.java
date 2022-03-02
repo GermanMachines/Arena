@@ -19,6 +19,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -86,6 +88,7 @@ public class AvisController implements Initializable {
         //   prodList.stream().forEach(p -> {
               //  cbIdProduit.setItems(p.getId());
                cbNomProduit.setItems(obsListNom);
+            
                cbIdProduit.setItems(obsListId);
       //   ObservableList<String> etat = FXCollections.observableArrayList("Chose","True","False");
        //   cbIdProduit.setItems((ObservableList<Produit>) p);
@@ -103,6 +106,9 @@ public class AvisController implements Initializable {
         AvisService as = new AvisService();
         int idUtulisateur = 0;
         if(event.getSource() == btnInsert){
+            String etat = "";
+            
+           try{
             int idProd = cbIdProduit.getValue();
             String nomProd = cbNomProduit.getValue();
             String commentaire = tfCommentaire.getText();
@@ -113,6 +119,30 @@ public class AvisController implements Initializable {
             }
             as.ajouter(new Avis(score,commentaire,idUtulisateur,idProd));
             showAvis();
+           }catch(SQLException e){
+              
+               etat += "Verifier les données que vous avez saisie !";
+               
+              
+           }finally{
+               if(etat == ""){
+                   
+                   etat += "Ajout Avec succés";
+                   Alert alert = new Alert(AlertType.INFORMATION);
+                   alert.setContentText(etat);
+                   alert.setTitle("Success");
+                    alert.showAndWait();
+               }
+               else{
+                   Alert alert = new Alert(AlertType.ERROR);
+                   alert.setContentText(etat);
+                   alert.setTitle("Error");
+                   alert.showAndWait();
+             }
+              
+
+                
+           }
         }
         
         if(event.getSource() == btnUpdate){
@@ -146,13 +176,17 @@ public class AvisController implements Initializable {
             tfAvisId.setText(Integer.toString(avis.getId()));
           //  cbIdProduit.getValue(avis.getIdProduit());
            // cbNomProduit.getValue();
+             cbIdProduit.setValue(avis.getIdProduit());
             tfCommentaire.setText(avis.getCommentaire());
             cbScore.setValue(avis.getScore());
             idUser.setText(Integer.toString(avis.getIdUtulisateur()));
+            int nb = cbIdProduit.getSelectionModel().getSelectedIndex();
+           cbNomProduit.getSelectionModel().select(nb);
    }
        public void showAvis() throws SQLException{
          AvisService avis = new AvisService();
         ObservableList<Avis> list =  avis.afficher();
+        ProduitService p = new ProduitService();
       //  list.stream().forEach(r -> System.out.println(r.toString()));
       //  colId.setVisible(false);
         tcIdUtulisateur.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("idUtulisateur"));
@@ -160,7 +194,14 @@ public class AvisController implements Initializable {
         tcScore.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("score"));
         tcId.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("id"));
         tcIdProduit.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("idProduit"));
-       // tfId.setVisible(false);
+       // tfId.setVisible(false);  
+         //  int nb = cbIdProduit.getSelectionModel().getSelectedIndex();
+         //  cbNomProduit.getSelectionModel().select(nb);
+          // System.out.println(cbIdProduit.getValue());
+           
+       //    cbNomProduit.setValue(p.getNomProduit(cbIdProduit.getValue()));
+         //  System.out.println(p.getNomProduit(cbIdProduit.getValue()));
+        //String nom = getNomProduit(tcIdProduit);
         tvAvis.setItems(list);
     }    
     

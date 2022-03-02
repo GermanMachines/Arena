@@ -65,4 +65,17 @@ public class ProduitService implements IService<Produit> {
         return list;
     }
     
+    public String getNomProduit(int id) throws SQLException{
+         String query = "select nom from produit where id = " +id ;
+        //  ObservableList<Avis> avis = FXCollections.observableArrayList();
+        stm = connexion.createStatement();
+        ResultSet rs = stm.executeQuery(query);
+        String nomProduit = "";
+        while (rs.next()) {
+            nomProduit =rs.getString("nom");
+          
+        }
+        return nomProduit;
+    }
+    
 }
