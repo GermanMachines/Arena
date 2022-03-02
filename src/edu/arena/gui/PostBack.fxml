@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="555.0" prefWidth="774.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.PostBackController">
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="554.0" prefWidth="834.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="26.0" layoutY="67.0" text="titre" />
+            <TextField fx:id="tfTitre" layoutX="85.0" layoutY="63.0" style="-fx-background-color: #4B6586;" />
+            <Label layoutX="19.0" layoutY="118.0" text="auteur" />
+            <TextField fx:id="tfAuteur" layoutX="85.0" layoutY="114.0" style="-fx-background-color: #4B6586;" />
+            <Label layoutX="260.0" layoutY="67.0" text="image" />
+            <Label layoutX="265.0" layoutY="118.0" text="date" />
+            <TextField fx:id="tfImage" layoutX="312.0" layoutY="63.0" style="-fx-background-color: #4B6586;" />
+            <TextField fx:id="tfDate" layoutX="311.0" layoutY="114.0" style="-fx-background-color: #4B6586;" />
+            <Button layoutX="517.0" layoutY="60.0" mnemonicParsing="false" onAction="#addPost" prefHeight="32.0" prefWidth="61.0" style="-fx-background-color: #4B6586;" text="add" />
+            <Button layoutX="516.0" layoutY="111.0" mnemonicParsing="false" onAction="#updatePost" prefHeight="32.0" prefWidth="63.0" style="-fx-background-color: #4B6586;" text="update" />
+            <Button layoutX="517.0" layoutY="163.0" mnemonicParsing="false" onAction="#deletePost" prefHeight="32.0" prefWidth="62.0" style="-fx-background-color: #4B6586;" text="delete" />
+            <TableView fx:id="tabPost" layoutX="16.0" layoutY="236.0" onMouseClicked="#selectPost" prefHeight="309.0" prefWidth="744.0">
+               <columns>
+                  <TableColumn fx:id="ColId" prefWidth="75.0" text="id" />
+                  <TableColumn fx:id="ColTitre" prefWidth="75.0" text="titre" />
+                  <TableColumn fx:id="ColAuteur" prefWidth="75.0" text="auteur" />
+                  <TableColumn fx:id="ColImage" prefWidth="75.0" text="image" />
+                  <TableColumn fx:id="ColDate" prefWidth="221.0" text="date d'ajout" />
+               </columns>
+            </TableView>
+            <Label layoutX="97.0" layoutY="185.0" text="search" />
+            <TextField fx:id="tfSearch" layoutX="182.0" layoutY="181.0" prefHeight="26.0" prefWidth="258.0" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

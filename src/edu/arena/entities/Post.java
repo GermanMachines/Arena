@@ -5,7 +5,7 @@
  */
 package edu.arena.entities;
 
-import java.sql.Date;
+
 
 
 public class Post {
@@ -13,40 +13,48 @@ public class Post {
    String titre;
    String auteur;
     String img_post;
-    Date date_post;
-    int id_com;
+    String date_post;
+    
+    static int test;
+
+    public static int getTest() {
+        return test;
+    }
+
+    public static void setTest(int test) {
+        Post.test = test;
+    }
     
 
-    public Post(int id_post, String titre, String auteur, String img_post, Date date_pos,int id_com) {
+    public Post(int id_post, String titre, String auteur, String img_post, String date_post) {
         this.id_post = id_post;
         this.titre = titre;
         this.auteur = auteur;
         this.img_post = img_post;
         this.date_post = date_post;
-        this.id_com=id_com;
+    
     }
 
-    public Post(String titre, String auteur, String img_post, Date date_post, int id_com) {
+    public Post(String titre, String auteur, String img_post, String date_post) {
         this.titre = titre;
         this.auteur = auteur;
         this.img_post = img_post;
         this.date_post = date_post;
-          this.id_com=id_com;
+       
     }
 
-    public int getId_com() {
-        return id_com;
+    public Post() {
+      
     }
 
-    public void setId_com(int id_com) {
-        this.id_com = id_com;
-    }
+  
 
-    public Date getDate_post() {
+ 
+    public String getDate_post() {
         return date_post;
     }
 
-    public void setDate_post(Date date_post) {
+    public void setDate_post(String date_post) {
         this.date_post = date_post;
     }
 
@@ -90,6 +98,7 @@ public class Post {
         return "post{" + "id_post=" + id_post + ", titre=" + titre + ", auteur=" + auteur + ", img_post=" + img_post +  ", date_post=" + date_post + '}';
     }
 
+   
  
    
 }
