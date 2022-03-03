@@ -92,7 +92,6 @@ public class AvisController implements Initializable {
         //   prodList.stream().forEach(p -> {
               //  cbIdProduit.setItems(p.getId());
                cbNomProduit.setItems(obsListNom);
-            
                cbIdProduit.setItems(obsListId);
       //   ObservableList<String> etat = FXCollections.observableArrayList("Chose","True","False");
        //   cbIdProduit.setItems((ObservableList<Produit>) p);
@@ -185,6 +184,8 @@ public class AvisController implements Initializable {
             cbScore.setValue(avis.getScore());
             idUser.setText(Integer.toString(avis.getIdUtulisateur()));
             int nb = cbIdProduit.getSelectionModel().getSelectedIndex();
+            
+            System.out.println(nb);
            cbNomProduit.getSelectionModel().select(nb);
    }
        public void showAvis() throws SQLException{
@@ -193,7 +194,7 @@ public class AvisController implements Initializable {
         
         
         //ProduitService p = new ProduitService();
-        list.stream().forEach(r -> System.out.println(r.toString()));
+ 
       //  colId.setVisible(false);
         tcIdUtulisateur.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("idUtulisateur"));
         tcCommentaire.setCellValueFactory(new PropertyValueFactory<Avis,String>("commentaire"));

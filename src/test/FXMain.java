@@ -59,7 +59,7 @@ public class FXMain extends Application {
         //primaryStage.setScene(scene);
         //primaryStage.show();
         
-        Parent root = FXMLLoader.load(getClass().getResource("../edu/arena/gui/BackOffice.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../edu/arena/gui/Login.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         
         root.setOnMousePressed(event -> {

@@ -76,4 +76,53 @@ public class UserService implements IService<User> {
         }
         return list;
     }
+    public boolean login(String name) throws SQLException{
+        String query ="select * from utulisateur where username = '" +name + "'";
+    
+        stm = connexion.createStatement();
+        ResultSet rs = stm.executeQuery(query);
+        
+        String nom = "123";
+        int id = -5;
+       
+        User u = new User(id,nom);
+        while (rs.next()) {
+           u.setNom(rs.getString("username"));
+           u.setId(rs.getInt("id"));
+         //  System.out.println(rs.getString("username"));
+          // System.out.println(rs.getInt(nom));
+          
+        }
+        if(u.getId() != -5 ){
+          
+            return true;
+        }else{
+           
+            return false;
+        }
+    }
+
+    public User getUser(String name) throws SQLException{
+       
+    
+        String query ="select * from utulisateur where username = '" +name + "'";
+    
+        stm = connexion.createStatement();
+        ResultSet rs = stm.executeQuery(query);
+        
+        String nom = "123";
+        int id = -5;
+       
+        User u = new User(id,nom);
+        while (rs.next()) {
+           u.setNom(rs.getString("username"));
+           u.setId(rs.getInt("id"));
+         //  System.out.println(rs.getString("username"));
+          // System.out.println(rs.getInt(nom));
+          
+        }
+            return u;
+        
+        
+    }
 }

@@ -88,6 +88,9 @@ public class ReclamationService implements IService<Reclamation> {
         return list;
     }
     
+    
+    
+    
     public ObservableList<Reclamation> getAll()throws SQLException{
         ObservableList<Reclamation> list = FXCollections.observableArrayList();
         stm = connexion.createStatement();
@@ -179,6 +182,7 @@ public class ReclamationService implements IService<Reclamation> {
             int nbTotal = rs.getInt("nbTotal");
             stat.put("nbTotal",nbTotal);
         }
+     
             rs = stm.executeQuery("select COUNT(*) as nbTrue from reclamation where etat = 1");
                while (rs.next()) {
             int nbTrue = rs.getInt("nbTrue");
@@ -193,6 +197,42 @@ public class ReclamationService implements IService<Reclamation> {
         return stat;
                
      }
+         
+        public ObservableList<Reclamation> getOne(int id)throws SQLException{
+        ObservableList<Reclamation> list = FXCollections.observableArrayList();
+        stm = connexion.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT reclamation.id, reclamation.idUser, reclamation.titre, reclamation.message , reclamation.etat , reclamation.date , categoryreclamation.nom , reclamation.idCategoryReclamation FROM reclamation INNER JOIN categoryreclamation ON categoryreclamation.id = reclamation.idCategoryReclamation where reclamation.idUser = "+id);
+        while (rs.next()) {
+            int idRec = rs.getInt("id");    
+            int idUser = rs.getInt("idUser");
+            int idCategoryReclamation  = rs.getInt("idCategoryReclamation");
+            
+            String titre = rs.getString("titre");
+            String message = rs.getString("message");
+            Date date = rs.getDate("date");
+            
+            boolean etat  = rs.getBoolean("etat");
+           
+            String nomCategory = rs.getString("nom");
+            
+       
+            Reclamation rec = new Reclamation();
+            rec.setId(idRec);
+            rec.setUserId(idUser);
+            rec.setCategoryReclamationId(idCategoryReclamation);
+            rec.setTitre(titre);
+            rec.setMessage(message);
+            rec.setDate(date);
+            rec.setEtat(etat);
+       
+            rec.setCategoryReclamation(new CategoryReclamation(idCategoryReclamation,nomCategory));
+            rec.setNomCategory(nomCategory);
+        
+            list.add(rec);
+        }
+        return list;
+    }
+         
      
 
 }
