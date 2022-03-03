@@ -121,30 +121,7 @@ public class AvisFrontOfficeController implements Initializable {
                 
                 lnomproduit2.setText(p3.getNom());
                 lidproduit2.setText(Integer.toString(p3.getId()));
-                //ActionEvent event = new ActionEvent();
-        /*        score.setOnAction(e -> {
-                    try{
-                        sendAvis(score,tfCommentaire,lidproduit,iduser);
-                    }catch(SQLException ex){
-                        ex.printStackTrace();
-                    }
-                });
-                
-                score1.setOnAction(e -> {
-                    try{
-                        sendAvis(score1,tfCommentaire1,lidproduit1,iduser);
-                    }catch(SQLException ex){
-                        ex.printStackTrace();
-                    }
-                });
-                
-                score2.setOnAction(e -> {
-                    try{
-                        sendAvis(score2,tfCommentaire2,lidproduit2,iduser);
-                    }catch(SQLException ex){
-                        ex.printStackTrace();
-                    }
-                });*/
+             
             }catch(Exception e){
                 e.printStackTrace();
             }

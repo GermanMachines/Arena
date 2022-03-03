@@ -60,16 +60,6 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnProducts" layoutX="10.0" layoutY="47.0" mnemonicParsing="false" onAction="#showProducts" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Products" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="btnProducts" layoutX="10.0" layoutY="84.0" mnemonicParsing="false" onAction="#products" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: 161D29;" text="Products" textFill="WHITE">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
                   <Button fx:id="btnAvis" layoutX="10.0" layoutY="216.0" mnemonicParsing="false" onAction="#avis" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Avis" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
