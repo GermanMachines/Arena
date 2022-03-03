@@ -62,6 +62,8 @@ public class ReclamationCategoryController implements Initializable {
     private TableColumn<CategoryReclamation, String> colName;
     @FXML
     private TextField tfId;
+    @FXML
+    private Label lID;
 
 
     /**
@@ -71,6 +73,8 @@ public class ReclamationCategoryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
        try{
+           tfId.setVisible(false);
+           lID.setVisible(false);
             showCategoryReclamation();
        }catch(SQLException ex){
            ex.printStackTrace();

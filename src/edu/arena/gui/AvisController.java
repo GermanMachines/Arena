@@ -9,10 +9,13 @@ import edu.arena.Services.AvisService;
 import edu.arena.Services.ProduitService;
 import edu.arena.entities.Avis;
 import edu.arena.entities.Produit;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import static java.util.stream.Collectors.toList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -72,6 +76,14 @@ public class AvisController implements Initializable {
     private TableColumn<Avis, String> tcNomProduit;
     @FXML
     private TableColumn<Avis, String> tcNomUser;
+    @FXML
+    private Label lIdProduit;
+    @FXML
+    private Label lIdUser;
+    @FXML
+    private Label lIdAvis;
+    @FXML
+    private Label adminId;
 
     /**
      * Initializes the controller class.
@@ -85,6 +97,21 @@ public class AvisController implements Initializable {
         try{
        
             
+      File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
+      
+          Scanner myReader = new Scanner(myObj);
+      
+      String id = myReader.nextLine();
+      String nom =myReader.nextLine();
+      
+        adminId.setText(id);
+     
+        
+        //adminId.setVisible(false);
+       
+     
+      myReader.close();
+
             ObservableList<Produit> prodList = ps.afficher();
             List<String> listNom = prodList.stream().map(p -> p.getNom()).collect(toList());
             List<Integer>  listId = prodList.stream().map(p -> p.getId()).collect(toList());
@@ -99,8 +126,17 @@ public class AvisController implements Initializable {
        //   cbIdProduit.setItems((ObservableList<Produit>) p);
         //  cbIdProduit.setValue("Chose");
          //   }); 
+         adminId.setVisible(false);
+         tfAvisId.setVisible(false);
+         idUser.setVisible(false);
+         cbIdProduit.setVisible(false);
+         lIdAvis.setVisible(false);
+         lIdUser.setVisible(false);
+         lIdProduit.setVisible(false); 
          showAvis();
         }catch(SQLException ex){
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         }
         
@@ -118,10 +154,11 @@ public class AvisController implements Initializable {
             String nomProd = cbNomProduit.getValue();
             String commentaire = tfCommentaire.getText();
             int score = cbScore.getValue();
-             idUtulisateur = Integer.parseInt(idUser.getText());
-            if(idUtulisateur == 0){
-                idUtulisateur = 1;
+            if(idUser.getText() == ""){
+                idUser.setText(adminId.getText());
             }
+             idUtulisateur = Integer.parseInt(adminId.getText());
+             
             as.ajouter(new Avis(score,commentaire,idUtulisateur,idProd));
             showAvis();
            }catch(SQLException e){

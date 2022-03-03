@@ -24,6 +24,11 @@ public class Avis {
         public Avis(){
             
         }
+       public Avis(int score, int idUtulisateur, int idProduit) {
+        this.score = score;
+        this.idUtulisateur = idUtulisateur;
+        this.idProduit = idProduit;
+    }
     public Avis(int score, String commentaire, int idUtulisateur, int idProduit) {
         this.score = score;
         this.commentaire = commentaire;

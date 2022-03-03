@@ -68,7 +68,10 @@ public class FrontOfficeController implements Initializable {
     }
 
     @FXML
-    private void avis(ActionEvent event) {
+    private void avis(ActionEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("AvisFrontOffice.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML

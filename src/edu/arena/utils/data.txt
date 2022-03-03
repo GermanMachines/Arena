@@ -1,2 +1,2 @@
-8
-admin
+6
+test

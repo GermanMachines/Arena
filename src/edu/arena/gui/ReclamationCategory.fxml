@@ -14,12 +14,12 @@
       <Button fx:id="btnInsert" layoutX="78.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Insert" />
       <Button fx:id="btnUpdate" layoutX="161.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Modify" />
       <Button fx:id="btnDelete" layoutX="248.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Delete" />
-      <Label layoutX="76.0" layoutY="160.0" text="ID" />
+      <Label fx:id="lID" layoutX="76.0" layoutY="160.0" text="ID" />
       <TextField fx:id="tfId" layoutX="139.0" layoutY="156.0" />
       <TableView fx:id="tvCategoryReclamation" layoutX="338.0" layoutY="69.0" onMouseClicked="#handleMouseAction" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="colId" minWidth="0.0" prefWidth="86.0" text="ID" />
-          <TableColumn fx:id="colName" prefWidth="113.0" text="Nom" />
+          <TableColumn fx:id="colId" minWidth="0.0" prefWidth="0.0" text="ID" />
+          <TableColumn fx:id="colName" prefWidth="199.0" text="Nom" />
         </columns>
       </TableView>
    </children>
