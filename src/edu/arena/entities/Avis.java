@@ -15,10 +15,15 @@ public class Avis {
     private String commentaire;
     private int idUtulisateur;
     private int idProduit;
+    private String nomUtulisateur;
+    private String nomProduit;
+    
 
     
     
-        
+        public Avis(){
+            
+        }
     public Avis(int score, String commentaire, int idUtulisateur, int idProduit) {
         this.score = score;
         this.commentaire = commentaire;
@@ -69,12 +74,38 @@ public class Avis {
     public int getIdProduit() {
         return idProduit;
     }
-    
+
+    public String getNomUtulisateur() {
+        return nomUtulisateur;
+    }
+
+    public void setNomUtulisateur(String nomUtulisateur) {
+        this.nomUtulisateur = nomUtulisateur;
+    }
+
+    public String getNomProduit() {
+        return nomProduit;
+    }
+
+    public void setNomProduit(String nomProduit) {
+        this.nomProduit = nomProduit;
+    }
+
+    public void setIdUtulisateur(int idUtulisateur) {
+        this.idUtulisateur = idUtulisateur;
+    }
+
+    public void setIdProduit(int idProduit) {
+        this.idProduit = idProduit;
+    }
 
     @Override
     public String toString() {
-        return "Avis{" + "id=" + id + ", score=" + score + ", commentaire=" + commentaire + ", idUser=" + idUtulisateur + ", idProduit=" + idProduit + '}';
+        return "Avis{" + "id=" + id + ", score=" + score + ", commentaire=" + commentaire + ", idUtulisateur=" + idUtulisateur + ", idProduit=" + idProduit + ", nomUtulisateur=" + nomUtulisateur + ", nomProduit=" + nomProduit + '}';
     }
+    
+
+   
 
 
   

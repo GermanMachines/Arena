@@ -74,6 +74,10 @@ public class ReclamationController implements Initializable {
     private TextField tfUser;
     @FXML
     private ChoiceBox<String> cbEtat;
+    @FXML
+    private TableColumn<Reclamation, String> colNomCategory;
+    @FXML
+    private TableColumn<Reclamation, String> colNomUser;
 
     /**
      * Initializes the controller class.
@@ -92,7 +96,7 @@ public class ReclamationController implements Initializable {
     }
    public void showReclamation() throws SQLException{
          ReclamationService rs = new ReclamationService();
-        ObservableList<Reclamation> list =  rs.afficher();
+        ObservableList<Reclamation> list =  rs.getAll();
         list.stream().forEach(r -> System.out.println(r.toString()));
       //  colId.setVisible(false);
         colId.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id"));
@@ -103,7 +107,14 @@ public class ReclamationController implements Initializable {
         colEtat.setCellValueFactory(new PropertyValueFactory<Reclamation,Boolean>("etat"));
         colDate.setCellValueFactory(new PropertyValueFactory<Reclamation,Date>("date"));
        // tfId.setVisible(false);
+       colNomUser.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomUser"));
+       colNomCategory.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomCategory"));
         tvReclamation.setItems(list);
+        
+        // hide ids
+        colCategory.setVisible(false);
+        colUser.setVisible(false);
+        colId.setVisible(false);
     }    
 
     @FXML

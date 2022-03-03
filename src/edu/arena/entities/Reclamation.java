@@ -19,11 +19,31 @@ public class Reclamation {
     private int categoryReclamationId;
     private boolean etat;
     private Date date;
+    private CategoryReclamation categoryReclamation;
+    private User user;
+    private String nomCategory;
+    private String nomUser;
 
     
     public Reclamation(){
         
     }
+    
+       public Reclamation(String titre,String message, User user, CategoryReclamation cat) {
+        this.titre = titre;
+        this.message = message;
+        this.userId = user.getId();
+        this.categoryReclamationId = cat.getId();
+        this.etat = false;
+        this.date = new Date();
+        this.user = user;
+        this.categoryReclamation = cat;
+        this.nomUser = user.getNom();
+        this.nomCategory = categoryReclamation.getNom();
+        
+
+    }
+    
     //use this when constructing reclamation
         public Reclamation(String titre,String message, int userId, int categoryReclamationId) {
         this.titre = titre;
@@ -105,12 +125,51 @@ public class Reclamation {
         return etat;
     }
 
-  
-   
+ 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    public void setDate(Date d){
+        this.date = d;
+    }
+
+    public CategoryReclamation getCategoryReclamation() {
+        return categoryReclamation;
+    }
+
+    public void setCategoryReclamation(CategoryReclamation categoryReclamation) {
+        this.categoryReclamation = categoryReclamation;
+    }
+
+    public String getNomCategory() {
+        return nomCategory;
+    }
+
+    public void setNomCategory(String nomCategory) {
+        this.nomCategory = nomCategory;
+    }
+
+    public String getNomUser() {
+        return nomUser;
+    }
+
+    public void setNomUser(String nomUser) {
+        this.nomUser = nomUser;
+    }
+
     @Override
     public String toString() {
-        return "Reclamation{" + "id=" + id + ", titre=" + titre + ", message=" + message + ", userId=" + userId + ", categoryReclamationId=" + categoryReclamationId + ", etat=" + etat + ", date=" + date + '}';
+        return "Reclamation{" + "id=" + id + ", titre=" + titre + ", message=" + message + ", userId=" + userId + ", categoryReclamationId=" + categoryReclamationId + ", etat=" + etat + ", date=" + date + ", categoryReclamation=" + categoryReclamation + ", user=" + user + ", nomCategory=" + nomCategory + ", nomUser=" + nomUser + '}';
     }
+
+  
+  
+   
+    
 
    
 

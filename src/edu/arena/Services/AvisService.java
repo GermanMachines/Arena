@@ -81,6 +81,37 @@ public class AvisService implements IService<Avis>{
         return avis;
     }
     
+    //SELECT avis.id , avis.idUtulisateur, avis.idProduit , avis.score, avis.commentaire , utulisateur.username ,produit.nom FROM avis INNER JOIN utulisateur ON avis.idUtulisateur = utulisateur.id INNER JOIN produit ON produit.id = avis.idProduit;
+  public ObservableList<Avis> getAll()throws SQLException{
+        ObservableList<Avis> list = FXCollections.observableArrayList();
+        stm = connexion.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT avis.id , avis.idUtulisateur, avis.idProduit , avis.score, avis.commentaire , utulisateur.username ,produit.nom FROM avis INNER JOIN utulisateur ON avis.idUtulisateur = utulisateur.id INNER JOIN produit ON produit.id = avis.idProduit");
+        while (rs.next()) {
+            int idAvis = rs.getInt("id");
+            int idUser = rs.getInt("idUtulisateur");
+            int idProduit  = rs.getInt("idProduit");
+            
+            int score = rs.getInt("score");
+            String commentaire = rs.getString("commentaire");
+            String username = rs.getString("username");
+            
+            String nomProduit  = rs.getString("nom");
+    
+       
+            Avis avis = new Avis();
+            
+            avis.setId(idAvis);
+            avis.setIdUser(idUser);
+            avis.setIdProduit(idProduit);
+            avis.setScore(score);
+            avis.setCommentaire(commentaire);
+            avis.setNomUtulisateur(username);
+            avis.setNomProduit(nomProduit);
+       
+            list.add(avis);
+        }
+        return list;
+    }
     
     public double scoreAvg(int id) throws SQLException{
         //List<Avis> avisProducts = new ArrayList<>();

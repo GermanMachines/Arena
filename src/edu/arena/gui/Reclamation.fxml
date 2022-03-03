@@ -56,15 +56,17 @@
             <Label layoutX="10.0" layoutY="78.0" text="Etat" />
          </children>
       </VBox>
-      <TableView fx:id="tvReclamation" layoutX="134.0" layoutY="229.0" onMouseClicked="#handleMouseAction" prefHeight="200.0" prefWidth="526.0">
+      <TableView fx:id="tvReclamation" layoutX="143.0" layoutY="229.0" onMouseClicked="#handleMouseAction" prefHeight="200.0" prefWidth="608.0">
         <columns>
-          <TableColumn fx:id="colId" prefWidth="45.0" text="ID" />
+            <TableColumn fx:id="colNomUser" prefWidth="90.0" text="User" />
           <TableColumn fx:id="colTitre" prefWidth="105.0" text="Titre" />
             <TableColumn fx:id="colMessage" prefWidth="75.0" text="Message" />
-            <TableColumn fx:id="colCategory" prefWidth="75.0" text="Category" />
-            <TableColumn fx:id="colUser" prefWidth="75.0" text="User" />
-            <TableColumn fx:id="colDate" prefWidth="75.0" text="Date" />
-            <TableColumn fx:id="colEtat" prefWidth="75.0" text="Etat" />
+            <TableColumn fx:id="colDate" prefWidth="94.0" text="Date" />
+            <TableColumn fx:id="colEtat" prefWidth="76.0" text="Etat" />
+            <TableColumn fx:id="colNomCategory" prefWidth="75.0" text="Category" />
+          <TableColumn fx:id="colId" prefWidth="45.0" text="ID" />
+            <TableColumn fx:id="colUser" prefWidth="73.0" text="userID" />
+            <TableColumn fx:id="colCategory" prefWidth="42.0" text="categoryId" />
         </columns>
       </TableView>
       <HBox layoutX="135.0" layoutY="108.0" prefHeight="58.0" prefWidth="240.0" spacing="20.0">

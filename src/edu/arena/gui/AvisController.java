@@ -66,6 +66,10 @@ public class AvisController implements Initializable {
     private TableColumn<Avis, String> tcCommentaire;
     @FXML
     private TextField tfAvisId;
+    @FXML
+    private TableColumn<Avis, String> tcNomProduit;
+    @FXML
+    private TableColumn<Avis, String> tcNomUser;
 
     /**
      * Initializes the controller class.
@@ -185,15 +189,24 @@ public class AvisController implements Initializable {
    }
        public void showAvis() throws SQLException{
          AvisService avis = new AvisService();
-        ObservableList<Avis> list =  avis.afficher();
-        ProduitService p = new ProduitService();
-      //  list.stream().forEach(r -> System.out.println(r.toString()));
+        ObservableList<Avis> list =  avis.getAll();
+        
+        
+        //ProduitService p = new ProduitService();
+        list.stream().forEach(r -> System.out.println(r.toString()));
       //  colId.setVisible(false);
         tcIdUtulisateur.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("idUtulisateur"));
         tcCommentaire.setCellValueFactory(new PropertyValueFactory<Avis,String>("commentaire"));
         tcScore.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("score"));
         tcId.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("id"));
         tcIdProduit.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("idProduit"));
+        tcNomUser.setCellValueFactory(new PropertyValueFactory<Avis,String>("nomUtulisateur"));
+        tcNomProduit.setCellValueFactory(new PropertyValueFactory<Avis,String>("nomProduit"));
+        
+        //hide ids
+        tcId.setVisible(false);
+        tcIdUtulisateur.setVisible(false);
+        tcIdProduit.setVisible(false);
        // tfId.setVisible(false);  
          //  int nb = cbIdProduit.getSelectionModel().getSelectedIndex();
          //  cbNomProduit.getSelectionModel().select(nb);

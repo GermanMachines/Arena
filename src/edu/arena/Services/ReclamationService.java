@@ -6,7 +6,9 @@
 package edu.arena.Services;
 
 
+import edu.arena.entities.CategoryReclamation;
 import edu.arena.entities.Reclamation;
+import edu.arena.entities.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,6 +88,42 @@ public class ReclamationService implements IService<Reclamation> {
         return list;
     }
     
+    public ObservableList<Reclamation> getAll()throws SQLException{
+        ObservableList<Reclamation> list = FXCollections.observableArrayList();
+        stm = connexion.createStatement();
+        ResultSet rs = stm.executeQuery("SELECT reclamation.id , reclamation.idUser, reclamation.idCategoryReclamation , reclamation.titre, reclamation.message ,reclamation.date ,reclamation.etat, utulisateur.username , categoryreclamation.nom FROM reclamation INNER JOIN utulisateur ON reclamation.idUser = utulisateur.id INNER JOIN categoryreclamation ON reclamation.idCategoryReclamation = categoryreclamation.id");
+        while (rs.next()) {
+            int idRec = rs.getInt("id");
+            int idUser = rs.getInt("idUser");
+            int idCategoryReclamation  = rs.getInt("idCategoryReclamation");
+            
+            String titre = rs.getString("titre");
+            String message = rs.getString("message");
+            Date date = rs.getDate("date");
+            
+            boolean etat  = rs.getBoolean("etat");
+            String username = rs.getString("username");
+            String nomCategory = rs.getString("nom");
+            
+       
+            Reclamation rec = new Reclamation();
+            rec.setId(idRec);
+            rec.setUserId(idUser);
+            rec.setCategoryReclamationId(idCategoryReclamation);
+            rec.setTitre(titre);
+            rec.setMessage(message);
+            rec.setDate(date);
+            rec.setEtat(etat);
+            rec.setUser(new User(idUser,username));
+            rec.setCategoryReclamation(new CategoryReclamation(idCategoryReclamation,nomCategory));
+            rec.setNomCategory(nomCategory);
+            rec.setNomUser(username);
+            list.add(rec);
+        }
+        return list;
+    }
+    
+    
         public List<Reclamation> tri(boolean isAsc) throws SQLException {
         List<Reclamation> list = new ArrayList<>();
         stm = connexion.createStatement();  
@@ -155,6 +193,7 @@ public class ReclamationService implements IService<Reclamation> {
         return stat;
                
      }
+     
 
 }
     

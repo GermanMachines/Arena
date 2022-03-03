@@ -30,6 +30,11 @@ import javafx.scene.control.TreeTableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 /**
  * FXML Controller class
@@ -77,17 +82,53 @@ public class ReclamationCategoryController implements Initializable {
     private void handleButtonAction(ActionEvent event) throws SQLException {
         CategoryReclamationService crs = new CategoryReclamationService();
          if(event.getSource() == btnInsert){
-         crs.ajouter(new CategoryReclamation(tfname.getText()));
+        
+         String error = controlSaisie();
+           if(error == ""){
+             Alert a = new Alert(AlertType.INFORMATION);
+             crs.ajouter(new CategoryReclamation(tfname.getText()));
+             a.setContentText("Added Successfully");
+             a.show();
+         }else{
+              Alert a = new Alert(AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
          showCategoryReclamation();
         } 
          if(event.getSource() == btnUpdate){
-             //control saisie
          crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
+       
+          String error = controlSaisie();
+           if(error == ""){
+             Alert a = new Alert(AlertType.INFORMATION);
+             crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
+             a.setContentText("Added Successfully");
+             a.show();
+         }else{
+              Alert a = new Alert(AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
          showCategoryReclamation();
+         
+         
+         
         } 
            if(event.getSource() == btnDelete){
              //control saisie
-         crs.delete(Integer.parseInt(tfId.getText()));
+        try{
+             crs.delete(Integer.parseInt(tfId.getText()));
+              Alert a = new Alert(AlertType.INFORMATION);
+             crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
+             a.setContentText("Added Successfully");
+             a.show();
+             
+        }catch(SQLException e){
+             Alert a = new Alert(AlertType.ERROR);
+             a.setContentText(e.getMessage());
+             a.show();
+        }
          showCategoryReclamation();
         } 
      
@@ -95,7 +136,7 @@ public class ReclamationCategoryController implements Initializable {
     
 
     public void showCategoryReclamation() throws SQLException{
-         CategoryReclamationService crs = new CategoryReclamationService();
+        CategoryReclamationService crs = new CategoryReclamationService();
         ObservableList<CategoryReclamation> list =  crs.afficher();
         colId.setVisible(false);
         colId.setCellValueFactory(new PropertyValueFactory<CategoryReclamation,Integer>("id"));
@@ -112,6 +153,21 @@ public class ReclamationCategoryController implements Initializable {
         tfId.setText(Integer.toString(rec.getId()));
 
     }
+    
+        public String controlSaisie(){
+             String nom = tfname.getText();
+             String error = "";
+              Pattern pattern = Pattern.compile("[\\d]", Pattern.CASE_INSENSITIVE);
+              Matcher matcher = pattern.matcher(nom);
+              boolean matchFound = matcher.find();
+              if(matchFound) {
+                  error += "Name cant contain a number";
+                    } 
+              else {
+                    error = "";
+               }
+              return error;
+         }
 
  
     
