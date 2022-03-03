@@ -31,7 +31,7 @@
       <Label layoutX="131.0" layoutY="132.0" text="Commentaire" />
       <TextField fx:id="tfCommentaire" layoutX="226.0" layoutY="130.0" prefHeight="25.0" prefWidth="150.0" />
       <ChoiceBox fx:id="cbIdProduit" layoutX="224.0" layoutY="65.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="cbNomProduit" layoutX="224.0" layoutY="98.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbNomProduit" layoutX="224.0" layoutY="98.0" onMouseReleased="#test1" onScrollFinished="#test" prefWidth="150.0" />
       <Label layoutX="141.0" layoutY="35.0" prefHeight="17.0" prefWidth="72.0" text="ID USER" />
       <TextField fx:id="idUser" layoutX="225.0" layoutY="31.0" />
       <Label layoutX="156.0" layoutY="6.0" text="ID avis" />

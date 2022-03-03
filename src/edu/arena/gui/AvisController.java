@@ -27,7 +27,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 
 /**
  * FXML Controller class
@@ -218,5 +220,18 @@ public class AvisController implements Initializable {
         //String nom = getNomProduit(tcIdProduit);
         tvAvis.setItems(list);
     }    
+
+    @FXML
+    private void test(ScrollEvent event) {
+                System.out.println(cbNomProduit.getSelectionModel().getSelectedIndex());
+    }
+
+    @FXML
+    private void test1(MouseEvent event) {
+        int nb = cbNomProduit.getSelectionModel().getSelectedIndex();
+        cbIdProduit.getSelectionModel().select(nb);
+    }
+
+
     
 }
