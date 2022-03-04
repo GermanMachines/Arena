@@ -43,16 +43,54 @@ public class EmailController implements Initializable {
     @FXML
     private void send(ActionEvent event) {
         Email email = new Email();
+        String error = controlSaisie();
         try{
+            
+            if(error == ""){
+                
             Email.sendEmail(tfAdresse.getText(),"Arena Administration", tfSubject.getText());
               Alert a = new Alert(Alert.AlertType.NONE);
              a.setAlertType(Alert.AlertType.INFORMATION);
-             a.setContentText("Send successfully");
+             a.setContentText("Sent successfully");
+             a.show();
+            }
+            else{
+                throw new Exception("error");
+            }
         }catch(Exception e){
-               Alert a = new Alert(Alert.AlertType.NONE);
-             a.setAlertType(Alert.AlertType.ERROR);
-             a.setContentText("Error could not send the email , try again later !");
+        
+             Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
         }
+        
+        
     }
+     public String controlSaisie(){
+    
+             String addresse = tfAdresse.getText();
+             String subj = tfSubject.getText();
+             String message = taMessage.getText();
+             
+             boolean ctAt = addresse.contains("@");
+             boolean ctDot = addresse.contains(".");
+             
+            // System.out.println(cbCateg);
+           
+             String error = "";
+             if((subj.equals("") || message.equals("") )){
+                 error += "You have an empty field ! ";
+             }
+             if(!ctAt){
+                 error += " Email must have @ signe ! ";
+             }
+             if(!ctDot){
+                 error += " Email must have .com for exemeple ";
+             }
+             
+          
+             
+              return error;
+         }
     
 }

@@ -8,24 +8,25 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationFrontOfficeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationFrontOfficeController">
    <children>
-      <Label layoutX="276.0" layoutY="6.0" text="Reclamtion" textFill="#c3c3c3" />
-      <Label layoutX="335.0" layoutY="172.0" prefHeight="17.0" prefWidth="48.0" text="Message" textFill="#c3c3c3" />
-      <TextArea fx:id="taMessage" layoutX="396.0" layoutY="143.0" prefHeight="92.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="cbCategory" layoutX="396.0" layoutY="103.0" prefWidth="150.0" />
-      <Label layoutX="335.0" layoutY="107.0" text="Category" textFill="#c3c3c3" />
-      <TextField fx:id="tfTitle" layoutX="397.0" layoutY="63.0" promptText="aaa" />
-      <Label layoutX="359.0" layoutY="67.0" text="Title" textFill="#c3c3c3" />
-      <Button fx:id="sentBtn" layoutX="399.0" layoutY="255.0" mnemonicParsing="false" onAction="#sendReclamation" text="Send" />
+      <Label layoutX="237.0" layoutY="24.0" text="Reclamtion" textFill="#c3c3c3">
+         <font>
+            <Font size="32.0" />
+         </font></Label>
+      <Label layoutX="406.0" layoutY="207.0" prefHeight="17.0" prefWidth="48.0" text="Message" textFill="#c3c3c3" />
+      <TextArea fx:id="taMessage" layoutX="467.0" layoutY="194.0" prefHeight="92.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="cbCategory" layoutX="467.0" layoutY="154.0" prefWidth="150.0" />
+      <Label layoutX="406.0" layoutY="158.0" text="Category" textFill="#c3c3c3" />
+      <TextField fx:id="tfTitle" layoutX="468.0" layoutY="114.0" />
+      <Label layoutX="430.0" layoutY="118.0" text="Title" textFill="#c3c3c3" />
+      <Button fx:id="sentBtn" layoutX="468.0" layoutY="307.0" mnemonicParsing="false" onAction="#sendReclamation" text="Send" />
       <ChoiceBox fx:id="cbCategoryId" layoutX="112.0" layoutY="22.0" prefHeight="25.0" prefWidth="22.0" />
-      <Label layoutX="29.0" layoutY="26.0" text="Category id" textFill="#c3c3c3" />
-      <Label layoutX="17.0" layoutY="80.0" prefHeight="17.0" prefWidth="61.0" text="username" textFill="#c3c3c3" />
-      <Label layoutX="29.0" layoutY="63.0" text="User Id" textFill="#c3c3c3" />
-      <TextField fx:id="tfUserId" layoutX="101.0" layoutY="51.0" prefHeight="25.0" prefWidth="22.0" />
-      <TextField fx:id="tfUsername" layoutX="96.0" layoutY="76.0" prefHeight="25.0" prefWidth="32.0" />
-      <TableView fx:id="tvReclamation" layoutX="8.0" layoutY="135.0" prefHeight="200.0" prefWidth="374.0">
+      <TextField fx:id="tfUserId" layoutX="78.0" layoutY="22.0" prefHeight="25.0" prefWidth="22.0" />
+      <TextField fx:id="tfUsername" layoutX="46.0" layoutY="22.0" prefHeight="25.0" prefWidth="32.0" />
+      <TableView fx:id="tvReclamation" layoutX="14.0" layoutY="116.0" prefHeight="200.0" prefWidth="374.0">
         <columns>
           <TableColumn fx:id="clTitre" prefWidth="75.0" text="Titre" />
             <TableColumn fx:id="clCategory" prefWidth="75.0" text="Category" />

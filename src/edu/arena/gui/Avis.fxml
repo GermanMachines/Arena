@@ -19,13 +19,13 @@
       <Button fx:id="btnDelete" layoutX="301.0" layoutY="188.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Delete" />
       <TableView fx:id="tvAvis" layoutX="53.0" layoutY="238.0" onMouseClicked="#handleMouseAction" prefHeight="136.0" prefWidth="516.0">
         <columns>
-          <TableColumn fx:id="tcId" prefWidth="46.0" text="ID" />
-          <TableColumn fx:id="tcIdProduit" prefWidth="82.0" text="ID_Produit" />
-            <TableColumn fx:id="tcScore" prefWidth="77.0" text="Score" />
-            <TableColumn fx:id="tcIdUtulisateur" prefWidth="63.0" text="ID_utulisatuer" />
-            <TableColumn fx:id="tcCommentaire" prefWidth="99.0" text="Commentaire" />
-            <TableColumn fx:id="tcNomProduit" prefWidth="75.0" text="Nom Prodiut" />
-            <TableColumn fx:id="tcNomUser" prefWidth="75.0" text="Nom User" />
+            <TableColumn fx:id="tcNomUser" prefWidth="125.0" text="Nom User" />
+            <TableColumn fx:id="tcNomProduit" prefWidth="162.0" text="Nom Prodiut" />
+            <TableColumn fx:id="tcScore" prefWidth="96.0" text="Score" />
+            <TableColumn fx:id="tcCommentaire" prefWidth="113.0" text="Commentaire" />
+          <TableColumn fx:id="tcId" minWidth="0.0" prefWidth="9.0" text="ID" />
+          <TableColumn fx:id="tcIdProduit" minWidth="0.0" prefWidth="0.0" text="ID_Produit" />
+            <TableColumn fx:id="tcIdUtulisateur" minWidth="2.0" prefWidth="12.0" text="ID_utulisatuer" />
         </columns>
       </TableView>
       <Label layoutX="131.0" layoutY="132.0" text="Commentaire" />

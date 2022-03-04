@@ -7,41 +7,59 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onContextMenuRequested="#load" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.AvisFrontOfficeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onContextMenuRequested="#load" prefHeight="400.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.AvisFrontOfficeController">
    <children>
-      <Label fx:id="lnomproduit" layoutX="78.0" layoutY="25.0" prefHeight="21.0" prefWidth="52.0" text="Label" textFill="WHITE">
+      <Label fx:id="lnomproduit" layoutX="217.0" layoutY="50.0" prefHeight="27.0" prefWidth="67.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="lidproduit" layoutX="79.0" layoutY="61.0" prefHeight="21.0" prefWidth="52.0" text="Label" textFill="WHITE">
+      <Label fx:id="lidproduit" layoutX="270.0" layoutY="50.0" prefHeight="17.0" prefWidth="51.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <ChoiceBox fx:id="score" layoutX="36.0" layoutY="94.0" prefWidth="150.0" />
-      <Label fx:id="lnomproduit1" layoutX="375.0" layoutY="42.0" text="Label" textFill="WHITE">
+      <ChoiceBox fx:id="score" layoutX="106.0" layoutY="97.0" prefWidth="150.0" />
+      <Label fx:id="lnomproduit1" layoutX="498.0" layoutY="50.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="lidproduit1" layoutX="375.0" layoutY="71.0" text="Label" textFill="WHITE">
+      <Label fx:id="lidproduit1" layoutX="566.0" layoutY="50.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <ChoiceBox fx:id="score1" layoutX="320.0" layoutY="94.0" prefWidth="150.0" />
-      <Label fx:id="lnomproduit2" layoutX="105.0" layoutY="194.0" text="Label" textFill="WHITE">
+      <ChoiceBox fx:id="score1" layoutX="390.0" layoutY="97.0" prefWidth="150.0" />
+      <Label fx:id="lnomproduit2" layoutX="210.0" layoutY="213.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="lidproduit2" layoutX="105.0" layoutY="223.0" text="Label" textFill="WHITE">
+      <Label fx:id="lidproduit2" layoutX="263.0" layoutY="213.0" text="Label" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <ChoiceBox fx:id="score2" layoutX="50.0" layoutY="252.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="score2" layoutX="120.0" layoutY="255.0" prefWidth="150.0" />
       <Label fx:id="iduser" layoutX="14.0" layoutY="14.0" text="Label" />
-      <TextField fx:id="tfCommentaire" layoutX="37.0" layoutY="125.0" promptText="comment" />
-      <TextField fx:id="tfCommentaire1" layoutX="321.0" layoutY="125.0" promptText="comment" />
-      <TextField fx:id="tfCommentaire2" layoutX="51.0" layoutY="289.0" promptText="comment" />
-      <Button fx:id="btn1" layoutX="85.0" layoutY="157.0" mnemonicParsing="false" onAction="#sendBtn" text="Send Avis" />
-      <Button fx:id="btn2" layoutX="375.0" layoutY="170.0" mnemonicParsing="false" onAction="#sendBtn" text="Send Avis" />
-      <Button fx:id="btn3" layoutX="73.0" layoutY="334.0" mnemonicParsing="false" onAction="#sendBtn" text="Send Avis" />
+      <TextField fx:id="tfCommentaire" layoutX="107.0" layoutY="128.0" promptText="comment" />
+      <TextField fx:id="tfCommentaire1" layoutX="391.0" layoutY="128.0" promptText="comment" />
+      <TextField fx:id="tfCommentaire2" layoutX="121.0" layoutY="292.0" promptText="comment" />
+      <Button fx:id="btn1" layoutX="155.0" layoutY="160.0" mnemonicParsing="false" onAction="#sendBtn" text="Send Avis" />
+      <Button fx:id="btn2" layoutX="445.0" layoutY="173.0" mnemonicParsing="false" onAction="#sendBtn" text="Send Avis" />
+      <Button fx:id="btn3" layoutX="143.0" layoutY="337.0" mnemonicParsing="false" onAction="#sendBtn" text="Send Avis" />
+      <Label layoutX="87.0" layoutY="50.0" text="Nom Produit :" textFill="#d3d3d3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="370.0" layoutY="50.0" text="Nom Produit :" textFill="#d3d3d3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="213.0" text="Nom Produit :" textFill="#d3d3d3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="64.0" layoutY="101.0" text="Score" textFill="WHITE" />
+      <Label layoutX="354.0" layoutY="101.0" text="Score" textFill="WHITE" />
+      <Label layoutX="78.0" layoutY="259.0" text="Score" textFill="WHITE" />
    </children>
 </Pane>

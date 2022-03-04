@@ -101,13 +101,14 @@ public class ReclamationCategoryController implements Initializable {
          showCategoryReclamation();
         } 
          if(event.getSource() == btnUpdate){
-         crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
+        
        
           String error = controlSaisie();
            if(error == ""){
+             //crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
              Alert a = new Alert(AlertType.INFORMATION);
              crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
-             a.setContentText("Added Successfully");
+             a.setContentText("Updated Successfully");
              a.show();
          }else{
               Alert a = new Alert(AlertType.ERROR);
@@ -125,7 +126,7 @@ public class ReclamationCategoryController implements Initializable {
              crs.delete(Integer.parseInt(tfId.getText()));
               Alert a = new Alert(AlertType.INFORMATION);
              crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
-             a.setContentText("Added Successfully");
+             a.setContentText("Deleted Successfully");
              a.show();
              
         }catch(SQLException e){
@@ -160,6 +161,9 @@ public class ReclamationCategoryController implements Initializable {
     
         public String controlSaisie(){
              String nom = tfname.getText();
+             if(nom.equals("")){
+                 return "You must type a name !";
+             }
              String error = "";
               Pattern pattern = Pattern.compile("[\\d]", Pattern.CASE_INSENSITIVE);
               Matcher matcher = pattern.matcher(nom);

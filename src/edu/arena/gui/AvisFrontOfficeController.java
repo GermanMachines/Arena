@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -154,29 +155,97 @@ public class AvisFrontOfficeController implements Initializable {
     @FXML
     private void sendBtn(ActionEvent event) {
         if(event.getSource() == btn1){
-              try{
+            
+              String error = controlSaisie(score.getSelectionModel().getSelectedIndex(),tfCommentaire.getText());
+              if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+             
+             try{
                         sendAvis(score,tfCommentaire,lidproduit,iduser);
                     }catch(SQLException ex){
                         ex.printStackTrace();
                     }
+            
+            
+             a.setContentText("Sent Successfully");
+             a.show();
+         }else{
+            Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
+            
+            
+            
+            
+            
+             
         }
         
          if(event.getSource() == btn2){
-              try{
+             
+                String error = controlSaisie(score1.getSelectionModel().getSelectedIndex(),tfCommentaire1.getText());
+              if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+             
+             try{
                         sendAvis(score1,tfCommentaire1,lidproduit1,iduser);
                     }catch(SQLException ex){
                         ex.printStackTrace();
                     }
+            
+            
+             a.setContentText("Sent Successfully");
+             a.show();
+         }else{
+            Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
         }
          
           if(event.getSource() == btn3){
-              try{
+                String error = controlSaisie(score2.getSelectionModel().getSelectedIndex(),tfCommentaire2.getText());
+              if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+             
+             try{
                         sendAvis(score2,tfCommentaire2,lidproduit2,iduser);
                     }catch(SQLException ex){
                         ex.printStackTrace();
                     }
+            
+            
+             a.setContentText("Sent Successfully");
+             a.show();
+         }else{
+            Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
+        
         }
     }
+  
+    
+    
+     public String controlSaisie(int score,String comment){
+    
+             //String comment = tf.getText();
+            
+            // int score = c.getSelectionModel().getSelectedIndex();
+      
+            // System.out.println(cbCateg);
+           
+             String error = "";
+             if((comment.equals("") || score < 0 )){
+                 return "You have an empty field !";
+             }
+             
+          
+             
+              return error;
+         }
 }
 
     

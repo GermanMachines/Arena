@@ -15,13 +15,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationController">
    <children>
-      <VBox layoutX="593.0" layoutY="14.0" prefHeight="187.0" prefWidth="165.0" spacing="8.0">
+      <VBox layoutX="541.0" layoutY="25.0" prefHeight="157.0" prefWidth="165.0" spacing="8.0">
          <children>
-            <TextField fx:id="tfId">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </TextField>
             <TextField fx:id="tfTitre">
                <font>
                   <Font size="8.0" />
@@ -32,32 +27,33 @@
                   <Font size="8.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfCategory">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="tfUser" layoutX="10.0" layoutY="106.0">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </TextField>
+            <ChoiceBox fx:id="cbCategory" layoutX="10.0" layoutY="147.0" prefWidth="150.0" />
             <DatePicker fx:id="tfDate" prefHeight="4.0" prefWidth="165.0" />
             <ChoiceBox fx:id="cbEtat" prefWidth="150.0" />
          </children>
       </VBox>
-      <VBox layoutX="514.0" layoutY="8.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+      <VBox layoutX="442.0" layoutY="19.0" prefHeight="157.0" prefWidth="120.0" spacing="10.0">
          <children>
-            <Label layoutX="10.0" layoutY="95.0" text="ID" />
-            <Label text="Titre" />
-            <Label text="Message" />
-            <Label prefHeight="17.0" prefWidth="84.0" text="Category ID" />
-            <Label prefHeight="17.0" prefWidth="39.0" text="User ID" />
-            <Label text="Date" />
+            <Label text="Titre">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label text="Message">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label layoutX="10.0" layoutY="64.0" prefHeight="21.0" prefWidth="66.0" text="Category">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <Label text="Date">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
             <Label layoutX="10.0" layoutY="78.0" text="Etat" />
          </children>
       </VBox>
-      <TableView fx:id="tvReclamation" layoutX="300.0" layoutY="223.0" onMouseClicked="#handleMouseAction" prefHeight="200.0" prefWidth="528.0">
+      <TableView fx:id="tvReclamation" layoutX="157.0" layoutY="240.0" onMouseClicked="#handleMouseAction" prefHeight="200.0" prefWidth="528.0">
         <columns>
             <TableColumn fx:id="colNomUser" prefWidth="90.0" text="User" />
           <TableColumn fx:id="colTitre" prefWidth="105.0" text="Titre" />
@@ -70,14 +66,25 @@
             <TableColumn fx:id="colCategory" prefWidth="42.0" text="categoryId" />
         </columns>
       </TableView>
-      <HBox layoutX="268.0" layoutY="122.0" prefHeight="58.0" prefWidth="240.0" spacing="20.0">
+      <HBox layoutX="475.0" layoutY="187.0" prefHeight="39.0" prefWidth="218.0" spacing="20.0">
          <children>
             <Button fx:id="btnInsert" mnemonicParsing="false" onAction="#handleButtonAction" text="Insert" />
             <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#handleButtonAction" text="Update" />
             <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleButtonAction" text="Delete" />
          </children>
       </HBox>
-      <TextField fx:id="tfRecherche" layoutX="300.0" layoutY="180.0" onKeyTyped="#filter" promptText="Recherche" />
-      <PieChart fx:id="pcData" layoutX="33.0" layoutY="208.0" prefHeight="200.0" prefWidth="267.0" />
+      <TextField fx:id="tfRecherche" layoutX="248.0" layoutY="191.0" onKeyTyped="#filter" promptText="Recherche" />
+      <PieChart fx:id="pcData" layoutX="141.0" layoutY="16.0" prefHeight="157.0" prefWidth="264.0" />
+      <TextField fx:id="tfUser" layoutX="37.0" layoutY="198.0" prefHeight="18.0" prefWidth="21.0">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="tfId" layoutX="31.0" layoutY="231.0" prefHeight="18.0" prefWidth="32.0">
+         <font>
+            <Font size="8.0" />
+         </font>
+      </TextField>
+      <ChoiceBox fx:id="cbCategoryId" layoutX="14.0" layoutY="257.0" prefHeight="25.0" prefWidth="100.0" />
    </children>
 </Pane>

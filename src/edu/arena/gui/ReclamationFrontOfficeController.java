@@ -24,6 +24,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -76,7 +77,9 @@ public class ReclamationFrontOfficeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO$
        
-        
+        tfUsername.setVisible(false);
+        tfUserId.setVisible(false);
+        cbCategoryId.setVisible(false);
        try {
       File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
       Scanner myReader = new Scanner(myObj);
@@ -127,18 +130,35 @@ public class ReclamationFrontOfficeController implements Initializable {
               
         cbCategoryId.getSelectionModel().select(nb);
         
-        ReclamationService rs = new ReclamationService();
-        Reclamation r = new Reclamation();
-        r.setTitre(tfTitle.getText());
-        r.setMessage(taMessage.getText());
-        r.setUserId(Integer.parseInt(tfUserId.getText()));
-        r.setCategoryReclamationId(cbCategoryId.getValue());
-        try{
-            rs.ajouter(r);
-            showReclamation();
-        }catch(SQLException e){
-            e.printStackTrace();
-        }
+        
+            String error = controlSaisie();
+              if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+             
+                ReclamationService rs = new ReclamationService();
+                Reclamation r = new Reclamation();
+                r.setTitre(tfTitle.getText());
+                r.setMessage(taMessage.getText());
+                r.setUserId(Integer.parseInt(tfUserId.getText()));
+                r.setCategoryReclamationId(cbCategoryId.getValue());
+                try{
+                    rs.ajouter(r);
+                    showReclamation();
+                }catch(SQLException e){
+                     e.printStackTrace();
+                }
+            
+            
+             a.setContentText("Sent Successfully");
+             a.show();
+         }else{
+            Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
+              
+              
+   
              
     }
      public void showReclamation() throws SQLException{
@@ -161,7 +181,23 @@ public class ReclamationFrontOfficeController implements Initializable {
        /* colCategory.setVisible(false);
         colUser.setVisible(false);
         colId.setVisible(false); */
-    }    
+    }
+     
+          public String controlSaisie(){
+           int cat = cbCategory.getSelectionModel().getSelectedIndex();
+             String titre = tfTitle.getText();
+            String message = taMessage.getText();
+             
+             String error = "";
+             if((titre.equals("") || message.equals("") || cat <0 )){
+                 error += "You have an empty field ! ";
+             }
+         
+             
+          
+             
+              return error;
+         }
 
 
     

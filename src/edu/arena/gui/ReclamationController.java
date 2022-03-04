@@ -5,9 +5,14 @@
  */
 package edu.arena.gui;
 
+import edu.arena.Services.CategoryReclamationService;
 import edu.arena.Services.ReclamationService;
+import edu.arena.entities.CategoryReclamation;
+import edu.arena.entities.Produit;
 import edu.arena.entities.Reclamation;
 import edu.arena.utils.DataBase;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,7 +23,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import static java.util.stream.Collectors.toList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +36,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
@@ -56,8 +66,7 @@ public class ReclamationController implements Initializable {
     private TextField tfTitre;
     @FXML
     private TextField tfMessage;
-    @FXML
-    private TextField tfCategory;
+    
     @FXML
     private DatePicker tfDate;
     @FXML
@@ -99,6 +108,10 @@ public class ReclamationController implements Initializable {
     ObservableList< PieChart.Data> piechartdata;
     ArrayList< String> p = new ArrayList();
     ArrayList< Integer> c = new ArrayList();
+    @FXML
+    private ChoiceBox<String> cbCategory;
+    @FXML
+    private ChoiceBox<Integer> cbCategoryId;
 
     /**
      * Initializes the controller class.
@@ -107,16 +120,38 @@ public class ReclamationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
      //  try{
+        tfId.setVisible(false);
+        cbCategoryId.setVisible(false);
+        tfUser.setVisible(false);
          ObservableList<String> etat = FXCollections.observableArrayList("Chose","True","False");
           cbEtat.setItems(etat);
           cbEtat.setValue("Chose");
+           CategoryReclamationService crs = new CategoryReclamationService();
+           
+            try{
+                ObservableList<CategoryReclamation> categList = crs.afficher();
+                   List<String> listCategory = categList.stream().map(p -> p.getNom()).collect(toList());
+               List<Integer>listCategoryId = categList.stream().map(p -> p.getId()).collect(toList());
+            
+             ObservableList<String> obsListCategory = FXCollections.observableArrayList(listCategory);
+             ObservableList<Integer> obsListCategoryId = FXCollections.observableArrayList(listCategoryId);
+        //   prodList.stream().forEach(p -> {
+              //  cbIdProduit.setItems(p.getId());
+               cbCategory.setItems(obsListCategory);
+               cbCategoryId.setItems(obsListCategoryId);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+            
+         
            // showReclamation();
        //}catch(SQLException ex){
          //  ex.printStackTrace();
       // }
-          ReclamationService rs = new ReclamationService();
+         
         
         try{
+            ReclamationService rs = new ReclamationService();
              data =  rs.getAll();
         }catch(SQLException e){
             e.printStackTrace();
@@ -168,7 +203,7 @@ public class ReclamationController implements Initializable {
    public void showReclamation() throws SQLException{
          ReclamationService rs = new ReclamationService();
         ObservableList<Reclamation> list =  rs.getAll();
-        list.stream().forEach(r -> System.out.println(r.toString()));
+        //list.stream().forEach(r -> System.out.println(r.toString()));
       //  colId.setVisible(false);
         colId.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id"));
         colTitre.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("titre"));
@@ -191,7 +226,7 @@ public class ReclamationController implements Initializable {
    
    public void showReclamation2(ObservableList<Reclamation>  list) throws SQLException{
        
-        list.stream().forEach(r -> System.out.println(r.toString()));
+       //   list.stream().forEach(r -> System.out.println(r.toString()));
       //  colId.setVisible(false);
         colId.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id"));
         colTitre.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("titre"));
@@ -214,16 +249,50 @@ public class ReclamationController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) throws SQLException {
           ReclamationService crs = new ReclamationService();
+       int nb = cbCategory.getSelectionModel().getSelectedIndex();       
+        cbCategoryId.getSelectionModel().select(nb);
          if(event.getSource() == btnInsert){
              //control saisie
-         crs.ajouter(new Reclamation(tfTitre.getText(),tfMessage.getText(),
-                 Integer.parseInt(tfUser.getText()),Integer.parseInt(tfCategory.getText())
+                               try {
+                   File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
+                   Scanner myReader = new Scanner(myObj);
+                   String id = myReader.nextLine();
+                   String nom =myReader.nextLine();
+      
+                   tfUser.setText(id);
+                   // tfUsername.setText(nom);
+        
+                   // tfUser.setVisible(false);
+                     //tfUsername.setDisable(true);
+     
+                    myReader.close();
+            } catch (FileNotFoundException e) {
+      System.out.println("An error occurred when loading data.txt");
+      e.printStackTrace();
+    }
+           String error = controlSaisie();
+           if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+              crs.ajouter(new Reclamation(tfTitre.getText(),tfMessage.getText(),
+                 Integer.parseInt(tfUser.getText()),cbCategoryId.getValue()
          ));
-         showReclamation();
+             showReclamation();;
+             a.setContentText("Added Successfully");
+             a.show();
+         }else{
+              Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }              
+                               
+        
         } 
          if(event.getSource() == btnUpdate){
-             //control saisie
-          Reclamation rec = new Reclamation();
+               String error = controlSaisie();
+           if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+         
+              Reclamation rec = new Reclamation();
           rec.setTitre(tfTitre.getText());
           rec.setMessage(tfMessage.getText());
           rec.setId(Integer.parseInt(tfId.getText()));
@@ -232,7 +301,7 @@ public class ReclamationController implements Initializable {
           rec.setUserId(Integer.parseInt(tfUser.getText()));
           
           //fix later
-          rec.setCategoryReclamationId(Integer.parseInt(tfCategory.getText()));
+          rec.setCategoryReclamationId(cbCategoryId.getValue());
           //fix thislater
           if(cbEtat.getValue() == "True"){
               rec.setEtat(true);
@@ -243,12 +312,35 @@ public class ReclamationController implements Initializable {
           
           crs.update(rec);
           showReclamation();
+             
+             
+            
+             a.setContentText("Updated Successfully");
+             a.show();
+         }else{
+              Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }             
+           
+         
          }
+              
+        
            if(event.getSource() == btnDelete){
-             //control saisie
+             
                System.out.println("deleted " + tfId.getText());
+        try{
          crs.delete(Integer.parseInt(tfId.getText()));
-         showReclamation();
+          Alert a = new Alert(Alert.AlertType.INFORMATION);
+             a.setContentText("Deleted Successfully");
+             a.show();
+             showReclamation();
+         }catch(Exception e){
+              Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(e.getMessage());
+             a.show();
+          }
         } 
     
     
@@ -267,7 +359,9 @@ public class ReclamationController implements Initializable {
         }
         Date date = rec.getDate();
         tfDate.setValue(new java.sql.Date(date.getTime()).toLocalDate());
-        tfCategory.setText(Integer.toString(rec.getCategoryReclamationId()));
+        cbCategoryId.setValue(rec.getCategoryReclamationId());
+        
+        cbCategory.setValue(Integer.toString(rec.getCategoryReclamationId()));
         tfUser.setText(Integer.toString(rec.getUserId()));
     }
 
@@ -312,4 +406,20 @@ public class ReclamationController implements Initializable {
             System.out.println(e.getMessage());
         }
    }
+       public String controlSaisie(){
+             String titre = tfTitre.getText();
+             String message = tfMessage.getText();
+            
+             int cbCateg = cbCategory.getSelectionModel().getSelectedIndex();
+            // System.out.println(cbCateg);
+           
+             String error = "";
+             if((titre.equals("") || message.equals("") || cbCateg < 0 )){
+                 return "You have an empty field !";
+             }
+             
+          
+             
+              return error;
+         }
 }

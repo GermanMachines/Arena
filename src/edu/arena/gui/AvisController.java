@@ -147,10 +147,11 @@ public class AvisController implements Initializable {
         AvisService as = new AvisService();
         int idUtulisateur = 0;
         if(event.getSource() == btnInsert){
-            String etat = "";
             
-           try{
-            int idProd = cbIdProduit.getValue();
+             String error = controlSaisie();
+           if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+               int idProd = cbIdProduit.getValue();
             String nomProd = cbNomProduit.getValue();
             String commentaire = tfCommentaire.getText();
             int score = cbScore.getValue();
@@ -160,35 +161,23 @@ public class AvisController implements Initializable {
              idUtulisateur = Integer.parseInt(adminId.getText());
              
             as.ajouter(new Avis(score,commentaire,idUtulisateur,idProd));
-            showAvis();
-           }catch(SQLException e){
-              
-               etat += "Verifier les données que vous avez saisie !";
-               
-              
-           }finally{
-               if(etat == ""){
-                   
-                   etat += "Ajout Avec succés";
-                   Alert alert = new Alert(AlertType.INFORMATION);
-                   alert.setContentText(etat);
-                   alert.setTitle("Success");
-                    alert.showAndWait();
-               }
-               else{
-                   Alert alert = new Alert(AlertType.ERROR);
-                   alert.setContentText(etat);
-                   alert.setTitle("Error");
-                   alert.showAndWait();
-             }
-              
-
-                
-           }
+            showAvis();  
+             a.setContentText("Added Successfully");
+             a.show();
+         }else{
+            Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }              
+            
         }
         
         if(event.getSource() == btnUpdate){
-            
+           String error = controlSaisie();
+           if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+             
+             
             int idAvis = Integer.parseInt(tfAvisId.getText());
             int idProd = cbIdProduit.getValue();
             String nomProd = cbNomProduit.getValue();
@@ -201,12 +190,44 @@ public class AvisController implements Initializable {
             }
             
             as.update(new Avis(idAvis,score,commentaire,idUtulisateur,idProd));
-            showAvis();
+            showAvis();  
+            
+            
+             a.setContentText("Updated Successfully");
+             a.show();
+         }else{
+            Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
+           
+           
+            
+            
+            
+            
+         
         }
         
         if(event.getSource() == btnDelete){
+            String error = controlSaisie();
+              if(error == ""){
+             Alert a = new Alert(Alert.AlertType.INFORMATION);
+             
             as.delete(Integer.parseInt(tfAvisId.getText()));
             showAvis();
+            
+            
+             a.setContentText("Deleted Successfully");
+             a.show();
+         }else{
+            Alert a = new Alert(Alert.AlertType.ERROR);
+             a.setContentText(error);
+             a.show();
+         }
+              
+            
+           
         }
        
     }
@@ -268,7 +289,23 @@ public class AvisController implements Initializable {
         int nb = cbNomProduit.getSelectionModel().getSelectedIndex();
         cbIdProduit.getSelectionModel().select(nb);
     }
-
+ public String controlSaisie(){
+    
+             String comment = tfCommentaire.getText();
+            
+             int score = cbScore.getSelectionModel().getSelectedIndex();
+             int nom = cbNomProduit.getSelectionModel().getSelectedIndex();
+            // System.out.println(cbCateg);
+           
+             String error = "";
+             if((comment.equals("") || nom < 0  || score < 0 )){
+                 return "You have an empty field !";
+             }
+             
+          
+             
+              return error;
+         }
 
     
 }

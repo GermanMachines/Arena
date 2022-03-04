@@ -22,6 +22,7 @@ import java.util.List;
 import edu.arena.utils.DataBase;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -146,7 +147,7 @@ public class Main {
                });
 
     }*/
-        AvisService avisService = new AvisService();
+    /*    AvisService avisService = new AvisService();
         System.out.println(avisService.scoreAvg(42));
         
        ReclamationService reclamationService = new ReclamationService();
@@ -205,10 +206,12 @@ public class Main {
         System.out.println(list4.get("nbTotal"));
         System.out.println(list4.get("nbTrue"));
         System.out.println(list4.get("nbFalse"));
+        */
 
 
     
        
            
     }
+     
 }
