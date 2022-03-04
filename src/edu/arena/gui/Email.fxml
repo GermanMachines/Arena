@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="edu.arena.gui.EmailController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.EmailController">
    <children>
       <TextField fx:id="tfAdresse" layoutX="247.0" layoutY="42.0" prefWidth="153.0" promptText="Adresse" />
       <TextArea fx:id="taMessage" layoutX="235.0" layoutY="116.0" prefHeight="143.0" prefWidth="200.0" promptText="Message..." />
       <TextField fx:id="tfSubject" layoutX="247.0" layoutY="79.0" prefWidth="153.0" promptText="Subject" />
       <Button fx:id="btnSend" layoutX="302.0" layoutY="272.0" mnemonicParsing="false" onAction="#send" text="Send" />
+      <Label layoutX="137.0" layoutY="45.0" text="Email Adresse">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="180.0" layoutY="82.0" text="Subject">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="155.0" layoutY="161.0" text="Message">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

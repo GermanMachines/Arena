@@ -10,7 +10,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationCategoryController">
    <children>
       <Label layoutX="76.0" layoutY="120.0" text="Nom" />
-      <TextField fx:id="tfname" layoutX="139.0" layoutY="116.0" />
+      <TextField fx:id="tfname" layoutX="139.0" layoutY="116.0" stylesheets="@backoffice.css" />
       <Button fx:id="btnInsert" layoutX="78.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Insert" />
       <Button fx:id="btnUpdate" layoutX="161.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Modify" />
       <Button fx:id="btnDelete" layoutX="248.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Delete" />
