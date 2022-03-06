@@ -6,6 +6,12 @@
 package edu.arena.Services;
 
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import edu.arena.entities.CategoryReclamation;
 import edu.arena.entities.Reclamation;
 import edu.arena.entities.User;
@@ -18,6 +24,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import edu.arena.utils.DataBase;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.collections.FXCollections;
@@ -232,6 +240,57 @@ public class ReclamationService implements IService<Reclamation> {
         }
         return list;
     }
+        public void export() throws FileNotFoundException, SQLException, DocumentException{
+            stm = connexion.createStatement();
+            String query = "SELECT reclamation.titre, reclamation.message ,reclamation.date ,reclamation.etat, utulisateur.username , categoryreclamation.nom FROM reclamation INNER JOIN utulisateur ON reclamation.idUser = utulisateur.id INNER JOIN categoryreclamation ON reclamation.idCategoryReclamation = categoryreclamation.id";
+            ResultSet rs = stm.executeQuery(query);
+            Document my_pdf_report = new Document();
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/SBS/Arena/src/edu/arena/utils/Reclamation_data.pdf"));
+            my_pdf_report.open();
+            PdfPTable my_report_table = new PdfPTable(5);
+            PdfPCell table_cell;
+                     
+            table_cell = new PdfPCell(new Phrase("username"));
+            my_report_table.addCell(table_cell);
+            
+            table_cell = new PdfPCell(new Phrase("category"));
+            my_report_table.addCell(table_cell);
+            
+            table_cell = new PdfPCell(new Phrase("date"));
+            my_report_table.addCell(table_cell);
+            
+            table_cell = new PdfPCell(new Phrase("etat"));
+            my_report_table.addCell(table_cell);
+            
+            table_cell = new PdfPCell(new Phrase("message"));
+            my_report_table.addCell(table_cell);
+         
+           while (rs.next()) {
+                String nom = rs.getString("username");
+                table_cell = new PdfPCell(new Phrase(nom));
+                
+                my_report_table.addCell(table_cell);
+                String nomCategory = rs.getString("nom");
+                table_cell = new PdfPCell(new Phrase(nomCategory));
+                my_report_table.addCell(table_cell);
+                Date date = rs.getDate("date");
+                table_cell = new PdfPCell(new Phrase(date.toString()));
+                my_report_table.addCell(table_cell);
+                
+                Boolean etat = rs.getBoolean("etat");
+                table_cell = new PdfPCell(new Phrase(etat.toString()));
+                my_report_table.addCell(table_cell);
+                
+                String message = rs.getString("message");
+                table_cell = new PdfPCell(new Phrase(message));
+                my_report_table.addCell(table_cell);
+            }
+            my_pdf_report.add(my_report_table);
+            my_pdf_report.close();
+            rs.close();
+            stm.close();
+       
+        }
          
      
 

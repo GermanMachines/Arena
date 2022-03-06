@@ -174,12 +174,7 @@ public class AvisFrontOfficeController implements Initializable {
              a.setContentText(error);
              a.show();
          }
-            
-            
-            
-            
-            
-             
+                     
         }
         
          if(event.getSource() == btn2){
@@ -192,7 +187,7 @@ public class AvisFrontOfficeController implements Initializable {
                         sendAvis(score1,tfCommentaire1,lidproduit1,iduser);
                     }catch(SQLException ex){
                         ex.printStackTrace();
-                    }
+               }
             
             
              a.setContentText("Sent Successfully");

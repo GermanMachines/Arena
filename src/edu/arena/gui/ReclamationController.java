@@ -44,6 +44,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -101,7 +102,7 @@ public class ReclamationController implements Initializable {
     private TableColumn<Reclamation, String> colNomUser;
     @FXML
     private TextField tfRecherche;
-    ObservableList<Reclamation> data = FXCollections.observableArrayList();
+    public ObservableList<Reclamation> data = FXCollections.observableArrayList();
     @FXML
     private PieChart pcData;
     
@@ -112,6 +113,8 @@ public class ReclamationController implements Initializable {
     private ChoiceBox<String> cbCategory;
     @FXML
     private ChoiceBox<Integer> cbCategoryId;
+    @FXML
+    private Button btnExport;
 
     /**
      * Initializes the controller class.
@@ -130,7 +133,7 @@ public class ReclamationController implements Initializable {
            
             try{
                 ObservableList<CategoryReclamation> categList = crs.afficher();
-                   List<String> listCategory = categList.stream().map(p -> p.getNom()).collect(toList());
+               List<String> listCategory = categList.stream().map(p -> p.getNom()).collect(toList());
                List<Integer>listCategoryId = categList.stream().map(p -> p.getId()).collect(toList());
             
              ObservableList<String> obsListCategory = FXCollections.observableArrayList(listCategory);
@@ -213,8 +216,8 @@ public class ReclamationController implements Initializable {
         colEtat.setCellValueFactory(new PropertyValueFactory<Reclamation,Boolean>("etat"));
         colDate.setCellValueFactory(new PropertyValueFactory<Reclamation,Date>("date"));
        // tfId.setVisible(false);
-       colNomUser.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomUser"));
-       colNomCategory.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomCategory"));
+        colNomUser.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomUser"));
+        colNomCategory.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomCategory"));
         tvReclamation.setItems(list);
         
         // hide ids
@@ -365,23 +368,6 @@ public class ReclamationController implements Initializable {
         tfUser.setText(Integer.toString(rec.getUserId()));
     }
 
-    @FXML
-    private void filter(KeyEvent event) throws SQLException {
-         
-         ReclamationService rs = new ReclamationService();
-         data.clear();
-        data.addAll(rs.getAll().stream().filter((e)
-                -> e.getTitre().toLowerCase().contains(tfRecherche.getText().toLowerCase())
-                || e.getMessage().toLowerCase().contains(tfRecherche.getText().toLowerCase())
-                || e.getNomCategory().toLowerCase().contains(tfRecherche.getText().toLowerCase())
-                //|| e.getDescriptionTournois().toLowerCase().contains(tfRecherche.getText().toLowerCase())
-              //  || e.getStatus().toLowerCase().contains(tfRecherche.getText().toLowerCase())
-        ).collect(Collectors.toList()));
-       // showReclamation2(data);
-        
-        
-    }
-
     private void loadData() throws SQLException {
       
         piechartdata = FXCollections.observableArrayList();
@@ -411,7 +397,6 @@ public class ReclamationController implements Initializable {
              String message = tfMessage.getText();
             
              int cbCateg = cbCategory.getSelectionModel().getSelectedIndex();
-            // System.out.println(cbCateg);
            
              String error = "";
              if((titre.equals("") || message.equals("") || cbCateg < 0 )){
@@ -422,4 +407,28 @@ public class ReclamationController implements Initializable {
              
               return error;
          }
+
+
+    @FXML
+    private void filter(KeyEvent event) throws SQLException {
+         ReclamationService rs = new ReclamationService();
+         data.clear();
+         data.addAll(rs.getAll().stream().filter((e)
+                -> e.getTitre().toLowerCase().contains(tfRecherche.getText().toLowerCase())
+                || e.getMessage().toLowerCase().contains(tfRecherche.getText().toLowerCase())
+                || e.getNomCategory().toLowerCase().contains(tfRecherche.getText().toLowerCase())
+  
+        ).collect(Collectors.toList()));
+        showReclamation2(data);
+    }
+
+    @FXML
+    private void export(ActionEvent event) {
+       ReclamationService rs = new ReclamationService();
+       try{
+           rs.export();
+       }catch(Exception e){
+           e.printStackTrace();
+       }
+    }
 }

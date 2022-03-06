@@ -66,14 +66,15 @@
             <TableColumn fx:id="colCategory" prefWidth="42.0" text="categoryId" />
         </columns>
       </TableView>
-      <HBox layoutX="475.0" layoutY="187.0" prefHeight="39.0" prefWidth="218.0" spacing="20.0">
+      <HBox layoutX="387.0" layoutY="188.0" prefHeight="39.0" prefWidth="319.0" spacing="20.0">
          <children>
+            <Button fx:id="btnExport" mnemonicParsing="false" onAction="#export" text="Export PDF" />
             <Button fx:id="btnInsert" mnemonicParsing="false" onAction="#handleButtonAction" text="Insert" />
             <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#handleButtonAction" text="Update" />
             <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleButtonAction" text="Delete" />
          </children>
       </HBox>
-      <TextField fx:id="tfRecherche" layoutX="248.0" layoutY="191.0" onKeyTyped="#filter" promptText="Recherche" />
+      <TextField fx:id="tfRecherche" layoutX="179.0" layoutY="191.0" onKeyTyped="#filter" promptText="Recherche" />
       <PieChart fx:id="pcData" layoutX="141.0" layoutY="16.0" prefHeight="157.0" prefWidth="264.0" />
       <TextField fx:id="tfUser" layoutX="37.0" layoutY="198.0" prefHeight="18.0" prefWidth="21.0">
          <font>
