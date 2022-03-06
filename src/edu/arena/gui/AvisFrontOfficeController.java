@@ -85,7 +85,6 @@ public class AvisFrontOfficeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-    //    Event event = null;
         ObservableList<Integer> scores = FXCollections.observableArrayList(1,2,3,4,5);
             score.setItems(scores);
             score1.setItems(scores);
@@ -140,9 +139,7 @@ public class AvisFrontOfficeController implements Initializable {
             
             System.out.println("send avis method "+a.toString());
                 as.ajouter(a);
-                        
-            
-        
+                             
             
     }
         
@@ -165,7 +162,6 @@ public class AvisFrontOfficeController implements Initializable {
                     }catch(SQLException ex){
                         ex.printStackTrace();
                     }
-            
             
              a.setContentText("Sent Successfully");
              a.show();
@@ -226,19 +222,10 @@ public class AvisFrontOfficeController implements Initializable {
     
      public String controlSaisie(int score,String comment){
     
-             //String comment = tf.getText();
-            
-            // int score = c.getSelectionModel().getSelectedIndex();
-      
-            // System.out.println(cbCateg);
-           
              String error = "";
              if((comment.equals("") || score < 0 )){
                  return "You have an empty field !";
-             }
-             
-          
-             
+             }            
               return error;
          }
 }

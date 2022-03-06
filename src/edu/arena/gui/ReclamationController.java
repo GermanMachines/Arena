@@ -123,9 +123,12 @@ public class ReclamationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
      //  try{
+      
+     
         tfId.setVisible(false);
         cbCategoryId.setVisible(false);
         tfUser.setVisible(false);
+        
          ObservableList<String> etat = FXCollections.observableArrayList("Chose","True","False");
           cbEtat.setItems(etat);
           cbEtat.setValue("Chose");
@@ -178,12 +181,12 @@ public class ReclamationController implements Initializable {
         colNomUser.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomUser"));
         colNomCategory.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("nomCategory"));
         tvReclamation.setItems(data);
-        
+        */
         // hide ids
         colCategory.setVisible(false);
         colUser.setVisible(false);
         colId.setVisible(false);
-        */
+        
         //piechartdata.add()
         try{
            /* HashMap<String,Integer> hm = rs.stat();
@@ -221,9 +224,9 @@ public class ReclamationController implements Initializable {
         tvReclamation.setItems(list);
         
         // hide ids
-        colCategory.setVisible(false);
+       /* colCategory.setVisible(false);
         colUser.setVisible(false);
-        colId.setVisible(false);
+        colId.setVisible(false); */
     }    
    
    
@@ -364,7 +367,7 @@ public class ReclamationController implements Initializable {
         tfDate.setValue(new java.sql.Date(date.getTime()).toLocalDate());
         cbCategoryId.setValue(rec.getCategoryReclamationId());
         
-        cbCategory.setValue(Integer.toString(rec.getCategoryReclamationId()));
+        cbCategory.setValue(rec.getCategoryReclamation().getNom());
         tfUser.setText(Integer.toString(rec.getUserId()));
     }
 
@@ -427,7 +430,13 @@ public class ReclamationController implements Initializable {
        ReclamationService rs = new ReclamationService();
        try{
            rs.export();
+           Alert a = new Alert(Alert.AlertType.INFORMATION);
+           a.setContentText("File exported in utils folder");
+           a.show();
        }catch(Exception e){
+           Alert a = new Alert(Alert.AlertType.ERROR);
+           a.setContentText("Error ! could not export the file");
+           a.show();
            e.printStackTrace();
        }
     }

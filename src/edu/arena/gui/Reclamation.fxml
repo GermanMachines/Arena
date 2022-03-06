@@ -15,6 +15,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationController">
    <children>
+      <ChoiceBox fx:id="cbCategoryId" layoutX="678.0" layoutY="13.0" prefHeight="25.0" prefWidth="100.0" />
       <VBox layoutX="541.0" layoutY="25.0" prefHeight="157.0" prefWidth="165.0" spacing="8.0">
          <children>
             <TextField fx:id="tfTitre">
@@ -76,16 +77,15 @@
       </HBox>
       <TextField fx:id="tfRecherche" layoutX="179.0" layoutY="191.0" onKeyTyped="#filter" promptText="Recherche" />
       <PieChart fx:id="pcData" layoutX="141.0" layoutY="16.0" prefHeight="157.0" prefWidth="264.0" />
-      <TextField fx:id="tfUser" layoutX="37.0" layoutY="198.0" prefHeight="18.0" prefWidth="21.0">
+      <TextField fx:id="tfUser" layoutX="734.0" layoutY="130.0" prefHeight="18.0" prefWidth="21.0">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <TextField fx:id="tfId" layoutX="31.0" layoutY="231.0" prefHeight="18.0" prefWidth="32.0">
+      <TextField fx:id="tfId" layoutX="712.0" layoutY="173.0" prefHeight="18.0" prefWidth="32.0">
          <font>
             <Font size="8.0" />
          </font>
       </TextField>
-      <ChoiceBox fx:id="cbCategoryId" layoutX="14.0" layoutY="257.0" prefHeight="25.0" prefWidth="100.0" />
    </children>
 </Pane>
