@@ -47,8 +47,6 @@ public class PostFrontController implements Initializable {
     @FXML
     private Label totalpost;
     @FXML
-    private TextField SearchP;
-    @FXML
     private Label totalcom;
     /**
      * Initializes the controller class.

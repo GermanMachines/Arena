@@ -5,7 +5,12 @@
  */
 package edu.arena.gui;
 
+import edu.arena.entities.Comentaire;
 import edu.arena.entities.Post;
+import edu.arena.entities.rate;
+import edu.arena.services.ComentaireCrud;
+import edu.arena.services.PostCrud;
+import edu.arena.services.RateCrud;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -83,9 +88,35 @@ public class ItemPostController implements Initializable {
         }
     }
 
-    @FXML
+ 
+
+    
     private void submitRating(ActionEvent event) {
-        System.out.println("post rating given by user:"+PostRarting.getRating());  
+//        System.out.println("voici le rating"+PostRarting.getRating());
+
+
+
+
+
+    }
+
+    @FXML
+    private void like(ActionEvent event) throws SQLException {
+         k.setTest(Integer.parseInt(tfidpost.getText()));
+                  RateCrud cer = new RateCrud();
+      
+    
+      
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+   
+             
+           
+      
+               rate c = new rate( (int) PostRarting.getRating(),Post.getTest());
+
+
+       
+               cer.ajouter(c);   
     }
     }
     

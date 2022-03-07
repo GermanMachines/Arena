@@ -27,7 +27,10 @@
                         <Font name="Cambria Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="datapostlabel" prefHeight="21.0" prefWidth="311.0" text="date" />
+                  <Label fx:id="datapostlabel" prefHeight="21.0" prefWidth="311.0" text="date">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
@@ -35,13 +38,13 @@
             </HBox>
             <ImageView fx:id="img" fitHeight="125.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="conteur" />
+            <Button mnemonicParsing="false" onAction="#like" styleClass="search-button" stylesheets="@GamesStyle.css" text="like" textFill="WHITE" />
+            <Rating fx:id="PostRarting" rating="1.0" style="-fx-background-color: red;" stylesheets="@GamesStyle.css" />
             <Button mnemonicParsing="false" onAction="#comentpostbtn" prefHeight="28.0" prefWidth="107.0" styleClass="search-button" stylesheets="@GamesStyle.css" text="commentaire" textFill="WHITE">
                <font>
                   <Font name="Candara Bold" size="15.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#submitRating" text="submit" />
-            <Rating fx:id="PostRarting" />
             <Label fx:id="tfidpost" text="id" />
          </children>
       </VBox>
