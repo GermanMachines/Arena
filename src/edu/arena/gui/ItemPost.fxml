@@ -9,12 +9,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" prefHeight="215.0" prefWidth="600.0" stylesheets="@GamesStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ItemPostController">
+<AnchorPane id="AnchorPane" prefHeight="272.0" prefWidth="557.0" stylesheets="@GamesStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ItemPostController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="23.0" layoutY="8.0" prefHeight="244.0" prefWidth="557.0">
          <children>
-            <Label fx:id="titreLabel" prefHeight="20.0" prefWidth="472.0" text="titre">
+            <Label fx:id="titreLabel" prefHeight="20.0" prefWidth="184.0" text="titre">
                <font>
                   <Font name="Cambria Bold" size="15.0" />
                </font>
@@ -26,33 +27,21 @@
                         <Font name="Cambria Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label fx:id="datapostlabel" prefHeight="21.0" prefWidth="207.0" text="date" />
+                  <Label fx:id="datapostlabel" prefHeight="21.0" prefWidth="311.0" text="date" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" top="20.0" />
                </VBox.margin>
             </HBox>
             <ImageView fx:id="img" fitHeight="125.0" fitWidth="294.0" pickOnBounds="true" preserveRatio="true" />
-            <HBox>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-               <children>
-                  <Button mnemonicParsing="false" onAction="#likepostbutton" styleClass="search-button" stylesheets="@GamesStyle.css" text="Like" textFill="WHITE">
-                     <font>
-                        <Font name="Candara Bold" size="15.0" />
-                     </font>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#comentpostbtn" styleClass="search-button" stylesheets="@GamesStyle.css" text="commentaire" textFill="WHITE">
-                     <font>
-                        <Font name="Candara Bold" size="15.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
+            <Label fx:id="conteur" />
+            <Button mnemonicParsing="false" onAction="#comentpostbtn" prefHeight="28.0" prefWidth="107.0" styleClass="search-button" stylesheets="@GamesStyle.css" text="commentaire" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="15.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#submitRating" text="submit" />
+            <Rating fx:id="PostRarting" />
             <Label fx:id="tfidpost" text="id" />
          </children>
       </VBox>

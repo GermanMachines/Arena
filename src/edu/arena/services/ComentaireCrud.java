@@ -6,6 +6,7 @@
 package edu.arena.services;
 
 import edu.arena.entities.Comentaire;
+import edu.arena.entities.Post;
 import edu.arena.utils.DataBase;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,39 +37,56 @@ public class ComentaireCrud {
         pre.executeUpdate();
     }
 
-    public boolean Update(int id_user ,String desc_com , String date_com ,int id_post,int id) {
-            try {
-            PreparedStatement pre = con.prepareStatement("update commentaire set id_user =?, desc_com=? , date_com=? , id_post=?  where id_com=? ;");
+    public boolean update(Comentaire a){
+        Connection cnx =null;
+        Statement st = null;
+        
+        
+        String requette = "UPDATE commentaire SET desc_com='"+a.getDesc_com()+"',date_com='"+a.getDate_com()+"' WHERE id_com="+a.getId_com()+"";
+                     
+        
+        
+        try {
+            cnx = DataBase.getInstance().getConnection();          
+            st = cnx.createStatement();
+            st.executeUpdate(requette);
+            return true;
             
            
-            pre.setInt(1, id_user);
-            pre.setString(2, desc_com); 
-            pre.setString(3, date_com);
-            pre.setInt(4, id_post); 
-            pre.setInt(5, id);
-
-            if (pre.executeUpdate() != 0) {
-                System.out.println(" commantaire updated");
-                return true;
-            }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        System.out.println("id  not found!!!");
-        return false;
+            ex.printStackTrace();
+            return false;
+        }finally {
+    
+    if (st != null) {
+        try {
+            st.close();
+        } catch (SQLException e) { /* Ignored */}
     }
-
-    public boolean delete(Integer idcode) throws SQLException {
-
-        PreparedStatement pre = con.prepareStatement("Delete from commentaire where id_com=? ;");
-        pre.setInt(1, idcode);
-        if (pre.executeUpdate() != 0) {
-            System.out.println("commentaire Deleted");
+    }}
+    public boolean delete(Comentaire a){
+        Connection cnx =null;
+        Statement st = null;
+        String requette = "DELETE FROM commentaire WHERE id_com="+a.getId_com()+"";
+        try {
+     cnx = DataBase.getInstance().getConnection();          
+            st = cnx.createStatement();
+            st.executeUpdate(requette);
             return true;
-        }
-        System.out.println("id commentaire not found!!!");
-        return false;
-
+            
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }finally {
+    
+    if (st != null) {
+        try {
+            st.close();
+        } catch (SQLException e) { /* Ignored */}
+    }
+    }
+        
     }
     
         public List<Comentaire> readAll() throws SQLException {
@@ -111,7 +129,48 @@ public class ComentaireCrud {
         return arr;
 
     }
+        public String totalC() throws SQLException {
+
+        List<Comentaire> lu = new ArrayList<>();
+        ste = con.createStatement();
+        ResultSet rs = ste.executeQuery("select id_com,id_user,desc_com,date_com,id_post from commentaire");
+        while (rs.next()) {
+            int  id_com=rs.getInt("id_com");
+                int id_user=rs.getInt("id_user");
+                 String desc_com = rs.getString("desc_com");
+                 String date_com = rs.getString("date_com");
+                int id_post=rs.getInt("id_post");
+            Comentaire c = new Comentaire(id_com ,id_user,desc_com,date_com,id_post);
+            lu.add(c);
+        }
+       int nbr =lu.size();
+        String nbrpacks = String.valueOf(nbr);
         
+       return nbrpacks;
+    }   
+
+    public boolean Update(int id_user ,String desc_com , String date_com ,int id) {
+              try {
+            PreparedStatement pre = con.prepareStatement("update commentaire set id_user =?, desc_com=? , date_com=?   where id_com=? ;");
+            
+           
+            pre.setInt(1, id_user);
+            pre.setString(2, desc_com); 
+            pre.setString(3, date_com);
+          
+            pre.setInt(4, id);
+
+            if (pre.executeUpdate() != 0) {
+                System.out.println(" commantaire updated");
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("id  not found!!!");
+        return false;
+    }
+    }
     
     
-}
+

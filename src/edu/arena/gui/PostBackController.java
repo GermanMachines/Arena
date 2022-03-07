@@ -5,34 +5,52 @@
  */
 package edu.arena.gui;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import edu.arena.entities.Comentaire;
 import edu.arena.entities.Post;
 import edu.arena.services.ComentaireCrud;
 import edu.arena.services.PostCrud;
+import edu.arena.utils.DataBase;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -41,6 +59,9 @@ import javafx.scene.layout.BorderPane;
  */
 public class PostBackController implements Initializable {
 
+    
+      Connection con;
+    Statement ste;
     @FXML
     private TextField tfTitre;
     @FXML
@@ -64,14 +85,20 @@ public class PostBackController implements Initializable {
     
     PostCrud p =new PostCrud();
     
-    public ObservableList<Post> data =FXCollections.observableArrayList();
+    ObservableList<Post> data =FXCollections.observableArrayList();
+ 
     private Integer id_post;
     @FXML
     private BorderPane bp;
     @FXML
     private AnchorPane ap;
+    
+  
     @FXML
-    private TextField tfSearch;
+    private TextField search;
+    
+    
+      ObservableList< PieChart.Data> piechartdata;
     /**
      * Initializes the controller class.
      */
@@ -81,47 +108,8 @@ public class PostBackController implements Initializable {
        } catch (SQLException ex) {
             Logger.getLogger(HomeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-   
-        FilteredList<Post> filteredata = new FilteredList<>(data,p-> true);
-        tfSearch.textProperty().addListener((observable , oldValue,newValue) ->{
-          filteredata.setPredicate(Post ->{
-              // If filter text is empty, display all persons.
-								
-				if (newValue == null || newValue.isEmpty()) {
-					return true;
-				}
-				
-				// Compare first name and last name of every person with filter text.
-				String lowerCaseFilter = newValue.toLowerCase();
-				
-				if (Post.getAuteur().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
-					return true; // Filter matches first name.
-				} else if (Post.getTitre().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-					return true; // Filter matches last name.
-				}
-				else if (String.valueOf(Post.getImg_post()).indexOf(lowerCaseFilter)!=-1)
-				     return true;
-				     else  
-				    	 return false; // Does not match.
-              
-              
-          });
-            
-            
-            
-            
-        });
-        
-        // 3. Wrap the FilteredList in a SortedList. 
-		SortedList<Post> sortedData = new SortedList<>(filteredata);
-		
-		// 4. Bind the SortedList comparator to the TableView comparator.
-		// 	  Otherwise, sorting the TableView would have no effect.
-		sortedData.comparatorProperty().bind(tabPost.comparatorProperty());
-		
-		// 5. Add sorted (and filtered) data to the table.
-		tabPost.setItems(sortedData);
-        
+                 
+    
         
     }
       private void afficherEvent() throws SQLException {
@@ -140,40 +128,62 @@ public class PostBackController implements Initializable {
 
     @FXML
     private void addPost(ActionEvent event)  throws SQLException {
+     Post P;
+      PostCrud pst =new PostCrud();
         String titre = tfTitre.getText();
         String auteur = tfAuteur.getText();
-       
-        String img_post = tfImage.getText();
-          String date_post = tfDate.getText();
-        Post P = new Post(titre,auteur,img_post,date_post);
-          Post p = new Post(tfTitre.getText(),tfAuteur.getText(),tfImage.getText(),tfDate.getText());
-        
-       PostCrud pst = new PostCrud();
-        
-        pst.ajouter(p);
-        
-         try {
-              
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Done");
-                alert.setContentText("Added!");
-                alert.show();
-                afficherEvent();
-                        
-               
-                
-               
-            } catch (Exception ee) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error!");
-                alert.show();
-                 afficherEvent();
+        String image =tfImage.getText(); 
+        String date = tfDate.getText();
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-            }
-                  
         
+        if( (titre.equals("") || auteur.equals("") || date.equals("") || image.equals("")) ){
+                     
+             alert.setAlertType(Alert.AlertType.WARNING);
+            alert.setTitle("Conditions de saisie");
+            alert.setHeaderText(null);
+            alert.setContentText("You need to fill all the fields first!");
+            alert.showAndWait();
+          
+        }else{
+                  
+        P = new Post(titre,auteur,image,date);
+        
+        try{
+        pst.ajouter(P);
+        alert.setAlertType(Alert.AlertType.INFORMATION);
+        alert.setTitle("Add post");
+        alert.setHeaderText("Results:");
+        alert.setContentText("Game added successfully!");
+        } catch (SQLException ex){
+                     //Alert Error jeux :
+            alert.setAlertType(Alert.AlertType.WARNING);
+            alert.setTitle("ERROR");
+            alert.setHeaderText("Adding Error !! ");
+            alert.setContentText(ex.getMessage());
+            //Alert Error jeux !
+        } finally{
+              alert.showAndWait();
+        }
+         Notifications notificationBuilder = Notifications.create().title("notification").text("post envoyé avec succés").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
+                .position(Pos.TOP_CENTER).onAction(new EventHandler<ActionEvent>(){
+                   public void handle(ActionEvent event){
+                       System.out.println("clicked on");
+                   } 
+                });
+        notificationBuilder.darkStyle();
+        notificationBuilder.show();    
+        
+        }
+        data.clear();
+        data.addAll(pst.showpost());
+        //ShowJeux();
+               
+   
+
+             
     }
-  
+
     @FXML
     private void updatePost(ActionEvent event) throws SQLException {
         {
@@ -246,26 +256,84 @@ public class PostBackController implements Initializable {
         
     }
 
-   
-//    @FXML
-//    private void recherche(ActionEvent event) {
-//           PostCrud post = new PostCrud();
-//            
-//        ObservableList<post> liste = Post.f(tfFind.getText());
-//         ColId.setCellValueFactory(new PropertyValueFactory<>("id_post"));
-//       ColTitre.setCellValueFactory(new PropertyValueFactory<>("titre"));
-//      ColAuteur.setCellValueFactory(new PropertyValueFactory<>("auteur"));
-//       ColImage.setCellValueFactory(new PropertyValueFactory<>("img_post"));
-//         ColDate.setCellValueFactory(new PropertyValueFactory<>("date_post"));
-//      tabPost.setItems(liste);
-//    
-//    }
 
+
+    @FXML
+    private void pdf(ActionEvent event) throws FileNotFoundException, DocumentException {
+        
+        try {
+            Connection con = DataBase.getInstance().getConnection();
+            Statement stmt = con.createStatement();
+            ResultSet query_set = stmt.executeQuery("select titre,auteur,img_post,date_post from post");
+            Document my_pdf_report = new Document();
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/Lenovo/Desktop/post.pdf"));
+            my_pdf_report.open();
+            PdfPTable my_report_table = new PdfPTable(4);
+            PdfPCell table_cell;
+            
+             table_cell = new PdfPCell(new Phrase("titre"));
+            my_report_table.addCell(table_cell);
+            
+            table_cell = new PdfPCell(new Phrase("auteur"));
+            my_report_table.addCell(table_cell);
+            
+            table_cell = new PdfPCell(new Phrase("image"));
+            my_report_table.addCell(table_cell);
+            
+            table_cell = new PdfPCell(new Phrase("date"));
+            my_report_table.addCell(table_cell);
+            
+            while (query_set.next()) {
+                String titre = query_set.getString("titre");
+                table_cell = new PdfPCell(new Phrase(titre));
+                my_report_table.addCell(table_cell);
+                
+                String auteur = query_set.getString("auteur");
+                table_cell = new PdfPCell(new Phrase(auteur));
+                my_report_table.addCell(table_cell);
+                
+                String img_post = query_set.getString("img_post");
+                table_cell = new PdfPCell(new Phrase(img_post));
+                my_report_table.addCell(table_cell);
+                
+                 String date_post = query_set.getString("date_post");
+                table_cell = new PdfPCell(new Phrase(date_post));
+                my_report_table.addCell(table_cell);
+              
+            }
+            my_pdf_report.add(my_report_table);
+            my_pdf_report.close();
+            query_set.close();
+            stmt.close();
+            con.close();
+
+            System.out.println("ok");
+
+        } catch (SQLException ex) {
+            System.out.println("err");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PostBackController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(PostBackController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
 
     }
 
+   
+
+    @FXML
+    private void search(KeyEvent event) throws SQLException {
+         data.clear();
+        // System.out.println("heyy yuuu");
+        data.addAll(p.showpost().stream().filter((e)-> e.getTitre().toLowerCase().contains(search.getText().toLowerCase())
+        ).collect(Collectors.toList()));
+       // System.out.println(data); 
+      
+    }
+ 
     
-    
+} 
     
     
     

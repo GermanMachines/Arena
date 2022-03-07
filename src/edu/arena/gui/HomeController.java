@@ -37,8 +37,9 @@ public class HomeController implements Initializable {
     }    
 
     @FXML
-    private void Home(MouseEvent event) {
+    private void Home(MouseEvent event) throws IOException {
       bp.setCenter(ap);
+         loadPage("PostFront");
     }
 
     @FXML

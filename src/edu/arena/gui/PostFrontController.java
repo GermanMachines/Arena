@@ -6,6 +6,7 @@
 package edu.arena.gui;
 
 import edu.arena.entities.Post;
+import edu.arena.services.ComentaireCrud;
 import edu.arena.services.PostCrud;
 import java.io.IOException;
 import java.net.URL;
@@ -21,7 +22,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -40,11 +43,28 @@ public class PostFrontController implements Initializable {
       public ObservableList<Post> Postdata = FXCollections.observableArrayList();
                 PostCrud pts = new PostCrud();
                   private List<Post> Post= new ArrayList<>();
+                  ComentaireCrud cts = new ComentaireCrud();
+    @FXML
+    private Label totalpost;
+    @FXML
+    private TextField SearchP;
+    @FXML
+    private Label totalcom;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            totalpost.setText(pts.totalP());
+        } catch (SQLException ex) {
+            Logger.getLogger(PostFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            totalcom.setText(cts.totalC());
+        } catch (SQLException ex) {
+            Logger.getLogger(PostFrontController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             Postdata.addAll(pts.showpost());
         } catch (SQLException ex) {
@@ -57,7 +77,7 @@ public class PostFrontController implements Initializable {
         System.out.println(Postdata);
         
         int column=0;
-        int row=1;
+        int row=3;
            try {
         for(int i=0 ; i<Postdata.size();i++){
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -68,7 +88,7 @@ public class PostFrontController implements Initializable {
          
             ItemPostController itemController = fxmlLoader.getController();
             itemController.setData(Postdata.get(i).getId_post(),Postdata.get(i).getTitre(),Postdata.get(i).getAuteur(),Postdata.get(i).getDate_post(),Postdata.get(i).getImg_post());
-            if(column == 1){
+            if(column == 2){
                 column=0;
                 row++;
             }
@@ -97,7 +117,19 @@ public class PostFrontController implements Initializable {
               
               
                 
-    }    
+    }
+     public String totalpost() throws SQLException{
+        String nbrpacks = pts.totalP();
+        System.out.println(nbrpacks);
+       totalpost.setText(nbrpacks);
+        return nbrpacks;
+   }
+     
+      public void totalcom() throws SQLException{
+        String nbrpacks = cts.totalC();
+        System.out.println(nbrpacks);
+       totalcom.setText(nbrpacks);
+   }
 }
     
 

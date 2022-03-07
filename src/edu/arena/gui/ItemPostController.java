@@ -8,6 +8,7 @@ package edu.arena.gui;
 import edu.arena.entities.Post;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,10 +16,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -39,6 +42,10 @@ public class ItemPostController implements Initializable {
     private Label tfidpost;
   
     Post k = new  Post();
+    @FXML
+    private Label conteur;
+    @FXML
+    private Rating PostRarting;
     /**
      * Initializes the controller class.
      */
@@ -47,9 +54,8 @@ public class ItemPostController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void likepostbutton(ActionEvent event) {
-    }
+    
+    
 
     void setData(int id_post, String titre, String auteur, String date_post,String img_post) {
     titreLabel.setText(titre);
@@ -73,8 +79,13 @@ public class ItemPostController implements Initializable {
                     stage.show();
      
         } catch (IOException ex) {
-               System.out.println("can't load new Match Equipes window");
+               System.out.println("can't load comrnt window");
         }
+    }
+
+    @FXML
+    private void submitRating(ActionEvent event) {
+        System.out.println("post rating given by user:"+PostRarting.getRating());  
     }
     }
     

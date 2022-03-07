@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Comparator;
 import java.util.List;
 import javafx.collections.FXCollections;
@@ -137,15 +138,54 @@ public class PostCrud {
     }
   
     
-     public List<Post> sortByAuteur() throws SQLException{
+   
+      public String totalP() throws SQLException {
+
+        List<Post> lu = new ArrayList<>();
+        ste = con.createStatement();
+        ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post from post");
+        while (rs.next()) {
+            int id_post=rs.getInt("id_post");
+            String titre = rs.getString("titre");
+            String auteur = rs.getString("auteur");
+            String img_post = rs.getString("img_post");
+            String date_post = rs.getString("date_post");
+            
+            
+            Post p = new Post(id_post ,titre,auteur,img_post,date_post);
+            lu.add(p);
+        }
+       int nbr =lu.size();
+        String nbrpacks = String.valueOf(nbr);
         
-        List<Post> evenements= showpost();
-        List<Post> resultat=evenements.stream().sorted(Comparator.comparing(Post::getAuteur)).collect(Collectors.toList());
-        return resultat;
+       return nbrpacks;
     }
-    public List<Post> findbyLieu(String auteur) throws SQLException {
-       List<Post> evenements=showpost();
-        List<Post> resultat=evenements.stream().filter(evenement->auteur.equals(evenement.getAuteur())).collect(Collectors.toList());
-        return resultat;
+       public ObservableList<Post> getAll()throws SQLException{
+        ObservableList<Post> list = FXCollections.observableArrayList();
+        ste = con.createStatement();
+        ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post from post");
+              while (rs.next()) {
+        int id_post = rs.getInt("id_post");
+            
+            
+            String titre = rs.getString("titre");
+            String auteur = rs.getString("auteur");
+         
+            
+          
+            String img_post = rs.getString("img_post");
+            String date_post = rs.getString("date_post");
+            
+       
+            Post r = new Post();
+            r.setId_post(id_post);
+            r.setTitre(titre);
+            r.setAuteur(auteur);
+            r.setImg_post(img_post);
+            r.setDate_post(date_post);
+            list.add(r);
+        }
+        return list;
     }
+
 }

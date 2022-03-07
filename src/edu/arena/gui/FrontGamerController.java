@@ -33,14 +33,11 @@ public class FrontGamerController implements Initializable {
         // TODO
     }    
 
-    @FXML
-    private void JeuxAction(ActionEvent event) {
-    }
 
     @FXML
-    private void TournoisAction(ActionEvent event) {
+    private void HomeAction(ActionEvent event) throws IOException {
+           loadPage("Home");
     }
-
     @FXML
     private void PostsAction(ActionEvent event) throws IOException {
         loadPage("PostFront");
@@ -51,6 +48,7 @@ public class FrontGamerController implements Initializable {
        root = FXMLLoader.load(getClass().getResource(page+".fxml"));
        DashbordPane.setCenter(root);
     }
+
     
     
 }

@@ -22,12 +22,12 @@ public class NewFXMain extends Application {
     @Override
     public void start(Stage primaryStage)  {
       try{  
-            URL fxURL = getClass().getResource("/edu/arena/gui/FrontGamer.fxml");
+            URL fxURL = getClass().getResource("/edu/arena/gui/Home.fxml");
             FXMLLoader loader = new FXMLLoader(fxURL);
             Parent root = loader.load();
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-            primaryStage.setTitle("3A22");
+            primaryStage.setTitle("ARENA");
             primaryStage.show();
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
