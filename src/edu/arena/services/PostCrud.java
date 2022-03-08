@@ -102,16 +102,16 @@ public class PostCrud {
 
         List<Post> lu = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post from post");
+        ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post,rate from post");
         while (rs.next()) {
             int id_post=rs.getInt("id_post");
             String titre = rs.getString("titre");
             String auteur = rs.getString("auteur");
             String img_post = rs.getString("img_post");
             String date_post = rs.getString("date_post");
+            int rate=rs.getInt("rate");
             
-            
-            Post p = new Post(id_post ,titre,auteur,img_post,date_post);
+            Post p = new Post(id_post ,titre,auteur,img_post,date_post,rate);
             lu.add(p);
         }
         return lu;
@@ -122,13 +122,13 @@ public class PostCrud {
         
          List <Post> id = new ArrayList<>(); 
         Statement stm = con.createStatement();
-       ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post from post");
+       ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post,rate from post");
 
         //ResultSet rs;
      
         Post post;
         while (rs.next()) {
-           post= new Post(rs.getInt("id_post"), rs.getString("titre"), rs.getString("auteur"), rs.getString("img_post"), rs.getString("date_post")); 
+           post= new Post(rs.getInt("id_post"), rs.getString("titre"), rs.getString("auteur"), rs.getString("img_post"), rs.getString("date_post"),rs.getInt("rate")); 
             //System.out.println(events);
             commandelist.add(post);
 
@@ -143,16 +143,16 @@ public class PostCrud {
 
         List<Post> lu = new ArrayList<>();
         ste = con.createStatement();
-        ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post from post");
+        ResultSet rs = ste.executeQuery("select id_post ,titre,auteur,img_post,date_post,rate from post");
         while (rs.next()) {
             int id_post=rs.getInt("id_post");
             String titre = rs.getString("titre");
             String auteur = rs.getString("auteur");
             String img_post = rs.getString("img_post");
             String date_post = rs.getString("date_post");
+            int rate=rs.getInt("rate");
             
-            
-            Post p = new Post(id_post ,titre,auteur,img_post,date_post);
+            Post p = new Post(id_post ,titre,auteur,img_post,date_post,rate);
             lu.add(p);
         }
        int nbr =lu.size();
@@ -187,5 +187,26 @@ public class PostCrud {
         }
         return list;
     }
+  
 
+    public boolean updaterate(int rate, int id_post) {
+     try {
+            PreparedStatement pre = con.prepareStatement("update post set  rate=?   where id_post=? ;");
+            
+           
+            pre.setInt(1, rate);
+           
+          
+            pre.setInt(2, id_post);
+
+            if (pre.executeUpdate() != 0) {
+                System.out.println(" commantaire updated");
+                return true;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        System.out.println("id  not found!!!");
+        return false;
+    }
 }

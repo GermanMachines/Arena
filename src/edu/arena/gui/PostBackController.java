@@ -137,7 +137,7 @@ public class PostBackController implements Initializable {
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
         
-        if( (titre.equals("") || auteur.equals("") || date.equals("") || image.equals("")) ){
+        if( (titre.equals("") || auteur.equals("") || date.equals("") || image.equals("") ) ){
                      
              alert.setAlertType(Alert.AlertType.WARNING);
             alert.setTitle("Conditions de saisie");
@@ -218,9 +218,11 @@ public class PostBackController implements Initializable {
         alert.setContentText("La modufication d'event n'a pas été effectué!");
         alert.showAndWait();   
         afficherEvent();
-        }
+        }  
+        data.clear();
+        data.addAll(aS.showpost());
     }
-        
+      
     }
 
     @FXML
@@ -242,6 +244,8 @@ public class PostBackController implements Initializable {
         alert.showAndWait();   
         afficherEvent();
         }
+         data.clear();
+        data.addAll(aS.showpost());
     }
 
     @FXML

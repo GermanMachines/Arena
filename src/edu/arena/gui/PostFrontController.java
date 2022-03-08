@@ -76,16 +76,17 @@ public class PostFrontController implements Initializable {
         
         int column=0;
         int row=3;
-           try {
+         try {  
         for(int i=0 ; i<Postdata.size();i++){
-            FXMLLoader fxmlLoader = new FXMLLoader();
+            
+              FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/edu/arena/gui/ItemPost.fxml"));
          
                 AnchorPane anchorPane = fxmlLoader.load();
           
          
             ItemPostController itemController = fxmlLoader.getController();
-            itemController.setData(Postdata.get(i).getId_post(),Postdata.get(i).getTitre(),Postdata.get(i).getAuteur(),Postdata.get(i).getDate_post(),Postdata.get(i).getImg_post());
+            itemController.setData(Postdata.get(i).getId_post(),Postdata.get(i).getTitre(),Postdata.get(i).getAuteur(),Postdata.get(i).getDate_post(),Postdata.get(i).getImg_post(),Postdata.get(i).getRate());
             if(column == 2){
                 column=0;
                 row++;
@@ -107,12 +108,13 @@ public class PostFrontController implements Initializable {
             
             
             GridPane.setMargin(anchorPane,new Insets(10));
-              }
-           }
-           catch (IOException ex) {
-                ex.printStackTrace();
+          
+            
             }
-              
+              }
+            catch (IOException ex) {
+                ex.printStackTrace();
+              }
               
                 
     }

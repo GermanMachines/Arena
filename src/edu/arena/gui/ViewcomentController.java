@@ -12,12 +12,19 @@ import edu.arena.services.ComentaireCrud;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import org.controlsfx.control.Notifications;
 
 
@@ -35,7 +42,14 @@ public class ViewcomentController implements Initializable {
     @FXML
     private JFXTextField tfid_user;
          Post p = new Post();
+    @FXML
+    private TableView<Comentaire> tvbooks;
+    @FXML
+    private TableColumn<Comentaire, String> colnom;
+    @FXML
+    private TableColumn<Comentaire, String> colcom;
 
+    public final ObservableList<Comentaire> data =FXCollections.observableArrayList();
 public int getTxtIdUser(){
     return Integer.parseInt(tfid_user.getText());
             }
@@ -44,7 +58,17 @@ public int getTxtIdUser(){
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+     ComentaireCrud p1 = new ComentaireCrud();
+      
+
+        try {
+            showPost();
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewcomentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+         
+      
     }    
 
     @FXML
@@ -55,7 +79,7 @@ public int getTxtIdUser(){
         String titre = tfcomment.getText();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
     // p.getTest();
-      if( (titre.equals("") ) ){
+      if( (titre.contains("fuck") ) || (titre.contains("gga") )  || (titre.equals("")) ){
                        //Alert saisie jeux :
              alert.setAlertType(Alert.AlertType.WARNING);
             alert.setTitle("Conditions de saisie");
@@ -99,7 +123,20 @@ public int getTxtIdUser(){
    
     }
 
-   
+    public void showPost() throws SQLException{
+        ComentaireCrud p1 = new ComentaireCrud();
+       
+        data.addAll(p1.postCommentaires(p.getTest()));
+         
+          colnom.setCellValueFactory(new PropertyValueFactory<>("id_user"));
+           colcom.setCellValueFactory(new PropertyValueFactory<>("desc_com"));
+            
+        
+         tvbooks.setItems(data);
+        
+         
+        
+    }
     
     
 }

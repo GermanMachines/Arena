@@ -14,7 +14,7 @@ public class Post {
    String auteur;
     String img_post;
     String date_post;
-    
+    int rate;
     static int test;
 
     public static int getTest() {
@@ -26,13 +26,13 @@ public class Post {
     }
     
 
-    public Post(int id_post, String titre, String auteur, String img_post, String date_post) {
+    public Post(int id_post, String titre, String auteur, String img_post, String date_post,int rate) {
         this.id_post = id_post;
         this.titre = titre;
         this.auteur = auteur;
         this.img_post = img_post;
         this.date_post = date_post;
-    
+        this.rate = rate;    
     }
 
     public Post(String titre, String auteur, String img_post, String date_post) {
@@ -40,9 +40,20 @@ public class Post {
         this.auteur = auteur;
         this.img_post = img_post;
         this.date_post = date_post;
-       
+        
+      
     }
 
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+     
+    
+   
     public Post() {
       
     }
@@ -95,7 +106,7 @@ public class Post {
   
     @Override
     public String toString() {
-        return "post{" + "id_post=" + id_post + ", titre=" + titre + ", auteur=" + auteur + ", img_post=" + img_post +  ", date_post=" + date_post + '}';
+        return "post{" + "id_post=" + id_post + ", titre=" + titre + ", auteur=" + auteur + ", img_post=" + img_post +  ", date_post=" + date_post + ", rate=" + rate +'}';
     }
 
    

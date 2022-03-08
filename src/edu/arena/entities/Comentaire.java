@@ -14,6 +14,13 @@ public class Comentaire {
    int id_post;
    String nomuser;
 
+    public Comentaire(int id_com, int id_user, String desc_com, int id_post) {
+         this.id_com = id_com;
+          this.id_user = id_user;
+            this.desc_com = desc_com;
+                   this.id_post = id_post;
+    }
+
     public String getNomuser() {
         return nomuser;
     }

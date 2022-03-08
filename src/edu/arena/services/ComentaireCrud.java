@@ -170,6 +170,31 @@ public class ComentaireCrud {
         System.out.println("id  not found!!!");
         return false;
     }
+    public List<Comentaire> postCommentaires(int id_poste) throws SQLException {
+
+        List<Comentaire> lu = new ArrayList<>();
+        ste = con.createStatement();
+        
+        ResultSet rs = ste.executeQuery("SELECT * from commentaire WHERE id_post="+id_poste+";");
+        while (rs.next()) {
+            
+          int id_com = rs.getInt("commentaire.id_com");
+          int id_user = rs.getInt("commentaire.id_user");
+          
+            String desc_com = rs.getString("commentaire.desc_com");
+             int id_post = rs.getInt("commentaire.id_post");
+            
+            
+
+            Comentaire c = new Comentaire(id_com,id_user,desc_com,id_post);
+            
+            lu.add(c);
+        }
+        return lu;
+    }
+    
+    
+    
     }
     
     

@@ -5,12 +5,8 @@
  */
 package edu.arena.gui;
 
-import edu.arena.entities.Comentaire;
 import edu.arena.entities.Post;
-import edu.arena.entities.rate;
-import edu.arena.services.ComentaireCrud;
 import edu.arena.services.PostCrud;
-import edu.arena.services.RateCrud;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -25,6 +21,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import static javafx.scene.input.KeyCode.K;
 import javafx.stage.Stage;
 import org.controlsfx.control.Rating;
 
@@ -47,6 +44,7 @@ public class ItemPostController implements Initializable {
     private Label tfidpost;
   
     Post k = new  Post();
+    
     @FXML
     private Label conteur;
     @FXML
@@ -62,7 +60,8 @@ public class ItemPostController implements Initializable {
     
     
 
-    void setData(int id_post, String titre, String auteur, String date_post,String img_post) {
+    void setData(int id_post, String titre, String auteur, String date_post,String img_post,int rate) {
+      PostRarting.setRating(rate);
     titreLabel.setText(titre);
     auteurlabel.setText(auteur);
     datapostlabel.setText(date_post);
@@ -91,33 +90,32 @@ public class ItemPostController implements Initializable {
  
 
     
-    private void submitRating(ActionEvent event) {
-//        System.out.println("voici le rating"+PostRarting.getRating());
-
-
-
-
-
-    }
-
+  
     @FXML
     private void like(ActionEvent event) throws SQLException {
-         k.setTest(Integer.parseInt(tfidpost.getText()));
-                  RateCrud cer = new RateCrud();
-      
-    
-      
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-   
-             
+         
            
+
+            k.setTest(Integer.parseInt(tfidpost.getText()));
+        Post A= new Post();
+        PostCrud aS = new PostCrud();
+        if (aS.updaterate( (int)PostRarting.getRating(),A.getTest())){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succées");
+        alert.setHeaderText(null);
+        alert.setContentText("La modification d'event a été effectué avec succées");
+        alert.showAndWait();
       
-               rate c = new rate( (int) PostRarting.getRating(),Post.getTest());
-
-
-       
-               cer.ajouter(c);   
+        }else{
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText("La modufication d'event n'a pas été effectué!");
+        alert.showAndWait();   
+     
+        }
     }
+    
     }
     
 
