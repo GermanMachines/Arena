@@ -1,32 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationFrontOfficeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="632.0" stylesheets="@frontoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationFrontOfficeController">
    <children>
+      <Pane layoutX="418.0" layoutY="163.0" prefHeight="25.0" prefWidth="166.0" style="-fx-background-color: #c3c3c3; -fx-opacity: 0.3;" />
       <Label layoutX="237.0" layoutY="24.0" text="Reclamtion" textFill="#c3c3c3">
          <font>
             <Font size="32.0" />
          </font></Label>
-      <Label layoutX="406.0" layoutY="207.0" prefHeight="17.0" prefWidth="48.0" text="Message" textFill="#c3c3c3" />
-      <TextArea fx:id="taMessage" layoutX="467.0" layoutY="194.0" prefHeight="92.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="cbCategory" layoutX="467.0" layoutY="154.0" prefWidth="150.0" />
-      <Label layoutX="406.0" layoutY="158.0" text="Category" textFill="#c3c3c3" />
-      <TextField fx:id="tfTitle" layoutX="468.0" layoutY="114.0" />
-      <Label layoutX="430.0" layoutY="118.0" text="Title" textFill="#c3c3c3" />
-      <Button fx:id="sentBtn" layoutX="468.0" layoutY="307.0" mnemonicParsing="false" onAction="#sendReclamation" text="Send" />
       <ChoiceBox fx:id="cbCategoryId" layoutX="112.0" layoutY="22.0" prefHeight="25.0" prefWidth="22.0" />
       <TextField fx:id="tfUserId" layoutX="78.0" layoutY="22.0" prefHeight="25.0" prefWidth="22.0" />
       <TextField fx:id="tfUsername" layoutX="46.0" layoutY="22.0" prefHeight="25.0" prefWidth="32.0" />
-      <TableView fx:id="tvReclamation" layoutX="14.0" layoutY="116.0" prefHeight="200.0" prefWidth="374.0">
+      <JFXComboBox id="cb" fx:id="cbCategory" focusColor="#d76e6e" layoutX="420.0" layoutY="163.0" prefHeight="25.0" prefWidth="166.0" promptText="Pick Category" style="-fx-background-color: #ff0000;" stylesheets="@frontoffice.css" unFocusColor="#ababab" />
+      <TableView fx:id="tvReclamation" layoutX="14.0" layoutY="116.0" prefHeight="230.0" prefWidth="374.0">
         <columns>
           <TableColumn fx:id="clTitre" prefWidth="75.0" text="Titre" />
             <TableColumn fx:id="clCategory" prefWidth="75.0" text="Category" />
@@ -35,5 +32,11 @@
             <TableColumn fx:id="clEtat" prefWidth="75.0" text="Etat" />
         </columns>
       </TableView>
+      <JFXButton fx:id="sendBtn" layoutX="478.0" layoutY="331.0" onAction="#sendReclamation" ripplerFill="#eb4c4c" styleClass="btn" text="Send" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXTextField fx:id="tfTitle" focusColor="#d76e6e" layoutX="420.0" layoutY="110.0" prefHeight="25.0" prefWidth="166.0" promptText="Title" styleClass="tf" stylesheets="@frontoffice.css" unFocusColor="#ababab" />
+      <JFXTextArea fx:id="taMessage" focusColor="#d76e6e" layoutX="418.0" layoutY="213.0" prefHeight="103.0" prefWidth="181.0" promptText="Message" styleClass="tf" stylesheets="@frontoffice.css" unFocusColor="#ababab" />
    </children>
 </Pane>

@@ -23,6 +23,7 @@ public class Reclamation {
     private User user;
     private String nomCategory;
     private String nomUser;
+    private java.sql.Date datee;
 
     
     public Reclamation(){
@@ -135,6 +136,14 @@ public class Reclamation {
     }
     public void setDate(Date d){
         this.date = d;
+    }
+    
+ 
+    public java.sql.Date getDatee(){
+       return datee;
+    }
+     public void setDatee(java.sql.Date datee){
+       this.datee = datee;
     }
 
     public CategoryReclamation getCategoryReclamation() {

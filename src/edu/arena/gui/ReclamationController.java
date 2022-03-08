@@ -5,6 +5,8 @@
  */
 package edu.arena.gui;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 import edu.arena.Services.CategoryReclamationService;
 import edu.arena.Services.ReclamationService;
 import edu.arena.entities.CategoryReclamation;
@@ -18,6 +20,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,6 +38,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
@@ -48,6 +54,8 @@ import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -66,7 +74,7 @@ public class ReclamationController implements Initializable {
     @FXML
     private TextField tfTitre;
     @FXML
-    private TextField tfMessage;
+    private JFXTextArea tfMessage;
     
     @FXML
     private DatePicker tfDate;
@@ -95,7 +103,7 @@ public class ReclamationController implements Initializable {
     @FXML
     private TextField tfUser;
     @FXML
-    private ChoiceBox<String> cbEtat;
+    private JFXComboBox<String> cbEtat;
     @FXML
     private TableColumn<Reclamation, String> colNomCategory;
     @FXML
@@ -110,7 +118,7 @@ public class ReclamationController implements Initializable {
     ArrayList< String> p = new ArrayList();
     ArrayList< Integer> c = new ArrayList();
     @FXML
-    private ChoiceBox<String> cbCategory;
+    private JFXComboBox<String> cbCategory;
     @FXML
     private ChoiceBox<Integer> cbCategoryId;
     @FXML
@@ -129,9 +137,9 @@ public class ReclamationController implements Initializable {
         cbCategoryId.setVisible(false);
         tfUser.setVisible(false);
         
-         ObservableList<String> etat = FXCollections.observableArrayList("Chose","True","False");
+         ObservableList<String> etat = FXCollections.observableArrayList("True","False");
           cbEtat.setItems(etat);
-          cbEtat.setValue("Chose");
+         
            CategoryReclamationService crs = new CategoryReclamationService();
            
             try{
@@ -247,9 +255,9 @@ public class ReclamationController implements Initializable {
         tvReclamation.setItems(list);
         
         // hide ids
-        colCategory.setVisible(false);
+       /* colCategory.setVisible(false);
         colUser.setVisible(false);
-        colId.setVisible(false);
+        colId.setVisible(false); */
     }  
 
     @FXML
@@ -277,14 +285,18 @@ public class ReclamationController implements Initializable {
       e.printStackTrace();
     }
            String error = controlSaisie();
-           if(error == ""){
-             Alert a = new Alert(Alert.AlertType.INFORMATION);
+           if(error.equals("")){
               crs.ajouter(new Reclamation(tfTitre.getText(),tfMessage.getText(),
                  Integer.parseInt(tfUser.getText()),cbCategoryId.getValue()
          ));
              showReclamation();;
-             a.setContentText("Added Successfully");
-             a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("successfully added reclamation.")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
          }else{
               Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
@@ -294,20 +306,25 @@ public class ReclamationController implements Initializable {
         
         } 
          if(event.getSource() == btnUpdate){
-               String error = controlSaisie();
-           if(error == ""){
-             Alert a = new Alert(Alert.AlertType.INFORMATION);
-         
-              Reclamation rec = new Reclamation();
+            String error = controlSaisie();
+           if(error.equals("")){
+             
+          Reclamation rec = new Reclamation();
           rec.setTitre(tfTitre.getText());
           rec.setMessage(tfMessage.getText());
           rec.setId(Integer.parseInt(tfId.getText()));
-          
-          //fix later
+            
           rec.setUserId(Integer.parseInt(tfUser.getText()));
           
           //fix later
           rec.setCategoryReclamationId(cbCategoryId.getValue());
+          
+    
+            
+           java.sql.Date date = java.sql.Date.valueOf(tfDate.getValue());
+           
+       
+               rec.setDatee(date);
           //fix thislater
           if(cbEtat.getValue() == "True"){
               rec.setEtat(true);
@@ -315,16 +332,19 @@ public class ReclamationController implements Initializable {
           else{
               rec.setEtat(false);
           }
-          
           crs.update(rec);
           showReclamation();
              
              
-            
-             a.setContentText("Updated Successfully");
-             a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("successfully updated reclamation")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
          }else{
-              Alert a = new Alert(Alert.AlertType.ERROR);
+             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
              a.show();
          }             
@@ -333,14 +353,17 @@ public class ReclamationController implements Initializable {
          }
               
         
-           if(event.getSource() == btnDelete){
-             
-               System.out.println("deleted " + tfId.getText());
+           if(event.getSource() == btnDelete){         
         try{
          crs.delete(Integer.parseInt(tfId.getText()));
           Alert a = new Alert(Alert.AlertType.INFORMATION);
-             a.setContentText("Deleted Successfully");
-             a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("successfully deleted reclamation")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
              showReclamation();
          }catch(Exception e){
               Alert a = new Alert(Alert.AlertType.ERROR);

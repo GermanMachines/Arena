@@ -60,11 +60,19 @@ public class ReclamationService implements IService<Reclamation> {
     @Override
     public void update(Reclamation o) throws SQLException {
          stm = connexion.createStatement();
-         PreparedStatement pre = connexion.prepareStatement("UPDATE `reclamation` set `titre` = ? , `message` = ? ,`etat` = ? where id= ? ");
+         PreparedStatement pre = connexion.prepareStatement("UPDATE `reclamation`"
+                 + "                         set `titre` = ? , "
+                 + "                             `message` = ? ,"
+                 + "                              `etat` = ? ,"
+                 + "                               `idCategoryReclamation` = ?  ,"
+                 + "                                `date` = ? where id = ? ");
+         System.out.println(o.getDate());
          pre.setString(1, o.getTitre());
          pre.setString(2, o.getMessage());
          pre.setBoolean(3, o.getEtat());
-         pre.setInt(4, o.getId());
+         pre.setInt(4, o.getCategoryReclamationId());
+         pre.setDate(5, o.getDatee());
+         pre.setInt(6, o.getId());
          pre.executeUpdate();
     }
 

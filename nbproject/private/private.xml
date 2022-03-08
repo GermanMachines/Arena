@@ -5,8 +5,8 @@
         <group>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/AvisFrontOfficeController.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/Services/ReclamationService.java</file>
-            <file>file:/C:/Users/SBS/Arena/src/edu/arena/Services/AvisService.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/entities/Email.java</file>
+            <file>file:/C:/Users/SBS/Arena/src/edu/arena/Services/CategoryReclamationService.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/AvisController.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/ReclamationCategoryController.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/BackOfficeController.java</file>
@@ -14,12 +14,11 @@
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/ReclamationController.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/LoginController.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/Services/UserService.java</file>
-            <file>file:/C:/Users/SBS/Arena/src/edu/arena/entities/Avis.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/EmailController.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/entities/CategoryReclamation.java</file>
+            <file>file:/C:/Users/SBS/Arena/src/edu/arena/Services/IService.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/backoffice.css</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/ReclamationFrontOfficeController.java</file>
-            <file>file:/C:/Users/SBS/Arena/src/edu/arena/gui/ProductsController.java</file>
             <file>file:/C:/Users/SBS/Arena/src/test/Main.java</file>
             <file>file:/C:/Users/SBS/Arena/src/edu/arena/entities/Produit.java</file>
         </group>

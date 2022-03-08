@@ -5,6 +5,8 @@
  */
 package edu.arena.gui;
 
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 import edu.arena.Services.AvisService;
 import edu.arena.Services.ProduitService;
 import edu.arena.entities.Avis;
@@ -22,6 +24,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -34,6 +37,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -45,9 +51,7 @@ public class AvisController implements Initializable {
     @FXML
     private ChoiceBox<Integer> cbIdProduit;
     @FXML
-    private ChoiceBox<String> cbNomProduit;
-    @FXML
-    private ChoiceBox<Integer> cbScore;
+    private JFXComboBox<String> cbNomProduit;
     @FXML
     private Button btnInsert;
     @FXML
@@ -55,7 +59,7 @@ public class AvisController implements Initializable {
     @FXML
     private Button btnDelete;
     @FXML
-    private TextField tfCommentaire;
+    private JFXTextArea tfCommentaire;
     @FXML
     private TextField idUser;
     @FXML
@@ -84,6 +88,8 @@ public class AvisController implements Initializable {
     private Label lIdAvis;
     @FXML
     private Label adminId;
+    @FXML
+    private Rating rating;
 
     /**
      * Initializes the controller class.
@@ -92,8 +98,6 @@ public class AvisController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ProduitService ps = new ProduitService();
-            ObservableList<Integer> scores = FXCollections.observableArrayList(1,2,3,4,5);
-            cbScore.setItems(scores);
         try{
        
             
@@ -147,14 +151,15 @@ public class AvisController implements Initializable {
         AvisService as = new AvisService();
         int idUtulisateur = 0;
         if(event.getSource() == btnInsert){
-            
+           int index = cbNomProduit.getSelectionModel().getSelectedIndex(); 
+           cbIdProduit.getSelectionModel().select(index);
              String error = controlSaisie();
            if(error == ""){
              Alert a = new Alert(Alert.AlertType.INFORMATION);
-               int idProd = cbIdProduit.getValue();
+            int idProd = cbIdProduit.getValue();
             String nomProd = cbNomProduit.getValue();
             String commentaire = tfCommentaire.getText();
-            int score = cbScore.getValue();
+            int score = (int)rating.getRating();
             if(idUser.getText() == ""){
                 idUser.setText(adminId.getText());
             }
@@ -162,8 +167,16 @@ public class AvisController implements Initializable {
              
             as.ajouter(new Avis(score,commentaire,idUtulisateur,idProd));
             showAvis();  
-             a.setContentText("Added Successfully");
-             a.show();
+           // a.setContentText("Added Successfully");
+           // a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("successfully added")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
+
          }else{
             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
@@ -182,7 +195,7 @@ public class AvisController implements Initializable {
             int idProd = cbIdProduit.getValue();
             String nomProd = cbNomProduit.getValue();
             String commentaire = tfCommentaire.getText();
-            int score = cbScore.getValue();
+            int score = (int)rating.getRating();
              idUtulisateur = Integer.parseInt(idUser.getText());
              
             if(idUtulisateur == 0){
@@ -193,8 +206,13 @@ public class AvisController implements Initializable {
             showAvis();  
             
             
-             a.setContentText("Updated Successfully");
-             a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("successfully updated")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
          }else{
             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
@@ -218,8 +236,13 @@ public class AvisController implements Initializable {
             showAvis();
             
             
-             a.setContentText("Deleted Successfully");
-             a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("successfully deleted")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
          }else{
             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
@@ -241,7 +264,7 @@ public class AvisController implements Initializable {
            // cbNomProduit.getValue();
              cbIdProduit.setValue(avis.getIdProduit());
             tfCommentaire.setText(avis.getCommentaire());
-            cbScore.setValue(avis.getScore());
+            rating.setRating(avis.getScore());
             idUser.setText(Integer.toString(avis.getIdUtulisateur()));
             int nb = cbIdProduit.getSelectionModel().getSelectedIndex();
             
@@ -268,7 +291,7 @@ public class AvisController implements Initializable {
         tcId.setVisible(false);
         tcIdUtulisateur.setVisible(false);
         tcIdProduit.setVisible(false);
-       // tfId.setVisible(false);  
+        //tfId.setVisible(false);  
          //  int nb = cbIdProduit.getSelectionModel().getSelectedIndex();
          //  cbNomProduit.getSelectionModel().select(nb);
           // System.out.println(cbIdProduit.getValue());
@@ -279,12 +302,10 @@ public class AvisController implements Initializable {
         tvAvis.setItems(list);
     }    
 
-    @FXML
     private void test(ScrollEvent event) {
                 System.out.println(cbNomProduit.getSelectionModel().getSelectedIndex());
     }
 
-    @FXML
     private void test1(MouseEvent event) {
         int nb = cbNomProduit.getSelectionModel().getSelectedIndex();
         cbIdProduit.getSelectionModel().select(nb);
@@ -293,12 +314,12 @@ public class AvisController implements Initializable {
     
              String comment = tfCommentaire.getText();
             
-             int score = cbScore.getSelectionModel().getSelectedIndex();
+             int score = (int)rating.getRating();
              int nom = cbNomProduit.getSelectionModel().getSelectedIndex();
             // System.out.println(cbCateg);
            
              String error = "";
-             if((comment.equals("") || nom < 0  || score < 0 )){
+             if((comment.equals("") || nom < 0  || score == 0 )){
                  return "You have an empty field !";
              }
              

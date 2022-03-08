@@ -33,6 +33,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -50,22 +51,15 @@ public class AvisFrontOfficeController implements Initializable {
     @FXML
     private Label lidproduit;
     @FXML
-    private ChoiceBox<Integer> score;
-    @FXML
     private Label lnomproduit1;
     @FXML
     private Label lidproduit1;
     @FXML
-    private ChoiceBox<Integer> score1;
-    @FXML
     private Label lnomproduit2;
     @FXML
     private Label lidproduit2;
-    @FXML
-    private ChoiceBox<Integer> score2;
     private Scene scene;
     Parent root;
-    static int i = 0;
     @FXML
     private Label iduser;
     @FXML
@@ -80,15 +74,18 @@ public class AvisFrontOfficeController implements Initializable {
     private Button btn2;
     @FXML
     private Button btn3;
+    @FXML
+    private Rating rating;
+    @FXML
+    private Rating rating1;
+    @FXML
+    private Rating rating2;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        ObservableList<Integer> scores = FXCollections.observableArrayList(1,2,3,4,5);
-            score.setItems(scores);
-            score1.setItems(scores);
-            score2.setItems(scores);
+      
             ProduitService ps = new ProduitService();
             try{
                  
@@ -112,7 +109,11 @@ public class AvisFrontOfficeController implements Initializable {
                 Produit p1 = listProduit.get(0);
                 Produit p2 = listProduit.get(1);
                 Produit p3 = listProduit.get(2);
+                
+                
                 listProduit.forEach(p -> System.out.println(p.toString()));
+                
+                
                 lnomproduit.setText(p1.getNom());
                 lidproduit.setText(Integer.toString(p1.getId()));
                 
@@ -129,10 +130,11 @@ public class AvisFrontOfficeController implements Initializable {
         
     }
 
-        public void sendAvis(ChoiceBox<Integer> cb, TextField commentaire ,Label idProd , Label idUser) throws SQLException{
+        public void sendAvis(Rating r, TextField commentaire ,Label idProd , Label idUser) throws SQLException{
             AvisService as = new AvisService();
             Avis a = new Avis();
-            a.setScore(cb.getValue());
+           // a.setScore(cb.getValue())
+            a.setScore((int)r.getRating());
             a.setCommentaire(commentaire.getText());
             a.setIdProduit(Integer.parseInt(idProd.getText()));
             a.setIdUser(Integer.parseInt(iduser.getText()));
@@ -153,18 +155,22 @@ public class AvisFrontOfficeController implements Initializable {
     private void sendBtn(ActionEvent event) {
         if(event.getSource() == btn1){
             
-              String error = controlSaisie(score.getSelectionModel().getSelectedIndex(),tfCommentaire.getText());
+             String error = controlSaisie((int)rating.getRating(),tfCommentaire.getText());
               if(error == ""){
              Alert a = new Alert(Alert.AlertType.INFORMATION);
              
              try{
-                        sendAvis(score,tfCommentaire,lidproduit,iduser);
+                        sendAvis(rating,tfCommentaire,lidproduit,iduser);
+                          a.setContentText("Sent Successfully");
+                           a.show();
                     }catch(SQLException ex){
+                          a.setContentText("error");
+                           a.show();
                         ex.printStackTrace();
                     }
             
-             a.setContentText("Sent Successfully");
-             a.show();
+           
+             
          }else{
             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
@@ -175,12 +181,12 @@ public class AvisFrontOfficeController implements Initializable {
         
          if(event.getSource() == btn2){
              
-                String error = controlSaisie(score1.getSelectionModel().getSelectedIndex(),tfCommentaire1.getText());
+               String error = controlSaisie((int)rating1.getRating(),tfCommentaire1.getText());
               if(error == ""){
              Alert a = new Alert(Alert.AlertType.INFORMATION);
              
              try{
-                        sendAvis(score1,tfCommentaire1,lidproduit1,iduser);
+                        sendAvis(rating1,tfCommentaire1,lidproduit1,iduser);
                     }catch(SQLException ex){
                         ex.printStackTrace();
                }
@@ -192,16 +198,16 @@ public class AvisFrontOfficeController implements Initializable {
             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
              a.show();
-         }
+         } 
         }
          
           if(event.getSource() == btn3){
-                String error = controlSaisie(score2.getSelectionModel().getSelectedIndex(),tfCommentaire2.getText());
+                String error = controlSaisie((int)rating2.getRating(),tfCommentaire2.getText());
               if(error == ""){
              Alert a = new Alert(Alert.AlertType.INFORMATION);
              
              try{
-                        sendAvis(score2,tfCommentaire2,lidproduit2,iduser);
+                        sendAvis(rating2,tfCommentaire2,lidproduit2,iduser);
                     }catch(SQLException ex){
                         ex.printStackTrace();
                     }
@@ -213,9 +219,9 @@ public class AvisFrontOfficeController implements Initializable {
             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
              a.show();
-         }
+         } 
         
-        }
+        } 
     }
   
     
@@ -223,7 +229,7 @@ public class AvisFrontOfficeController implements Initializable {
      public String controlSaisie(int score,String comment){
     
              String error = "";
-             if((comment.equals("") || score < 0 )){
+             if((comment.equals("") || score == 0 )){
                  return "You have an empty field !";
              }            
               return error;

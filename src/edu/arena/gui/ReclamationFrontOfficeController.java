@@ -5,6 +5,8 @@
  */
 package edu.arena.gui;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import edu.arena.Services.CategoryReclamationService;
 import edu.arena.Services.ReclamationService;
 import edu.arena.entities.CategoryReclamation;
@@ -24,6 +26,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -35,6 +38,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -46,11 +51,9 @@ public class ReclamationFrontOfficeController implements Initializable {
     @FXML
     private TextArea taMessage;
     @FXML
-    private ChoiceBox<String> cbCategory;
+    private JFXComboBox<String> cbCategory;
     @FXML
     private TextField tfTitle;
-    @FXML
-    private Button sentBtn;
     @FXML
     private ChoiceBox<Integer> cbCategoryId;
     private User user;
@@ -70,6 +73,8 @@ public class ReclamationFrontOfficeController implements Initializable {
     private TableColumn<Reclamation, Date> clDate;
     @FXML
     private TableColumn<Reclamation,Boolean> clEtat;
+    @FXML
+    private JFXButton sendBtn;
     /**
      * Initializes the controller class.
      */
@@ -151,6 +156,14 @@ public class ReclamationFrontOfficeController implements Initializable {
             
              a.setContentText("Sent Successfully");
              a.show();
+             Notifications n = Notifications.create()
+                                .title("Succès")
+                                .text("ajout avec succès")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
+                                
          }else{
             Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);

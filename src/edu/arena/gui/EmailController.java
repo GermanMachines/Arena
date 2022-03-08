@@ -11,10 +11,13 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -49,16 +52,21 @@ public class EmailController implements Initializable {
             if(error == ""){
                 
             Email.sendEmail(tfAdresse.getText(),"Arena Administration", tfSubject.getText());
-              Alert a = new Alert(Alert.AlertType.NONE);
-             a.setAlertType(Alert.AlertType.INFORMATION);
-             a.setContentText("Sent successfully");
-             a.show();
+              
+            
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("successfully sent the email")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
             }
             else{
                 throw new Exception("error");
             }
         }catch(Exception e){
-        
+            
              Alert a = new Alert(Alert.AlertType.ERROR);
              a.setContentText(error);
              a.show();

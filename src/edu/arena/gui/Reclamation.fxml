@@ -1,59 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="862.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="862.0" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ReclamationController">
    <children>
       <ChoiceBox fx:id="cbCategoryId" layoutX="678.0" layoutY="13.0" prefHeight="25.0" prefWidth="100.0" />
-      <VBox layoutX="541.0" layoutY="25.0" prefHeight="157.0" prefWidth="165.0" spacing="8.0">
-         <children>
-            <TextField fx:id="tfTitre">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="tfMessage">
-               <font>
-                  <Font size="8.0" />
-               </font>
-            </TextField>
-            <ChoiceBox fx:id="cbCategory" layoutX="10.0" layoutY="147.0" prefWidth="150.0" />
-            <DatePicker fx:id="tfDate" prefHeight="4.0" prefWidth="165.0" />
-            <ChoiceBox fx:id="cbEtat" prefWidth="150.0" />
-         </children>
-      </VBox>
-      <VBox layoutX="442.0" layoutY="19.0" prefHeight="157.0" prefWidth="120.0" spacing="10.0">
-         <children>
-            <Label text="Titre">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-            <Label text="Message">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-            <Label layoutX="10.0" layoutY="64.0" prefHeight="21.0" prefWidth="66.0" text="Category">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-            <Label text="Date">
-               <font>
-                  <Font size="15.0" />
-               </font></Label>
-            <Label layoutX="10.0" layoutY="78.0" text="Etat" />
-         </children>
-      </VBox>
       <TableView fx:id="tvReclamation" layoutX="157.0" layoutY="240.0" onMouseClicked="#handleMouseAction" prefHeight="200.0" prefWidth="528.0">
         <columns>
             <TableColumn fx:id="colNomUser" prefWidth="90.0" text="User" />
@@ -67,16 +30,15 @@
             <TableColumn fx:id="colCategory" prefWidth="42.0" text="categoryId" />
         </columns>
       </TableView>
-      <HBox layoutX="387.0" layoutY="188.0" prefHeight="39.0" prefWidth="319.0" spacing="20.0">
+      <HBox layoutX="361.0" layoutY="190.0" prefHeight="39.0" prefWidth="319.0" spacing="20.0">
          <children>
-            <Button fx:id="btnExport" mnemonicParsing="false" onAction="#export" text="Export PDF" />
-            <Button fx:id="btnInsert" mnemonicParsing="false" onAction="#handleButtonAction" text="Insert" />
-            <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#handleButtonAction" text="Update" />
-            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#handleButtonAction" text="Delete" />
+            <JFXButton fx:id="btnExport" onAction="#export" prefHeight="33.0" prefWidth="75.0" styleClass="btn" text="Export PDF" />
+            <JFXButton fx:id="btnInsert" onAction="#handleButtonAction" prefHeight="34.0" prefWidth="62.0" styleClass="btn" text="Insert" />
+            <JFXButton fx:id="btnUpdate" onAction="#handleButtonAction" prefHeight="33.0" prefWidth="60.0" styleClass="btn" text="update" />
+            <JFXButton fx:id="btnDelete" onAction="#handleButtonAction" prefHeight="33.0" prefWidth="60.0" styleClass="btn" text="Delete" />
          </children>
       </HBox>
-      <TextField fx:id="tfRecherche" layoutX="179.0" layoutY="191.0" onKeyTyped="#filter" promptText="Recherche" />
-      <PieChart fx:id="pcData" layoutX="141.0" layoutY="16.0" prefHeight="157.0" prefWidth="264.0" />
+      <PieChart fx:id="pcData" layoutX="56.0" layoutY="25.0" prefHeight="157.0" prefWidth="264.0" />
       <TextField fx:id="tfUser" layoutX="734.0" layoutY="130.0" prefHeight="18.0" prefWidth="21.0">
          <font>
             <Font size="8.0" />
@@ -87,5 +49,11 @@
             <Font size="8.0" />
          </font>
       </TextField>
+      <JFXTextField fx:id="tfRecherche" layoutX="174.0" layoutY="188.0" onKeyTyped="#filter" prefHeight="25.0" prefWidth="146.0" promptText="Search" />
+      <JFXComboBox fx:id="cbEtat" layoutX="512.0" layoutY="61.0" prefHeight="25.0" prefWidth="133.0" promptText="Status" />
+      <DatePicker fx:id="tfDate" layoutX="360.0" layoutY="62.0" prefHeight="25.0" prefWidth="123.0" promptText="MM/DD/YYYY" />
+      <JFXComboBox fx:id="cbCategory" layoutX="524.0" layoutY="9.0" prefHeight="18.0" prefWidth="110.0" promptText="Category" />
+      <JFXTextField fx:id="tfTitre" layoutX="359.0" layoutY="5.0" prefHeight="25.0" prefWidth="133.0" promptText="Title" styleClass="tf" />
+      <JFXTextArea fx:id="tfMessage" layoutX="362.0" layoutY="103.0" prefHeight="52.0" prefWidth="281.0" promptText="Message..." styleClass="tf" />
    </children>
 </Pane>

@@ -33,8 +33,11 @@ import javafx.stage.Stage;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static java.util.regex.Pattern.CASE_INSENSITIVE;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 /**
  * FXML Controller class
@@ -89,10 +92,16 @@ public class ReclamationCategoryController implements Initializable {
         
          String error = controlSaisie();
            if(error == ""){
-             Alert a = new Alert(AlertType.INFORMATION);
              crs.ajouter(new CategoryReclamation(tfname.getText()));
-             a.setContentText("Added Successfully");
-             a.show();
+             
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("Successfully added category.")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
+                                
          }else{
               Alert a = new Alert(AlertType.ERROR);
              a.setContentText(error);
@@ -108,8 +117,13 @@ public class ReclamationCategoryController implements Initializable {
              //crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
              Alert a = new Alert(AlertType.INFORMATION);
              crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
-             a.setContentText("Updated Successfully");
-             a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("Successfully updated category.")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
          }else{
               Alert a = new Alert(AlertType.ERROR);
              a.setContentText(error);
@@ -121,13 +135,17 @@ public class ReclamationCategoryController implements Initializable {
          
         } 
            if(event.getSource() == btnDelete){
-             //control saisie
         try{
              crs.delete(Integer.parseInt(tfId.getText()));
               Alert a = new Alert(AlertType.INFORMATION);
              crs.update(new CategoryReclamation(Integer.parseInt(tfId.getText()),tfname.getText()));
-             a.setContentText("Deleted Successfully");
-             a.show();
+            Notifications n = Notifications.create()
+                                .title("success")
+                                .text("Successfully deleted the category.")
+                                .graphic(null)
+                                .position(Pos.TOP_CENTER)
+                                .hideAfter(Duration.seconds(3));
+                                n.showInformation();
              
         }catch(SQLException e){
              Alert a = new Alert(AlertType.ERROR);
@@ -150,14 +168,6 @@ public class ReclamationCategoryController implements Initializable {
         tvCategoryReclamation.setItems(list);
     }
     
-    @FXML
-    private void handleMouseAction(MouseEvent event) {
-        CategoryReclamation rec = tvCategoryReclamation.getSelectionModel().getSelectedItem();
-        System.out.println(rec.toString());
-        tfname.setText(rec.getNom());
-        tfId.setText(Integer.toString(rec.getId()));
-
-    }
     
         public String controlSaisie(){
              String nom = tfname.getText();
@@ -176,6 +186,17 @@ public class ReclamationCategoryController implements Initializable {
                }
               return error;
          }
+
+    @FXML
+    private void handleMouseAction(MouseEvent event) {
+        CategoryReclamation rec = tvCategoryReclamation.getSelectionModel().getSelectedItem();
+        System.out.println(rec.toString());
+        tfname.setText(rec.getNom());
+        tfId.setText(Integer.toString(rec.getId()));
+    }
+
+
+ 
 
  
     
