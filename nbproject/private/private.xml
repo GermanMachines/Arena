@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/entities/User.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/services/UserService.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/test/FXMain.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/services/IUser.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/nbproject/jfx-impl.xml</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/entities/Equipe.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/AddEquipeController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/AddEquipe.fxml</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/test/Arena.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/services/EquipeService.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/utils/DataBase.java</file>
+        </group>
+    </open-files>
+</project-private>

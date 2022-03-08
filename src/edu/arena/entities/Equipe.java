@@ -18,7 +18,7 @@ public class Equipe {
   
 
     public Equipe(int idEquipe, String nom, String logo, int score, String region) {
-      
+       this.idEquipe=idEquipe;
         this.nom = nom;
         this.logo = logo;
         this.score = score;
@@ -59,9 +59,9 @@ public class Equipe {
     }
    
 
-  /*  public void setIdEquipe(int idEquipe) {
+    public void setIdEquipe(int idEquipe) {
         this.idEquipe = idEquipe;
-    }*/
+    }
 
     public void setNom(String nom) {
         this.nom = nom;

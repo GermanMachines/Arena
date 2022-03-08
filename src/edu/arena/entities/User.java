@@ -16,8 +16,10 @@ public class User {
     private String surnom, image, email, mdp, telephone;
     private int id_equipe;
     private String role;
+    private String block;
 
-    public User(int id, String nom, String surnom, String image, String email, String mdp, String telephone, int id_equipe, String role) {
+
+    public User(int id, String nom, String surnom, String image, String email, String mdp, String telephone, int id_equipe, String role, String Block) {
         this.id= id ;
         this.nom = nom;
         this.surnom = surnom;
@@ -27,9 +29,10 @@ public class User {
         this.telephone = telephone;
         this.id_equipe = id_equipe;
         this.role = role;
+        this.block = Block ;
     }
 
-    public User(String nom, String surnom, String image, String email, String mdp, String telephone, int id_equipe, String role) {
+    public User(String nom, String surnom, String image, String email, String mdp, String telephone, int id_equipe, String role, String block) {
         this.nom = nom;
         this.surnom = surnom;
         this.image = image;
@@ -38,6 +41,7 @@ public class User {
         this.telephone = telephone;
         this.id_equipe = id_equipe;
         this.role = role;
+        this.block = block;
     }
 
     public User(int id, String nom, String surnom, String email, String telephone) {
@@ -48,6 +52,29 @@ public class User {
         this.telephone = telephone;
 
     }
+
+    public User() {
+    }
+
+    public User(String nom, String surnom, String image, String email, String mdp, String telephone) {
+        this.nom = nom;
+        this.surnom = surnom;
+        this.image = image;
+        this.email = email;
+        this.mdp = mdp;
+        this.telephone = telephone;
+    }
+
+    public User(int id, String nom, String surnom, String image, String email, String mdp, String telephone) {
+        this.id = id;
+        this.nom = nom;
+        this.surnom = surnom;
+        this.image = image;
+        this.email = email;
+        this.mdp = mdp;
+        this.telephone = telephone;
+    }
+    
 
     public int getId() {
         return id;
@@ -73,8 +100,20 @@ public class User {
         return mdp;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getTelephone() {
         return telephone;
+    }
+
+    public void setBlock(String block) {
+        this.block = block;
+    }
+
+    public String getBlock() {
+        return block;
     }
 
     public int getId_equipe() {
@@ -124,7 +163,7 @@ public class User {
     public String concat(){
         return id + ".@." + nom + ".@." + surnom + ".@." + email + ".@." + telephone + ".@."  ;
     }
-    public User(String nom, String surnom, String image, String email, String mdp, String telephone, String role) {
+    public User(String nom, String surnom, String image, String email, String mdp, String telephone, String role ,String block) {
         this.nom = nom;
         this.surnom = surnom;
         this.image = image;
@@ -132,6 +171,9 @@ public class User {
         this.mdp = mdp;
         this.telephone = telephone;
         this.role = role;
+        this.block = block;
     }
+
+   
 
 }

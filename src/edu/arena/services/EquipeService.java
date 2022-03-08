@@ -6,7 +6,7 @@
 package edu.arena.services;
 
 import edu.arena.entities.Equipe;
-import edu.arena.utils.DataBase;
+import edu.arena.utils.MyDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -24,7 +26,7 @@ public class EquipeService implements IUser <Equipe> {
     Statement stm;
 
     public EquipeService() {
-        connexion = DataBase.getInstance().getConnection();
+        connexion = MyDB.getInstance().getConnexion();
     }
 
     @Override
@@ -66,8 +68,17 @@ public class EquipeService implements IUser <Equipe> {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    /*
+       PreparedStatement pre = connexion.prepareStatement("UPDATE `equipe` SET  `nom`=? ,`logo`=?,`score`=?,`region`=? WHERE idEquipe =? ");
+         pre.setString(1, p.getNom());
+         pre.setString(2, p.getLogo());
+            pre.setInt(3, p.getScore());
+            pre.setString(4, p.getRegion());
 
-    
+         pre.setInt(5, idEquipe);
+         pre.executeUpdate();
+
+    */
     
         
     }
@@ -110,6 +121,128 @@ public class EquipeService implements IUser <Equipe> {
         return equipes;  
     }
     
+ /*   public ObservableList<Equipe> Show() throws SQLException {
+        ObservableList<Equipe> equipes = FXCollections.observableArrayList();
+        String req = "select * from equipe";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Equipe p;
+            p = new Equipe(
+                    rst.getInt("idEquipe"),//or rst.getInt(1)
+                    rst.getString("nom"),
+                    rst.getString("logo"),
+                    rst.getInt("score"),
+                    rst.getString("region")
+            );
+            equipes.add(p);
+        }
+        return equipes;  
+    }*/
+
+    public ObservableList<Equipe> show() throws SQLException {
+          ObservableList<Equipe> equipes = FXCollections.observableArrayList();
+        String req = "select * from equipe";
+        stm = connexion.createStatement();
+        //ensemble de resultat
+        ResultSet rst = stm.executeQuery(req);
+
+        while (rst.next()) {
+            Equipe p;
+            p = new Equipe(
+                    rst.getInt("idEquipe"),//or rst.getInt(1)
+                    rst.getString("nom"),
+                    rst.getString("logo"),
+                    rst.getInt("score"),
+                    rst.getString("region")
+            );
+            equipes.add(p);
+        }
+        return equipes;  
+    }
+     public String getImage(int id) {
+        String image = "";
+        try {
+            PreparedStatement pre = connexion.prepareStatement("select logo from equipe where idEquipe=?");
+            pre.setInt(1, id);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next()) {
+                image = rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.getMessage();
+        }
+        return image;
+    }
+    
+      
+    public void modif(Equipe p) throws SQLException {
+
+    
+      String req;
+
+        req = "UPDATE `equipe` SET  `nom`=? ,`logo`=?,`score`=?,`region`=? WHERE idEquipe =?";
+
+       /* try {*/
+            PreparedStatement ps = connexion.prepareStatement(req);
+            ps.setString(1, p.getNom());
+           
+            ps.setString(2, p.getLogo());
+            ps.setInt(3, p.getScore());
+            ps.setString(4, p.getRegion());
+          
+            ps.setInt(5, p.getIdEquipe());
+            ps.executeUpdate();
+     /*   } catch (SQLException ex) {
+            
+        }*/
+
+    }
+         
+          public void update(Equipe p) throws SQLException {
+
+         stm = connexion.createStatement();
+         PreparedStatement ps = connexion.prepareStatement("UPDATE `equipe` SET  `nom`=? ,`logo`=?,`score`=?,`region`=? WHERE idEquipe =?");
+          ps.setString(1, p.getNom());
+           
+            ps.setString(2, p.getLogo());
+            ps.setInt(3, p.getScore());
+            ps.setString(4, p.getRegion());
+          
+            ps.setInt(5, p.getIdEquipe());
+         ps.executeUpdate();
+   
+    }
+          
+            public boolean UpdateF(int IdEquipe ,String Nom , String Logo, int Score, String Region) {
+            try {
+            PreparedStatement pre = connexion.prepareStatement("UPDATE equipe SET nom= ? ,logo = ?, score = ?, region =? where IdEquipe= ? ;");
+            pre.setString(1, Nom);
+            pre.setString(2, Logo);
+            pre.setInt(3, Score);   
+                        pre.setString(4, Region);
+
+                        pre.setInt(5, IdEquipe);   
+
+
+
+            if (pre.executeUpdate() != 0) {
+                System.out.println(" equipe updated");
+                 } else {
+                System.out.println("non");
+            }
+                return true;
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return false;
+    }
+         
+         
+   
    
     
     
