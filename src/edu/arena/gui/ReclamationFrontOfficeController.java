@@ -10,8 +10,10 @@ import com.jfoenix.controls.JFXComboBox;
 import edu.arena.Services.CategoryReclamationService;
 import edu.arena.Services.ReclamationService;
 import edu.arena.entities.CategoryReclamation;
+import edu.arena.entities.Outils;
 import edu.arena.entities.Reclamation;
 import edu.arena.entities.User;
+import edu.arena.services.UserService;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -75,9 +77,14 @@ public class ReclamationFrontOfficeController implements Initializable {
     private TableColumn<Reclamation,Boolean> clEtat;
     @FXML
     private JFXButton sendBtn;
+    
+
+
     /**
      * Initializes the controller class.
      */
+    int iduser = Outils.getCurrentSession();
+    UserService us = new UserService();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO$
@@ -85,7 +92,10 @@ public class ReclamationFrontOfficeController implements Initializable {
         tfUsername.setVisible(false);
         tfUserId.setVisible(false);
         cbCategoryId.setVisible(false);
-       try {
+          User u = us.findbyidcode(iduser);
+          tfUserId.setText(Integer.toString(iduser));
+          tfUsername.setText(u.getNom());
+   /*    try {
       File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
       Scanner myReader = new Scanner(myObj);
       String id = myReader.nextLine();
@@ -101,7 +111,8 @@ public class ReclamationFrontOfficeController implements Initializable {
     } catch (FileNotFoundException e) {
       System.out.println("An error occurred when loading data.txt");
       e.printStackTrace();
-    }
+    }*/
+   
           ReclamationService r = new ReclamationService();
            CategoryReclamationService rs = new CategoryReclamationService();
         

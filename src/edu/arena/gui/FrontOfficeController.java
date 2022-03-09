@@ -38,7 +38,9 @@ public class FrontOfficeController implements Initializable {
     @FXML
     private Button btnReclamationCategory;
     @FXML
-    private Button btnProducts;
+    private Button btnProfile;
+    @FXML
+    private Button btnTeams;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -63,9 +65,6 @@ public class FrontOfficeController implements Initializable {
     }
 
 
-    @FXML
-    private void products(ActionEvent event) {
-    }
 
     @FXML
     private void avis(ActionEvent event) throws IOException {
@@ -82,7 +81,17 @@ public class FrontOfficeController implements Initializable {
     }
 
     @FXML
-    private void showProducts(ActionEvent event) {
+    private void profile(ActionEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("UserProfile.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
+    }
+
+    @FXML
+    private void teams(ActionEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("EquipeFront.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
     }
     
 }

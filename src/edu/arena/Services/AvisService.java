@@ -85,8 +85,9 @@ public class AvisService implements IService<Avis>{
   public ObservableList<Avis> getAll()throws SQLException{
         ObservableList<Avis> list = FXCollections.observableArrayList();
         stm = connexion.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT avis.id , avis.idUtulisateur, avis.idProduit , avis.score, avis.commentaire , utulisateur.username ,produit.nom FROM avis INNER JOIN utulisateur ON avis.idUtulisateur = utulisateur.id INNER JOIN produit ON produit.id = avis.idProduit");
-        while (rs.next()) {
+        String query ="SELECT avis.id , avis.idUtulisateur, avis.idProduit , avis.score, avis.commentaire , user.nom as username ,produit.nom FROM avis INNER JOIN user ON avis.idUtulisateur = user.id INNER JOIN produit ON produit.id = avis.idProduit";
+        ResultSet rs = stm.executeQuery(query);
+                while (rs.next()) {
             int idAvis = rs.getInt("id");
             int idUser = rs.getInt("idUtulisateur");
             int idProduit  = rs.getInt("idProduit");

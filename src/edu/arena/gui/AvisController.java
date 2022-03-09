@@ -10,7 +10,9 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.arena.Services.AvisService;
 import edu.arena.Services.ProduitService;
 import edu.arena.entities.Avis;
+import edu.arena.entities.Outils;
 import edu.arena.entities.Produit;
+import edu.arena.services.UserService;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -94,28 +96,18 @@ public class AvisController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
+    int idUserr = Outils.getCurrentSession();
+    UserService us = new UserService();
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         ProduitService ps = new ProduitService();
+        idUser.setText(Integer.toString(idUserr));
         try{
        
-            
-      File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
-      
-          Scanner myReader = new Scanner(myObj);
-      
-      String id = myReader.nextLine();
-      String nom =myReader.nextLine();
-      
-        adminId.setText(id);
-     
-        
-        //adminId.setVisible(false);
-       
-     
-      myReader.close();
-
             ObservableList<Produit> prodList = ps.afficher();
             List<String> listNom = prodList.stream().map(p -> p.getNom()).collect(toList());
             List<Integer>  listId = prodList.stream().map(p -> p.getId()).collect(toList());
@@ -140,16 +132,14 @@ public class AvisController implements Initializable {
          showAvis();
         }catch(SQLException ex){
             ex.printStackTrace();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        } 
         
     }    
 
     @FXML
     private void handleButtonAction(ActionEvent event) throws SQLException {
         AvisService as = new AvisService();
-        int idUtulisateur = 0;
+       
         if(event.getSource() == btnInsert){
            int index = cbNomProduit.getSelectionModel().getSelectedIndex(); 
            cbIdProduit.getSelectionModel().select(index);
@@ -160,12 +150,11 @@ public class AvisController implements Initializable {
             String nomProd = cbNomProduit.getValue();
             String commentaire = tfCommentaire.getText();
             int score = (int)rating.getRating();
-            if(idUser.getText() == ""){
+            if(idUser.getText().equals("")){
                 idUser.setText(adminId.getText());
             }
-             idUtulisateur = Integer.parseInt(adminId.getText());
-             
-            as.ajouter(new Avis(score,commentaire,idUtulisateur,idProd));
+            
+            as.ajouter(new Avis(score,commentaire,idUserr,idProd));
             showAvis();  
            // a.setContentText("Added Successfully");
            // a.show();
@@ -186,6 +175,8 @@ public class AvisController implements Initializable {
         }
         
         if(event.getSource() == btnUpdate){
+            int index = cbNomProduit.getSelectionModel().getSelectedIndex(); 
+           cbIdProduit.getSelectionModel().select(index);
            String error = controlSaisie();
            if(error == ""){
              Alert a = new Alert(Alert.AlertType.INFORMATION);
@@ -196,13 +187,9 @@ public class AvisController implements Initializable {
             String nomProd = cbNomProduit.getValue();
             String commentaire = tfCommentaire.getText();
             int score = (int)rating.getRating();
-             idUtulisateur = Integer.parseInt(idUser.getText());
-             
-            if(idUtulisateur == 0){
-                idUtulisateur = 1;
-            }
             
-            as.update(new Avis(idAvis,score,commentaire,idUtulisateur,idProd));
+            
+            as.update(new Avis(idAvis,score,commentaire,idUserr,idProd));
             showAvis();  
             
             

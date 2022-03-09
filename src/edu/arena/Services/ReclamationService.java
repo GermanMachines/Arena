@@ -110,8 +110,9 @@ public class ReclamationService implements IService<Reclamation> {
     public ObservableList<Reclamation> getAll()throws SQLException{
         ObservableList<Reclamation> list = FXCollections.observableArrayList();
         stm = connexion.createStatement();
-        ResultSet rs = stm.executeQuery("SELECT reclamation.id , reclamation.idUser, reclamation.idCategoryReclamation , reclamation.titre, reclamation.message ,reclamation.date ,reclamation.etat, utulisateur.username , categoryreclamation.nom FROM reclamation INNER JOIN utulisateur ON reclamation.idUser = utulisateur.id INNER JOIN categoryreclamation ON reclamation.idCategoryReclamation = categoryreclamation.id");
-        while (rs.next()) {
+        String query ="SELECT reclamation.id , reclamation.idUser, reclamation.idCategoryReclamation , reclamation.titre, reclamation.message ,reclamation.date ,reclamation.etat, user.nom as username , categoryreclamation.nom FROM reclamation INNER JOIN user ON reclamation.idUser = user.id INNER JOIN categoryreclamation ON reclamation.idCategoryReclamation = categoryreclamation.id";
+        ResultSet rs = stm.executeQuery(query);
+           while (rs.next()) {
             int idRec = rs.getInt("id");
             int idUser = rs.getInt("idUser");
             int idCategoryReclamation  = rs.getInt("idCategoryReclamation");

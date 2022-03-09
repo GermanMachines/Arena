@@ -8,7 +8,9 @@ package edu.arena.gui;
 import edu.arena.Services.AvisService;
 import edu.arena.Services.ProduitService;
 import edu.arena.entities.Avis;
+import edu.arena.entities.Outils;
 import edu.arena.entities.Produit;
+import edu.arena.services.UserService;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
@@ -81,30 +83,35 @@ public class AvisFrontOfficeController implements Initializable {
     @FXML
     private Rating rating2;
     
+    
+     int idUserr = Outils.getCurrentSession();
+    UserService us = new UserService();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-      
-            ProduitService ps = new ProduitService();
-            try{
-                 
-                File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
-                Scanner myReader = new Scanner(myObj);
-                String id = myReader.nextLine();
-                String nom =myReader.nextLine();
-      
-                iduser.setText(id);
-           
-        
-                iduser.setVisible(false);
+        iduser.setVisible(false);
                 
                 lidproduit.setVisible(false);
                 lidproduit1.setVisible(false);
                 lidproduit2.setVisible(false);
-     
-                myReader.close();
-    
+      
+            ProduitService ps = new ProduitService();
+            try{
+                 
+//                File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
+//                Scanner myReader = new Scanner(myObj);
+//                String id = myReader.nextLine();
+//                String nom =myReader.nextLine();
+//      
+//                iduser.setText(id);
+//           
+//        
+//                
+//     
+//                myReader.close();
+                iduser.setText(Integer.toString(idUserr));
+                
                 ObservableList<Produit> listProduit = ps.afficher();
                 Produit p1 = listProduit.get(0);
                 Produit p2 = listProduit.get(1);

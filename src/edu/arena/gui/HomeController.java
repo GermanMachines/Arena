@@ -5,7 +5,7 @@
  */
 package edu.arena.gui;
 
-import edu.arena.Services.UserService;
+import edu.arena.services.UserService;
 import edu.arena.entities.User;
 import java.io.IOException;
 import java.net.URL;
@@ -67,15 +67,15 @@ public class HomeController implements Initializable {
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         if(event.getSource() == createBtn){
-          try{
+         // try{
             UserService us = new UserService();
-            us.ajouter(new User(tfname.getText()));
+           // us.ajouter(new User(tfname.getText()));
             etat.setText("Added successfuly");
             etat.setTextFill(Paint.valueOf("#00FF00"));
             etat.setVisible(true);
             
             
-          }catch(SQLException ex){
+        /*  }catch(SQLException ex){
               Alert alert = new Alert(AlertType.ERROR);
               alert.setContentText(ex.getMessage());
               etat.setText("couldn't add user");
@@ -85,6 +85,9 @@ public class HomeController implements Initializable {
               alert.showAndWait();
           }
         }
+    
+*/
+          }
     }
 
     @FXML

@@ -10,7 +10,12 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.arena.Services.CategoryReclamationService;
 import edu.arena.Services.ReclamationService;
 import edu.arena.entities.CategoryReclamation;
+import edu.arena.entities.Outils;
 import edu.arena.entities.Produit;
+import edu.arena.entities.Reclamation;
+import edu.arena.entities.User;
+import edu.arena.services.UserService;
+import edu.arena.services.UserService;
 import edu.arena.entities.Reclamation;
 import edu.arena.utils.DataBase;
 import java.io.File;
@@ -127,12 +132,18 @@ public class ReclamationController implements Initializable {
     /**
      * Initializes the controller class.
      */
+     int iduser = Outils.getCurrentSession();
+    UserService us = new UserService();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
      //  try{
       
-     
+        User u = new User();
+        u=us.findbyidcode(iduser);
+        
+        tfUser.setText(Integer.toString(iduser));
+        
         tfId.setVisible(false);
         cbCategoryId.setVisible(false);
         tfUser.setVisible(false);
@@ -217,7 +228,7 @@ public class ReclamationController implements Initializable {
    public void showReclamation() throws SQLException{
          ReclamationService rs = new ReclamationService();
         ObservableList<Reclamation> list =  rs.getAll();
-        //list.stream().forEach(r -> System.out.println(r.toString()));
+        list.stream().forEach(r -> System.out.println(r.toString()));
       //  colId.setVisible(false);
         colId.setCellValueFactory(new PropertyValueFactory<Reclamation,Integer>("id"));
         colTitre.setCellValueFactory(new PropertyValueFactory<Reclamation,String>("titre"));
@@ -267,29 +278,12 @@ public class ReclamationController implements Initializable {
         cbCategoryId.getSelectionModel().select(nb);
          if(event.getSource() == btnInsert){
              //control saisie
-                               try {
-                   File myObj = new File("C:/Users/SBS/Arena/src/edu/arena/utils/data.txt");
-                   Scanner myReader = new Scanner(myObj);
-                   String id = myReader.nextLine();
-                   String nom =myReader.nextLine();
-      
-                   tfUser.setText(id);
-                   // tfUsername.setText(nom);
-        
-                   // tfUser.setVisible(false);
-                     //tfUsername.setDisable(true);
-     
-                    myReader.close();
-            } catch (FileNotFoundException e) {
-      System.out.println("An error occurred when loading data.txt");
-      e.printStackTrace();
-    }
-           String error = controlSaisie();
+       String error = controlSaisie();
            if(error.equals("")){
               crs.ajouter(new Reclamation(tfTitre.getText(),tfMessage.getText(),
                  Integer.parseInt(tfUser.getText()),cbCategoryId.getValue()
          ));
-             showReclamation();;
+             showReclamation();
             Notifications n = Notifications.create()
                                 .title("success")
                                 .text("successfully added reclamation.")

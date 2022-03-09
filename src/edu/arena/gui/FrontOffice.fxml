@@ -55,6 +55,22 @@
                         <Insets top="2.0" />
                      </padding>
                   </Button>
+                  <Button fx:id="btnProfile" layoutX="10.0" layoutY="47.0" mnemonicParsing="false" onAction="#profile" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Profile" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnTeams" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#teams" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Teams" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Button>
                   <Button fx:id="btnReclamationCategory" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ajouterReclamation" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Ajouter Reclamation" textFill="WHITE">
                      <font>
                         <Font size="16.0" />

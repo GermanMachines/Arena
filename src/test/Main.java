@@ -9,7 +9,6 @@ import edu.arena.Services.AvisService;
 import edu.arena.Services.CategoryReclamationService;
 import edu.arena.Services.ProduitService;
 import edu.arena.Services.ReclamationService;
-import edu.arena.Services.UserService;
 import edu.arena.entities.Avis;
 import edu.arena.entities.CategoryReclamation;
 import edu.arena.entities.Produit;

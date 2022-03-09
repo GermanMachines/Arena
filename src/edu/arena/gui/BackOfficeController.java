@@ -40,6 +40,10 @@ public class BackOfficeController implements Initializable {
     private Button btnReclamationCategory;
     @FXML
     private Button btnEmail;
+    @FXML
+    private Button btnUsers;
+    @FXML
+    private Button btnTeams;
 
     /**
      * Initializes the controller class.
@@ -98,6 +102,21 @@ public class BackOfficeController implements Initializable {
     @FXML
     private void email(ActionEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("Email.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
+    }
+    
+    @FXML
+    private void users(ActionEvent event) throws IOException {
+              
+             Parent fxml = FXMLLoader.load(getClass().getResource("UserDashboard.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
+    }
+
+    @FXML
+    private void Teams(ActionEvent event) throws IOException {
+          Parent fxml = FXMLLoader.load(getClass().getResource("DashboardEquipe.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(fxml);
     }

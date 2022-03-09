@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="554.0" maxWidth="899.0" minHeight="550.0" minWidth="750.0" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.BackOfficeController">
+<BorderPane maxHeight="800.0" maxWidth="1164.0" minHeight="550.0" minWidth="750.0" prefHeight="800.0" prefWidth="1164.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.BackOfficeController">
    <top>
       <Pane prefHeight="80.0" prefWidth="750.0" style="-fx-background-color: #C4C4C4;" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label fx:id="exit" layoutX="854.0" layoutY="20.0" text="x" textFill="#0f1e2f">
+            <Label fx:id="exit" layoutX="1111.0" layoutY="20.0" text="x" textFill="#0f1e2f">
                <font>
                   <Font size="28.0" />
                </font>
@@ -44,10 +44,26 @@
    <left>
       <Pane prefHeight="461.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="-1.0" prefHeight="475.0" prefWidth="202.0" spacing="20.0" style="-fx-background-color: #0F1E2F;">
+            <VBox layoutX="-1.0" prefHeight="724.0" prefWidth="202.0" spacing="20.0" style="-fx-background-color: #0F1E2F;">
                <children>
                   <Line endX="100.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
                   <Button fx:id="btnHome" mnemonicParsing="false" onAction="#Home" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnUsers" layoutX="10.0" layoutY="47.0" mnemonicParsing="false" onAction="#users" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Users" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnTeams" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#Teams" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Teams" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -75,7 +91,7 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnEmail" layoutX="10.0" layoutY="273.0" mnemonicParsing="false" onAction="#email" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Email" textFill="WHITE">
+                  <Button fx:id="btnEmail" layoutX="10.0" layoutY="273.0" mnemonicParsing="false" onAction="#email" prefHeight="0.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Email" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>

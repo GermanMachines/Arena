@@ -60,7 +60,7 @@ public class FXMain extends Application {
         //primaryStage.show();
         
         Parent root = FXMLLoader.load(getClass().getResource("../edu/arena/gui/Login.fxml"));
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        //primaryStage.initStyle(StageStyle.UNDECORATED);
         
         root.setOnMousePressed(event -> {
             x = event.getSceneX();
