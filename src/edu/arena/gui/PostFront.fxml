@@ -32,7 +32,7 @@
                                           <Font name="Cambria" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="totalcom" prefHeight="26.0" prefWidth="145.0" text="Available Posts">
+                                    <Label fx:id="totalpost" prefHeight="26.0" prefWidth="145.0" text="Posts Online" textFill="WHITE">
                                        <font>
                                           <Font name="Cambria" size="18.0" />
                                        </font>
@@ -56,7 +56,7 @@
                                           <Font name="Cambria Bold Italic" size="18.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="totalpost" prefHeight="26.0" prefWidth="145.0" text="Posts Online" textFill="RED">
+                                    <Label fx:id="totalcom" prefHeight="26.0" prefWidth="145.0" text="Available Posts" textFill="WHITE">
                                        <font>
                                           <Font name="Cambria" size="18.0" />
                                        </font>

@@ -54,6 +54,7 @@ public class PostFrontController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
+            
             totalpost.setText(pts.totalP());
         } catch (SQLException ex) {
             Logger.getLogger(PostFrontController.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,17 +119,17 @@ public class PostFrontController implements Initializable {
               
                 
     }
-     public String totalpost() throws SQLException{
+     public void totalpost() throws SQLException{
         String nbrpacks = pts.totalP();
         System.out.println(nbrpacks);
        totalpost.setText(nbrpacks);
-        return nbrpacks;
+       
    }
      
       public void totalcom() throws SQLException{
         String nbrpacks = cts.totalC();
         System.out.println(nbrpacks);
-       totalcom.setText(nbrpacks);
+       totalcom.setText((nbrpacks));
    }
 }
     

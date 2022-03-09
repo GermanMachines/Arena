@@ -131,7 +131,7 @@ public class ComBackController implements Initializable {
     }
 
     @FXML
-    private void deletecom(ActionEvent event) {
+    private void deletecom(ActionEvent event) throws SQLException {
          {
         Comentaire c= tvtabCom.getSelectionModel().getSelectedItem();
         ComentaireCrud aS = new ComentaireCrud();
@@ -139,18 +139,20 @@ public class ComBackController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succées");
         alert.setHeaderText(null);
-        alert.setContentText("La suppression d'event a été effectué avec succées");
+        alert.setContentText("La suppression de comentaire a été effectué avec succées");
         alert.showAndWait();
-        tvtabCom.refresh();
+//        tvtabCom.refresh();
         
         }else{
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText(null);
-        alert.setContentText("La supression d'event n'a pas été effectué!");
+        alert.setContentText("La supression de comentaire  n'a pas été effectué!");
         alert.showAndWait();   
            tvtabCom.setItems(comdata);
         }
+         comdata.clear();
+        comdata.addAll(aS.getCombyPost(c.getId_post()));
     }
     }
 
@@ -174,14 +176,14 @@ public class ComBackController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succées");
         alert.setHeaderText(null);
-        alert.setContentText("La modification d'event a été effectué avec succées");
+        alert.setContentText("La modification de comentaire a été effectué avec succées");
         alert.showAndWait();
       tvtabCom.refresh();
         }else{
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText(null);
-        alert.setContentText("La modufication d'event n'a pas été effectué!");
+        alert.setContentText("La modufication  de comentaire  n'a pas été effectué!");
       alert.showAndWait();   
    tvtabCom.setItems(comdata);
        }

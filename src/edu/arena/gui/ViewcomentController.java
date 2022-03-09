@@ -79,7 +79,7 @@ public int getTxtIdUser(){
         String titre = tfcomment.getText();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
     // p.getTest();
-      if( (titre.contains("fuck") ) || (titre.contains("gga") )  || (titre.equals("")) ){
+      if( (titre.contains("fuck") ) || (titre.contains("aziz") )  || (titre.equals("")) ){
                        //Alert saisie jeux :
              alert.setAlertType(Alert.AlertType.WARNING);
             alert.setTitle("Conditions de saisie");
@@ -97,7 +97,7 @@ public int getTxtIdUser(){
         alert.setAlertType(Alert.AlertType.INFORMATION);
         alert.setTitle("Add comment");
         alert.setHeaderText("Results:");
-        alert.setContentText("Game added successfully!");
+        alert.setContentText("cpment added successfully!");
         } catch (SQLException ex){
                      //Alert Error jeux :
             alert.setAlertType(Alert.AlertType.WARNING);
@@ -107,7 +107,7 @@ public int getTxtIdUser(){
             //Alert Error jeux !
         } finally{
               alert.showAndWait();
-        }Notifications notificationBuilder = Notifications.create().title("notification").text("comentaire envoyé avec succés").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
+        }Notifications notificationBuilder = Notifications.create().title("notification").text("comentaire ajouter avec succés").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
                 .position(Pos.TOP_CENTER).onAction(new EventHandler<ActionEvent>(){
                    public void handle(ActionEvent event){
                        System.out.println("clicked on");
@@ -118,7 +118,7 @@ public int getTxtIdUser(){
           
           
         }
-       
+        
           
    
     }

@@ -154,7 +154,7 @@ public class PostBackController implements Initializable {
         alert.setAlertType(Alert.AlertType.INFORMATION);
         alert.setTitle("Add post");
         alert.setHeaderText("Results:");
-        alert.setContentText("Game added successfully!");
+        alert.setContentText("post added successfully!");
         } catch (SQLException ex){
                      //Alert Error jeux :
             alert.setAlertType(Alert.AlertType.WARNING);
@@ -165,7 +165,7 @@ public class PostBackController implements Initializable {
         } finally{
               alert.showAndWait();
         }
-         Notifications notificationBuilder = Notifications.create().title("notification").text("post envoyé avec succés").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
+         Notifications notificationBuilder = Notifications.create().title("notification").text("post ajouter avec succés").graphic(null).hideAfter(javafx.util.Duration.seconds(5))
                 .position(Pos.TOP_CENTER).onAction(new EventHandler<ActionEvent>(){
                    public void handle(ActionEvent event){
                        System.out.println("clicked on");
@@ -208,14 +208,14 @@ public class PostBackController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succées");
         alert.setHeaderText(null);
-        alert.setContentText("La modification d'event a été effectué avec succées");
+        alert.setContentText("La modification de post a été effectué avec succées");
         alert.showAndWait();
         afficherEvent();
         }else{
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText(null);
-        alert.setContentText("La modufication d'event n'a pas été effectué!");
+        alert.setContentText("La modification de post n'a pas été effectué!");
         alert.showAndWait();   
         afficherEvent();
         }  
@@ -233,14 +233,14 @@ public class PostBackController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succées");
         alert.setHeaderText(null);
-        alert.setContentText("La suppression d'event a été effectué avec succées");
+        alert.setContentText("La suppression de post a été effectué avec succées");
         alert.showAndWait();
         afficherEvent();
         }else{
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText(null);
-        alert.setContentText("La supression d'event n'a pas été effectué!");
+        alert.setContentText("La suppression de post n'a pas été effectué!");
         alert.showAndWait();   
         afficherEvent();
         }
@@ -331,6 +331,8 @@ public class PostBackController implements Initializable {
          data.clear();
         // System.out.println("heyy yuuu");
         data.addAll(p.showpost().stream().filter((e)-> e.getTitre().toLowerCase().contains(search.getText().toLowerCase())
+                                                  || e.getAuteur().toLowerCase().contains(search.getText().toLowerCase())
+                                                  || e.getDate_post().toLowerCase().contains(search.getText().toLowerCase())
         ).collect(Collectors.toList()));
        // System.out.println(data); 
       

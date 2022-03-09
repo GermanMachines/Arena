@@ -103,14 +103,14 @@ public class ItemPostController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Succées");
         alert.setHeaderText(null);
-        alert.setContentText("La modification d'event a été effectué avec succées");
+        alert.setContentText("Le rating a été effectué avec succées");
         alert.showAndWait();
       
         }else{
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Erreur");
         alert.setHeaderText(null);
-        alert.setContentText("La modufication d'event n'a pas été effectué!");
+        alert.setContentText("Le rating n'a pas été effectué!");
         alert.showAndWait();   
      
         }
