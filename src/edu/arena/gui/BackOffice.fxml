@@ -96,6 +96,26 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
+                  <Button fx:id="btnpost" layoutX="10.0" layoutY="440.0" mnemonicParsing="false" onAction="#post" prefHeight="0.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Post" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btncomm" layoutX="10.0" layoutY="497.0" mnemonicParsing="false" onAction="#commentaire" prefHeight="0.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Commentaire" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnjeux" layoutX="10.0" layoutY="554.0" mnemonicParsing="false" onAction="#jeux" prefHeight="0.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Jeux" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btntournois" layoutX="10.0" layoutY="611.0" mnemonicParsing="false" onAction="#tournois" prefHeight="0.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Tournois" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
                </children>
                <padding>
                   <Insets top="15.0" />

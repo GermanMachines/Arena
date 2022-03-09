@@ -26,7 +26,7 @@
 
 .chosen-game-card{
    /* -fx-background-color:#F16C31;*/
-    -fx-background-color:#81171B;
+    -fx-background-color:#540e0e;
     -fx-background-radius:30;
 }
 
@@ -41,13 +41,13 @@
 }
 
 .available-onlnie-card{
-    -fx-background-color:#BAEAC3;
+    -fx-background-color:#D3D3D3;
     -fx-background-radius:30;
 }
 
 .item-game{
      -fx-background-color:#28303F;
-    -fx-background-radius:30;
+   /* -fx-background-radius:30;*/
 }
 
 .backroung-game{

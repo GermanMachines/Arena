@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="404.0" prefWidth="556.0" stylesheets="@GamesStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ItemPostController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="439.0" prefWidth="614.0">
+         <children>
+            <Label fx:id="titreLabel" prefHeight="20.0" prefWidth="538.0" text="titre">
+               <font>
+                  <Font name="Cambria Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="img" fitHeight="231.0" fitWidth="481.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="160.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="83.0" text="author:" />
+                  <Label fx:id="auteurlabel" prefHeight="20.0" prefWidth="231.0" text="auteur">
+                     <font>
+                        <Font name="Cambria Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="21.0" prefWidth="90.0" text="on date:" />
+                  <Label fx:id="datapostlabel" prefHeight="21.0" prefWidth="248.0" text="date">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="20.0" top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Label fx:id="conteur" />
+            <Button mnemonicParsing="false" onAction="#like" styleClass="search-button" stylesheets="@GamesStyle.css" text="like" textFill="WHITE" />
+            <Rating fx:id="PostRarting" rating="1.0" stylesheets="@GamesStyle.css" />
+            <Button mnemonicParsing="false" onAction="#comentpostbtn" prefHeight="28.0" prefWidth="107.0" styleClass="search-button" stylesheets="@GamesStyle.css" text="commentaire" textFill="WHITE">
+               <font>
+                  <Font name="Candara Bold" size="15.0" />
+               </font>
+            </Button>
+            <Label fx:id="tfidpost" text="id" />
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="item-game" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

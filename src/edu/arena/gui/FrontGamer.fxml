@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.FrontGamerController">
+   <children>
+      <AnchorPane prefHeight="800.0" prefWidth="800.0">
+         <children>
+            <BorderPane fx:id="DashbordPane" prefHeight="800.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <right>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #06111F;" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXButton onAction="#JeuxAction" prefHeight="75.0" prefWidth="106.0" text="Jeux" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font></JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="10.0" onAction="#TournoisAction" prefHeight="75.0" prefWidth="106.0" text="My Match" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font></JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="85.0" onAction="#FreeGamesAction" prefHeight="75.0" prefWidth="106.0" text="FREE" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="160.0" onAction="#PostAction" prefHeight="75.0" prefWidth="106.0" text="Post" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnProfile" layoutX="10.0" layoutY="235.0" onAction="#Profile" prefHeight="75.0" prefWidth="106.0" text="Profile" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnTeams" layoutX="10.0" layoutY="310.0" onAction="#Equipe" prefHeight="75.0" prefWidth="106.0" text="Equipe" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnReclamationCategory" layoutX="10.0" layoutY="385.0" onAction="#Reclamation" prefHeight="75.0" prefWidth="106.0" text="Reclamation" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="btnAvis" layoutX="10.0" layoutY="460.0" onAction="#Avis" prefHeight="75.0" prefWidth="106.0" text="Avis" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </right>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

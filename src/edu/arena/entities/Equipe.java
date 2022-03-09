@@ -33,6 +33,18 @@ public class Equipe {
         this.region = region;
        
     }
+    public Equipe(String nom, String region) {
+this.nom=nom;
+this.region=region;
+
+    }
+
+    public Equipe(int IdEquipe, String nom, String region) {
+    this.idEquipe = IdEquipe;
+        this.nom = nom;
+
+        this.region = region;
+    }
 
   
 

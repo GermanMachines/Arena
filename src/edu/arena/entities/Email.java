@@ -18,16 +18,16 @@ import javax.mail.internet.MimeMessage;
 
 /**
  *
- * @author DeathKnight
+ * @author ADMIN
  */
-
 public class Email {
 
     public static void sendEmail(String addr, String subject,String message) throws Exception {
-        //abdousfayhitest@gmail.com
+
         String from = "tarekayadi0@gmail.com";
         String pass ="123456789*-";
         String[] to = {addr};
+        //String to = "ayadipawlou@gmail.com";
         String host ="smtp.gmail.com" ;
                     String messageText = message;
 

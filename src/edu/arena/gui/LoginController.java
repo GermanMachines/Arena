@@ -93,7 +93,7 @@ public class LoginController implements Initializable {
                         System.out.println(ex.getMessage());
                     }
                 } else {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FrontOffice.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("FrontGamer.fxml"));
                     try {
                         Parent root = loader.load();
                         tfnom.getScene().setRoot(root);

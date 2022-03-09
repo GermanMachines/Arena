@@ -44,6 +44,14 @@ public class BackOfficeController implements Initializable {
     private Button btnUsers;
     @FXML
     private Button btnTeams;
+    @FXML
+    private Button btnpost;
+    @FXML
+    private Button btncomm;
+    @FXML
+    private Button btnjeux;
+    @FXML
+    private Button btntournois;
 
     /**
      * Initializes the controller class.
@@ -117,6 +125,34 @@ public class BackOfficeController implements Initializable {
     @FXML
     private void Teams(ActionEvent event) throws IOException {
           Parent fxml = FXMLLoader.load(getClass().getResource("DashboardEquipe.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
+    }
+
+    @FXML
+    private void post(ActionEvent event) throws IOException {
+         Parent fxml = FXMLLoader.load(getClass().getResource("PostBack.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
+    }
+
+    @FXML
+    private void commentaire(ActionEvent event) throws IOException {
+         Parent fxml = FXMLLoader.load(getClass().getResource("ComBack.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
+    }
+
+    @FXML
+    private void jeux(ActionEvent event) throws IOException {
+         Parent fxml = FXMLLoader.load(getClass().getResource("DashbordJeux.fxml"));
+            contentArea.getChildren().removeAll();
+            contentArea.getChildren().setAll(fxml);
+    }
+
+    @FXML
+    private void tournois(ActionEvent event) throws IOException {
+         Parent fxml = FXMLLoader.load(getClass().getResource("DashbordTournois.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(fxml);
     }
