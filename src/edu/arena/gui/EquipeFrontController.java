@@ -81,7 +81,7 @@ System.out.println(ex.getMessage());        }
           
          
             EquipeItemController itemController = fxmlLoader.getController();
-            itemController.setData(Matchdata.get(i).getIdEquipe(),Matchdata.get(i).getNom(),Matchdata.get(i).getScore(),Matchdata.get(i).getRegion());
+            itemController.setData(Matchdata.get(i).getIdEquipe(),Matchdata.get(i).getNom(),Matchdata.get(i).getLogo(),Matchdata.get(i).getScore(),Matchdata.get(i).getRegion());
             if(column == 3){
                 column=0;
                 row++;

@@ -6,6 +6,8 @@
 package edu.arena.gui;
 
 import edu.arena.entities.Jeux;
+import edu.arena.entities.Order;
+import edu.arena.entities.Product;
 import edu.arena.services.JeuxCrud;
 import java.io.IOException;
 import java.net.URL;
@@ -110,6 +112,16 @@ public class DashbordJeuxFrontController implements Initializable {
                   public void onClickListener(int idjeux) {
                       
                      setChoseGame(Jeux.get(idjeux));
+                  }
+
+                  @Override
+                  public void onClickListener(Product p) {
+                      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                  }
+
+                  @Override
+                  public void onClickOrderListener(Order o) {
+                      throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                   }
         
         };

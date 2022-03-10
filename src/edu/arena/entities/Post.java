@@ -5,13 +5,11 @@
  */
 package edu.arena.entities;
 
-
-
-
 public class Post {
+
     int id_post;
-   String titre;
-   String auteur;
+    String titre;
+    String auteur;
     String img_post;
     String date_post;
     int rate;
@@ -24,15 +22,14 @@ public class Post {
     public static void setTest(int test) {
         Post.test = test;
     }
-    
 
-    public Post(int id_post, String titre, String auteur, String img_post, String date_post,int rate) {
+    public Post(int id_post, String titre, String auteur, String img_post, String date_post, int rate) {
         this.id_post = id_post;
         this.titre = titre;
         this.auteur = auteur;
         this.img_post = img_post;
         this.date_post = date_post;
-        this.rate = rate;    
+        this.rate = rate;
     }
 
     public Post(String titre, String auteur, String img_post, String date_post) {
@@ -40,8 +37,7 @@ public class Post {
         this.auteur = auteur;
         this.img_post = img_post;
         this.date_post = date_post;
-        
-      
+
     }
 
     public int getRate() {
@@ -51,16 +47,11 @@ public class Post {
     public void setRate(int rate) {
         this.rate = rate;
     }
-     
-    
-   
+
     public Post() {
-      
+
     }
 
-  
-
- 
     public String getDate_post() {
         return date_post;
     }
@@ -100,16 +91,10 @@ public class Post {
     public void setImg_post(String img_post) {
         this.img_post = img_post;
     }
-    
-    
 
-  
     @Override
     public String toString() {
-        return "post{" + "id_post=" + id_post + ", titre=" + titre + ", auteur=" + auteur + ", img_post=" + img_post +  ", date_post=" + date_post + ", rate=" + rate +'}';
+        return "post{" + "id_post=" + id_post + ", titre=" + titre + ", auteur=" + auteur + ", img_post=" + img_post + ", date_post=" + date_post + ", rate=" + rate + '}';
     }
 
-   
- 
-   
 }

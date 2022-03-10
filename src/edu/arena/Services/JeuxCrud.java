@@ -117,6 +117,24 @@ public class JeuxCrud {
         return lu;
     }
         
+        public ObservableList<Jeux> readAll2(){
+
+        ObservableList<Jeux> lu = FXCollections.observableArrayList();
+         try {
+        ste = con.createStatement();
+        ResultSet rs = ste.executeQuery("select IdJeux ,NomJeux,ImageJeux  from jeux");
+        while (rs.next()) {
+            int IdJeux=rs.getInt("IdJeux");
+            String NomJeux = rs.getString("NomJeux");
+            String ImageJeux = rs.getString("ImageJeux");
+            Jeux j = new Jeux(IdJeux,NomJeux, ImageJeux);
+            lu.add(j);
+        }
+         } catch (SQLException ex) {
+        }
+        return lu;
+    }
+        
 
         
         

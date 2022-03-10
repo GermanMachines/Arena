@@ -52,13 +52,13 @@ public class EquipeItemController implements Initializable {
     UserService us = new UserService();
     @FXML
     private Button add;
- void setData(int idEquipe, String nom, int Score, String region) {
+ void setData(int idEquipe, String nom, String imagename ,int Score, String region) {
         
         tfid.setText(String.valueOf(idEquipe));
         nameLabel.setText(nom);
         score.setText(String.valueOf(score));
          Region.setText(region);
-         String imagename = us.getImage(iduser);
+//         String imagename = us.getImage(iduser);
        // Image image = new Image(getClass().getResourceAsStream(jeux.getImageJeux()));
         //Image myImage = new Image(getClass().getResourceAsStream("/resources/"+ImageJeux+""));
       Image imagee= new Image(getClass().getResourceAsStream("/resources/"+imagename+""));

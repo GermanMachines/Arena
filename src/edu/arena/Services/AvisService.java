@@ -31,12 +31,12 @@ public class AvisService implements IService<Avis>{
      
     @Override
     public void ajouter(Avis a) throws SQLException {
-        String req = "INSERT INTO `avis` (`score`, `commentaire`,`idProduit`,`idUtulisateur`) "
+        String req = "INSERT INTO `avis` (`score`, `commentaire`,`idJeux`,`idUtulisateur`) "
                 + "VALUES ( ?, ? , ?, ?) ";
         PreparedStatement ps = connexion.prepareStatement(req);
         ps.setInt(1, a.getScore());
         ps.setString(2, a.getCommentaire());
-        ps.setInt(3, a.getIdProduit());
+        ps.setInt(3, a.getIdJeux());
         ps.setInt(4, a.getIdUtulisateur());
         ps.executeUpdate();
     }
@@ -73,9 +73,10 @@ public class AvisService implements IService<Avis>{
             int idAvis =rs.getInt("id");
             int score = rs.getInt("score");
             String commentaire = rs.getString("commentaire");
-            int idProduit = rs.getInt("idProduit");
+            int idJeux = rs.getInt("idJeux");
             int idUtulisateur  = rs.getInt("idUtulisateur");
-            Avis a = new Avis(idAvis,score,commentaire,idProduit,idUtulisateur);
+            
+            Avis a = new Avis(idAvis,score,commentaire,idJeux,idUtulisateur);
             avis.add(a);
         }
         return avis;
@@ -85,29 +86,31 @@ public class AvisService implements IService<Avis>{
   public ObservableList<Avis> getAll()throws SQLException{
         ObservableList<Avis> list = FXCollections.observableArrayList();
         stm = connexion.createStatement();
-        String query ="SELECT avis.id , avis.idUtulisateur, avis.idProduit , avis.score, avis.commentaire , user.nom as username ,produit.nom FROM avis INNER JOIN user ON avis.idUtulisateur = user.id INNER JOIN produit ON produit.id = avis.idProduit";
+        
+        String query ="SELECT avis.id , avis.idUtulisateur, avis.idJeux , avis.score, avis.commentaire , user.nom as username ,jeux.NomJeux FROM avis INNER JOIN user ON avis.idUtulisateur = user.id INNER JOIN jeux ON avis.idJeux = jeux.IdJeux";
         ResultSet rs = stm.executeQuery(query);
                 while (rs.next()) {
             int idAvis = rs.getInt("id");
             int idUser = rs.getInt("idUtulisateur");
-            int idProduit  = rs.getInt("idProduit");
+            int idJeux  = rs.getInt("idJeux");
             
             int score = rs.getInt("score");
             String commentaire = rs.getString("commentaire");
             String username = rs.getString("username");
             
-            String nomProduit  = rs.getString("nom");
+            String NomJeux  = rs.getString("NomJeux");
     
        
             Avis avis = new Avis();
             
             avis.setId(idAvis);
             avis.setIdUser(idUser);
-            avis.setIdProduit(idProduit);
+            avis.setIdJeux(idJeux);
             avis.setScore(score);
             avis.setCommentaire(commentaire);
             avis.setNomUtulisateur(username);
-            avis.setNomProduit(nomProduit);
+            avis.setNomJeux(NomJeux);
+    
        
             list.add(avis);
         }

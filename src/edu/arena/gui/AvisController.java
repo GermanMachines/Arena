@@ -10,8 +10,10 @@ import com.jfoenix.controls.JFXTextArea;
 import edu.arena.Services.AvisService;
 import edu.arena.Services.ProduitService;
 import edu.arena.entities.Avis;
+import edu.arena.entities.Jeux;
 import edu.arena.entities.Outils;
 import edu.arena.entities.Produit;
+import edu.arena.services.JeuxCrud;
 import edu.arena.services.UserService;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -104,16 +106,20 @@ public class AvisController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        ProduitService ps = new ProduitService();
+
+        JeuxCrud jc = new JeuxCrud();
+        
+        
+        
         idUser.setText(Integer.toString(idUserr));
         try{
        
-            ObservableList<Produit> prodList = ps.afficher();
-            List<String> listNom = prodList.stream().map(p -> p.getNom()).collect(toList());
-            List<Integer>  listId = prodList.stream().map(p -> p.getId()).collect(toList());
-            
-          ObservableList<String> obsListNom = FXCollections.observableArrayList(listNom);
-          ObservableList<Integer> obsListId = FXCollections.observableArrayList(listId);
+            ObservableList<Jeux> jeuxList = jc.readAll2();
+            List<String> jeuxNom = jeuxList.stream().map(p -> p.getNomJeux()).collect(toList());
+            List<Integer>  jeuxId = jeuxList.stream().map(p -> p.getIdJeux()).collect(toList());
+            jeuxNom.stream().forEach(e -> System.out.println(e.toString()));
+          ObservableList<String> obsListNom = FXCollections.observableArrayList(jeuxNom);
+          ObservableList<Integer> obsListId = FXCollections.observableArrayList(jeuxId);
         //   prodList.stream().forEach(p -> {
               //  cbIdProduit.setItems(p.getId());
                cbNomProduit.setItems(obsListNom);
@@ -249,7 +255,7 @@ public class AvisController implements Initializable {
             tfAvisId.setText(Integer.toString(avis.getId()));
           //  cbIdProduit.getValue(avis.getIdProduit());
            // cbNomProduit.getValue();
-             cbIdProduit.setValue(avis.getIdProduit());
+             cbIdProduit.setValue(avis.getIdJeux());
             tfCommentaire.setText(avis.getCommentaire());
             rating.setRating(avis.getScore());
             idUser.setText(Integer.toString(avis.getIdUtulisateur()));
@@ -270,9 +276,9 @@ public class AvisController implements Initializable {
         tcCommentaire.setCellValueFactory(new PropertyValueFactory<Avis,String>("commentaire"));
         tcScore.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("score"));
         tcId.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("id"));
-        tcIdProduit.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("idProduit"));
+        tcIdProduit.setCellValueFactory(new PropertyValueFactory<Avis,Integer>("idJeux"));
         tcNomUser.setCellValueFactory(new PropertyValueFactory<Avis,String>("nomUtulisateur"));
-        tcNomProduit.setCellValueFactory(new PropertyValueFactory<Avis,String>("nomProduit"));
+        tcNomProduit.setCellValueFactory(new PropertyValueFactory<Avis,String>("NomJeux"));
         
         //hide ids
         tcId.setVisible(false);

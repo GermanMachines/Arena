@@ -251,10 +251,10 @@ public class ReclamationService implements IService<Reclamation> {
     }
         public void export() throws FileNotFoundException, SQLException, DocumentException{
             stm = connexion.createStatement();
-            String query = "SELECT reclamation.titre, reclamation.message ,reclamation.date ,reclamation.etat, utulisateur.username , categoryreclamation.nom FROM reclamation INNER JOIN utulisateur ON reclamation.idUser = utulisateur.id INNER JOIN categoryreclamation ON reclamation.idCategoryReclamation = categoryreclamation.id";
+            String query = "SELECT reclamation.titre, reclamation.message ,reclamation.date ,reclamation.etat, user.nom as username , categoryreclamation.nom FROM reclamation INNER JOIN user ON reclamation.idUser = user.id INNER JOIN categoryreclamation ON reclamation.idCategoryReclamation = categoryreclamation.id";
             ResultSet rs = stm.executeQuery(query);
             Document my_pdf_report = new Document();
-            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/SBS/Arena/src/edu/arena/utils/Reclamation_data.pdf"));
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/utils/Reclamation_data.pdf"));
             my_pdf_report.open();
             PdfPTable my_report_table = new PdfPTable(5);
             PdfPCell table_cell;

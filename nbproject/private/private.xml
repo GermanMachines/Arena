@@ -3,18 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/LoginController.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/service/UserService.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/ReclamationService.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/UserService.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/service/EquipeService.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/service/JavaMailUtil.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ReclamationCategoryController.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/service/UploadService.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/Main.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ReclamationController.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/utils/DataBase.java</file>
-            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/service/IUser.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/ProductSrvc.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ProductCatController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/OrderSrvc.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ItemProductCartController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/entities/Post.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ProductQuantityController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/MyListener.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/utils/MyListener.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/CategoryCRUD.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/entities/Category.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ItemOrderController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/OrdersController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/DashbordJeuxFrontController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ProductsFrontController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/MyOrdersController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/entities/Order.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/MatchEquipeCrud.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ProductsController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ProductsCartController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ItemProductController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/ProductDetailsController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/AvisService.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/gui/BackOfficeController.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/ProductCRUD.java</file>
+            <file>file:/C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/Services/OrderCRUD.java</file>
         </group>
     </open-files>
 </project-private>

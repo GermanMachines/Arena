@@ -270,7 +270,7 @@ public class PostBackController implements Initializable {
             Statement stmt = con.createStatement();
             ResultSet query_set = stmt.executeQuery("select titre,auteur,img_post,date_post from post");
             Document my_pdf_report = new Document();
-            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/tarek/OneDrive/Bureau/Post/post.pdf"));
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/LENOVO/Documents/github/Arena/src/edu/arena/utils/post.pdf"));
             my_pdf_report.open();
             PdfPTable my_report_table = new PdfPTable(4);
             PdfPCell table_cell;

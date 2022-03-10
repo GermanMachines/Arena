@@ -62,99 +62,102 @@ public class BackOfficeController implements Initializable {
         exit.setOnMouseClicked(e -> {
             System.exit(0);
         });
-        try{
+        try {
             Parent fxml = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
             contentArea.getChildren().removeAll();
             contentArea.getChildren().setAll(fxml);
-            
-        }catch(IOException ex){
+
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
-    }    
+    }
 
     @FXML
     private void Home(ActionEvent event) throws IOException {
-            Parent fxml = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("HomeFXML.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void reclamationCategory(ActionEvent event) throws IOException {
-            Parent fxml = FXMLLoader.load(getClass().getResource("ReclamationCategory.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("ReclamationCategory.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void reclamation(ActionEvent event) throws IOException {
-            Parent fxml = FXMLLoader.load(getClass().getResource("Reclamation.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("Reclamation.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
-    private void products(ActionEvent event)  throws IOException {
-            Parent fxml = FXMLLoader.load(getClass().getResource("Products.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+    private void products(ActionEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("Products.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
-    private void avis(ActionEvent event)  throws IOException {
-            Parent fxml = FXMLLoader.load(getClass().getResource("Avis.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+    private void avis(ActionEvent event) throws IOException {
+        Parent fxml = FXMLLoader.load(getClass().getResource("Avis.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void email(ActionEvent event) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("Email.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
-    
+
     @FXML
     private void users(ActionEvent event) throws IOException {
-              
-             Parent fxml = FXMLLoader.load(getClass().getResource("UserDashboard.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+
+        Parent fxml = FXMLLoader.load(getClass().getResource("UserDashboard.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void Teams(ActionEvent event) throws IOException {
-          Parent fxml = FXMLLoader.load(getClass().getResource("DashboardEquipe.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("DashboardEquipe.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void post(ActionEvent event) throws IOException {
-         Parent fxml = FXMLLoader.load(getClass().getResource("PostBack.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("PostBack.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void commentaire(ActionEvent event) throws IOException {
-         Parent fxml = FXMLLoader.load(getClass().getResource("ComBack.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("ComBack.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void jeux(ActionEvent event) throws IOException {
-         Parent fxml = FXMLLoader.load(getClass().getResource("DashbordJeux.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("DashbordJeux.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
 
     @FXML
     private void tournois(ActionEvent event) throws IOException {
-         Parent fxml = FXMLLoader.load(getClass().getResource("DashbordTournois.fxml"));
-            contentArea.getChildren().removeAll();
-            contentArea.getChildren().setAll(fxml);
+        Parent fxml = FXMLLoader.load(getClass().getResource("DashbordTournois.fxml"));
+        contentArea.getChildren().removeAll();
+        contentArea.getChildren().setAll(fxml);
     }
-    
+
+   
+ 
+
 }
