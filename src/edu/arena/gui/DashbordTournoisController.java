@@ -873,8 +873,8 @@ public class DashbordTournoisController implements Initializable {
         // System.out.println("heyy yuuu");
         data.addAll(jcr.readAll().stream().filter((e)
                 -> e.getTitre().toLowerCase().contains(tfSearchTournois.getText().toLowerCase())
-                || e.getDate_debut().toLowerCase().contains(tfSearchTournois.getText().toLowerCase())
-                || e.getDate_fin().toLowerCase().contains(tfSearchTournois.getText().toLowerCase())
+//                || e.getDate_debut().toLowerCase().contains(tfSearchTournois.getText().toLowerCase())
+//                || e.getDate_fin().toLowerCase().contains(tfSearchTournois.getText().toLowerCase())
                 || e.getDescriptionTournois().toLowerCase().contains(tfSearchTournois.getText().toLowerCase())
                 || e.getStatus().toLowerCase().contains(tfSearchTournois.getText().toLowerCase())
         ).collect(Collectors.toList()));

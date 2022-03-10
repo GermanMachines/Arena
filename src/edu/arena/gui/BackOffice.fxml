@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="867.0" maxWidth="1164.0" minHeight="550.0" minWidth="750.0" prefHeight="867.0" prefWidth="1164.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.BackOfficeController">
+<BorderPane maxHeight="867.0" maxWidth="1164.0" minHeight="550.0" minWidth="750.0" prefHeight="867.0" prefWidth="1164.0" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.BackOfficeController">
    <top>
       <Pane prefHeight="80.0" prefWidth="750.0" style="-fx-background-color: #C4C4C4;" BorderPane.alignment="CENTER">
          <children>
@@ -116,12 +116,12 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnProductCat" mnemonicParsing="false" onAction="#productsCat" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Product Categories" textFill="WHITE">
+                  <Button fx:id="btnProducts1" mnemonicParsing="false" onAction="#productsCat" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Product Categories" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnOrders" mnemonicParsing="false" onAction="#orders" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Orders" textFill="WHITE">
+                  <Button fx:id="btnProducts2" mnemonicParsing="false" onAction="#products" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Products" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>

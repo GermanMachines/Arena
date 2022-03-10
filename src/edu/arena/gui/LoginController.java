@@ -73,12 +73,14 @@ public class LoginController implements Initializable {
         String nom;
         nom = tfnom.getText();
         if (UserService.existe(nom) && "non".equals(UserService.getBlock(nom)) )  {
+            System.out.println("test");
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Succes");
 
             String mdp = tfmdp.getText();
             mdp = UserService.encrypt(mdp);
             if (UserService.CompteExiste(nom, mdp) != 0) {
+                System.out.println("t");
                 int id = UserService.CompteExiste(nom, mdp);
                  Outils.start(id);
                     System.out.println(Outils.getCurrentSession());

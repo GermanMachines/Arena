@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="1087.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.DashbordJeuxController">
+<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="1087.0" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.DashbordJeuxController">
    <children>
       <TabPane prefHeight="649.0" prefWidth="1087.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -41,8 +41,8 @@
                         </VBox>
                         <VBox layoutX="113.0" layoutY="73.0" prefHeight="171.0" prefWidth="244.0" spacing="30.0">
                            <children>
-                              <TextField fx:id="tfNomJeux" prefHeight="0.0" prefWidth="244.0" />
-                              <TextField fx:id="tfImageJeux" prefHeight="31.0" prefWidth="129.0" style="-fx-text-inner-color: white;">
+                              <TextField fx:id="tfNomJeux" prefHeight="0.0" prefWidth="244.0" styleClass="tf" />
+                              <TextField fx:id="tfImageJeux" prefHeight="31.0" prefWidth="129.0" style="-fx-text-inner-color: white;" styleClass="tf">
                                  <VBox.margin>
                                     <Insets />
                                  </VBox.margin></TextField>
@@ -56,9 +56,9 @@
                           </columns>
                         </TableView>
                         <ImageView fx:id="JeuxImage" fitHeight="150.0" fitWidth="200.0" layoutX="486.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true" />
-                        <Button layoutX="373.0" layoutY="132.0" mnemonicParsing="false" onAction="#upload" prefHeight="39.0" prefWidth="39.0" text="upload" />
+                        <Button layoutX="373.0" layoutY="132.0" mnemonicParsing="false" onAction="#upload" prefHeight="39.0" prefWidth="39.0" styleClass="btn" text="upload" />
                         <JFXTextField fx:id="searchTF" layoutX="517.0" layoutY="3.0" onKeyTyped="#filter" promptText="Search" style="-fx-text-inner-color: white;" />
-                        <JFXButton fx:id="btnInsert" layoutX="48.0" layoutY="232.0" onAction="#handleButtonAction" ripplerFill="#eb4c4c" text="insert" textFill="WHITE">
+                        <JFXButton fx:id="btnInsert" layoutX="48.0" layoutY="232.0" onAction="#handleButtonAction" ripplerFill="#eb4c4c" styleClass="btn" text="insert" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -67,7 +67,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btnUpdate" layoutX="146.0" layoutY="232.0" onAction="#handleButtonAction" text="Update" textFill="WHITE">
+                        <JFXButton fx:id="btnUpdate" layoutX="146.0" layoutY="232.0" onAction="#handleButtonAction" styleClass="btn" text="Update" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -76,7 +76,7 @@
                               </ImageView>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btnDelete" layoutX="274.0" layoutY="232.0" onAction="#handleButtonAction" text="Delete" textFill="WHITE">
+                        <JFXButton fx:id="btnDelete" layoutX="274.0" layoutY="232.0" onAction="#handleButtonAction" styleClass="btn" text="Delete" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

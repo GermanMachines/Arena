@@ -95,14 +95,6 @@
                                     </Label>
                                  </children>
                               </VBox>
-                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../../../Arena++/src/resources/eruro.png" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets top="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
                            </children>
                         </HBox>
                         <Pane prefHeight="100.0" prefWidth="108.0" HBox.hgrow="ALWAYS" />
