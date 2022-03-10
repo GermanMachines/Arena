@@ -37,6 +37,8 @@ public class FrontGamerController implements Initializable {
     private JFXButton btnReclamationCategory;
     @FXML
     private JFXButton btnAvis;
+    @FXML
+    private JFXButton btnShop;
 
 
     /**
@@ -115,6 +117,11 @@ public class FrontGamerController implements Initializable {
     private void Avis(ActionEvent event) {
         
          loadUi("AvisFrontOffice");
+    }
+
+    @FXML
+    private void switchShop(ActionEvent event) {
+        loadUi("ProductsFront");
     }
 
  

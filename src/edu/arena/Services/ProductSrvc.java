@@ -5,6 +5,8 @@
  */
 package edu.arena.services;
 
+import edu.arena.entities.Category;
+import edu.arena.utils.DataBase;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.FontFactory;
@@ -13,8 +15,6 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import edu.arena.entities.Category;
-import edu.arena.utils.DataBase;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.sql.Connection;
@@ -46,7 +46,7 @@ public class ProductSrvc {
             int min = 10000;
             int max = 99999;
             int random_id = (int) Math.floor(Math.random() * (max - min + 1) + min);
-            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/Foura/Documents/NetBeansProjects/arena-desktop/src/com/esprit/uploads/reports/products/report" + random_id + ".pdf"));
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("C:/Users/Foura/Documents/NetBeansProjects/arena-desktop/src/edu/arena/uploads/reports/products/report" + random_id + ".pdf"));
 
             my_pdf_report.open();
             my_pdf_report.add(new Paragraph("                                      Products report", FontFactory.getFont("Arial", 20)));

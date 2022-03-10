@@ -1,24 +1,28 @@
-package edu.arena.gui;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
+package edu.arena.gui;
+
 import edu.arena.entities.Category;
 import edu.arena.entities.Product;
 import edu.arena.services.CategoryCRUD;
 import edu.arena.services.ProductCRUD;
 import edu.arena.services.ProductSrvc;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -26,6 +30,9 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -79,6 +86,8 @@ public class ProductsController implements Initializable {
     private Label productsNumberLbl;
     @FXML
     private JFXTextField searchByNameFld;
+    @FXML
+    private PieChart productsChart;
 
     /**
      * Initializes the controller class.
@@ -88,6 +97,7 @@ public class ProductsController implements Initializable {
         try {
             // TODO
             loadData();
+            displayChart();
             CategoryCRUD ccrud = new CategoryCRUD();
 
             List<Category> categories = ccrud.showAllCategories();
@@ -107,6 +117,55 @@ public class ProductsController implements Initializable {
         }
     }
 
+    ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+    private void displayChart() {
+
+        try {
+            pieChartData.clear();
+            productsChart.getData().clear();
+            ProductCRUD pcrud = new ProductCRUD();
+            CategoryCRUD ccrud = new CategoryCRUD();
+
+            List<Product> products = pcrud.showAllProducts();
+            List<Category> categories = ccrud.showAllCategories();
+
+//            int categoriesN = categories.size();
+            for (Category c : categories) {
+                int catN = 0;
+                for (Product p : products) {
+                    if (c.getName().equals(p.getCatName())) {
+                        catN++;
+                    }
+                }
+
+                PieChart.Data data = new PieChart.Data(c.getName(), catN);
+                pieChartData.add(data);
+
+            }
+
+//            pieChartData
+//                    = FXCollections.observableArrayList(
+//                            new PieChart.Data("Clothes", clothesN),
+//                            new PieChart.Data("T-Shirts", tshirtsN),
+//                            new PieChart.Data("Games", gamesN)
+//                    );
+//        pieChartData.forEach(data
+//                -> data.nameProperty().bind(
+//                        Bindings.concat(
+//                                data.getName(), " amount: ", data.pieValueProperty()
+//                        )
+//                )
+//        );
+//            productsChart.setTitle("Products");
+            productsChart.setLabelsVisible(true);
+            productsChart.setLegendVisible(true);
+            productsChart.getData().addAll(pieChartData);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     private void refreshTable() {
         try {
             ProductsList.clear();
@@ -114,7 +173,8 @@ public class ProductsController implements Initializable {
 
             List<Product> products = pcrud.showAllProducts();
             ProductsList.setAll(products);
-            System.out.print(products);
+//            System.out.print(products);
+            Collections.reverse(ProductsList);
             productsTable.setItems(ProductsList);
 
             if (products.size() == 1) {
@@ -204,6 +264,7 @@ public class ProductsController implements Initializable {
             alert.setContentText("product added successfully");
             clean();
             refreshTable();
+            displayChart();
         } catch (SQLException ex) {
             alert.setAlertType(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -233,6 +294,7 @@ public class ProductsController implements Initializable {
         alert.setContentText("product updated successfully");
         clean();
         refreshTable();
+        displayChart();
         alert.showAndWait();
     }
 
@@ -249,6 +311,7 @@ public class ProductsController implements Initializable {
             alert.setContentText("product deleted successfully");
             clean();
             refreshTable();
+            displayChart();
         } catch (SQLException ex) {
             alert.setAlertType(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -270,6 +333,7 @@ public class ProductsController implements Initializable {
         imageFld.setText(productItem.getImage());
         addBtn.setDisable(true);
         Category c = new Category(productItem.getIdCategory(), productItem.getCatName(), productItem.getCatDesc());
+        catFld.setValue(c);
         catFld.getSelectionModel().select(c);
     }
 
@@ -316,10 +380,16 @@ public class ProductsController implements Initializable {
 
         if (f != null) {
             imageFile = f.getAbsolutePath();
-            String newimageFile = imageFile.replace("C:\\Users\\Foura\\Documents\\NetBeansProjects\\arena-desktop\\src\\resources\\","");
+            String newimageFile = imageFile.replace("C:\\Users\\LENOVO\\Documents\\github\\Arena\\src\\resources\\", "");
 
             imageFld.setText(newimageFile);
         }
+    }
+
+    @FXML
+    private void release(MouseEvent event) {
+        clean();
+        addBtn.setDisable(false);
     }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.ProductsFrontController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ProductsFrontController">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="722.0">
          <left>
@@ -38,16 +39,17 @@
                                     <String fx:value="shadow" />
                                  </styleClass>
                               </HBox>
-                              <TextField fx:id="searchBar" layoutX="9.0" layoutY="12.0" prefHeight="40.0" prefWidth="201.0" promptText="Type here to search" styleClass="transparent">
+                              <TextField fx:id="searchBar" layoutX="9.0" layoutY="12.0" prefHeight="34.0" prefWidth="147.0" promptText="Type here to search" styleClass="transparent">
                                  <font>
                                     <Font name="Cambria" size="18.0" />
                                  </font>
                               </TextField>
-                              <Button layoutX="217.0" layoutY="12.0" mnemonicParsing="false" onAction="#onClickSearch" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #81171b;" styleClass="search-button" text="Search" textFill="WHITE">
+                              <Button layoutX="162.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickSearch" prefHeight="30.0" prefWidth="69.0" style="-fx-background-color: #81171b;" styleClass="search-button" text="Search" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Button>
+                              <JFXSlider fx:id="priceSlider" layoutX="241.0" layoutY="25.0" majorTickUnit="50.0" max="500.0" minorTickCount="5" onMouseClicked="#filterByPrice" prefHeight="14.0" prefWidth="229.0" showTickLabels="true" showTickMarks="true" />
                            </children>
                         </Pane>
                         <JFXButton onAction="#redirectToMyOrders" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #81171b; -fx-text-fill: #ffffff;" text="My Orders" />
@@ -57,7 +59,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="525.0" prefWidth="694.0" styleClass="transparent">
+                        <ScrollPane fx:id="scroll" prefHeight="490.0" prefWidth="694.0" styleClass="transparent">
                            <content>
                               <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                                  <rowConstraints>

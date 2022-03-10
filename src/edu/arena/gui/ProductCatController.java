@@ -1,14 +1,14 @@
-package edu.arena.gui;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
+package edu.arena.gui;
+
 import edu.arena.entities.Category;
 import edu.arena.services.CategoryCRUD;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -199,6 +199,12 @@ public class ProductCatController implements Initializable {
         catNameFld.setText(catItem.getName());
         catDescFld.setText(catItem.getDesc());
         addBtn.setDisable(true);
+    }
+
+    @FXML
+    private void release(MouseEvent event) {
+        clean();
+        addBtn.setDisable(false);
     }
 
 }

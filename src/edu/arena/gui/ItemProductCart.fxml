@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#click" prefHeight="160.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.esprit.gui.ItemProductCartController">
+<AnchorPane onMousePressed="#click" prefHeight="160.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ItemProductCartController">
     <children>
         <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="236.0" prefWidth="220.0" style="-fx-background-color: #0f1e2f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -40,8 +40,7 @@
                      </font>
                   </Label>
                   <JFXButton fx:id="rmvBtn" layoutX="278.0" layoutY="64.0" onAction="#removeProduct" prefHeight="32.0" prefWidth="65.0" style="-fx-background-color: #81171b; -fx-text-fill: #ffffff;" text="Remove" />
-                  <JFXButton layoutX="228.0" layoutY="64.0" onAction="#addThisProduct" prefHeight="32.0" prefWidth="44.0" style="-fx-background-color: #81171b; -fx-text-fill: #ffffff;" text="Add" />
-                  <JFXButton layoutX="165.0" layoutY="64.0" onAction="#orderThisProduct" prefHeight="32.0" prefWidth="55.0" style="-fx-background-color: #81171b; -fx-text-fill: #ffffff;" text="Order" />
+                  <JFXButton layoutX="217.0" layoutY="64.0" onAction="#orderThisProduct" prefHeight="32.0" prefWidth="55.0" style="-fx-background-color: #81171b; -fx-text-fill: #ffffff;" text="Order" />
                </children>
             </Pane>
             </children>

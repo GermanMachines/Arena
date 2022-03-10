@@ -1,10 +1,10 @@
-package edu.arena.gui;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package edu.arena.gui;
+
 import edu.arena.entities.Order;
 import edu.arena.services.OrderCRUD;
 import java.io.IOException;
@@ -13,8 +13,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -40,9 +38,9 @@ public class MyOrdersController implements Initializable {
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
-
+    
     private MyListener myListener;
-
+    
     public static List<Order> myOrdersList = new ArrayList<>();
     public static List<Order> ord = new ArrayList<>();
 
@@ -51,21 +49,17 @@ public class MyOrdersController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            // TODO
-            refreshElements();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
+        // TODO
+        refreshElements();
+    }    
 
     @FXML
     private void closeWindow(MouseEvent event) {
         Stage stage = (Stage) closeIcon.getScene().getWindow();
         stage.close();
     }
-
-    public void refreshElements() throws SQLException {
+    
+    public void refreshElements() {
         try {
             OrderCRUD ocrud = new OrderCRUD();
 
@@ -74,7 +68,7 @@ public class MyOrdersController implements Initializable {
 
             ord.clear();
             ord.addAll(getData());
-
+            
             System.out.println(myOrdersList);
             System.out.println(ord);
 
@@ -107,11 +101,13 @@ public class MyOrdersController implements Initializable {
 
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
     }
-
+    
     public static List<Order> getData() {
         List<Order> orderItem = new ArrayList<>();
         Order or;

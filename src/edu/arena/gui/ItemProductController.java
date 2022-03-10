@@ -5,10 +5,10 @@
  */
 package edu.arena.gui;
 
-
-
-
+import edu.arena.entities.Order;
 import edu.arena.entities.Product;
+import edu.arena.services.OrderCRUD;
+import edu.arena.services.ProductCRUD;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;

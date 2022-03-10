@@ -53,6 +53,11 @@
                               <Font name="Arial Black" size="15.0" />
                            </font>
                         </JFXButton>
+                        <JFXButton fx:id="btnShop" onAction="#switchShop" prefHeight="75.0" prefWidth="106.0" text="Shop" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="15.0" />
+                           </font>
+                        </JFXButton>
                      </children>
                   </VBox>
                </right>

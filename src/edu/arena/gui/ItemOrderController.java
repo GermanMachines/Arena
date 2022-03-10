@@ -5,10 +5,9 @@
  */
 package edu.arena.gui;
 
-
-import com.jfoenix.controls.JFXButton;
 import edu.arena.entities.Order;
 import edu.arena.services.OrderCRUD;
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;

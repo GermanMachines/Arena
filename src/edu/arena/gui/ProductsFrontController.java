@@ -1,16 +1,18 @@
-package edu.arena.gui;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package edu.arena.gui;
+
 import edu.arena.entities.Product;
 import edu.arena.services.ProductCRUD;
+import com.jfoenix.controls.JFXSlider;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -22,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
@@ -48,6 +51,8 @@ public class ProductsFrontController implements Initializable {
     private MyListener myListener;
     @FXML
     private TextField searchBar;
+    @FXML
+    private JFXSlider priceSlider;
 
     /**
      * Initializes the controller class.
@@ -60,12 +65,15 @@ public class ProductsFrontController implements Initializable {
 //            List products = pcrud.showAllProducts();
 //            System.out.println(products);
 //            productsList.addAll(products);
+        priceSlider.setValue(0);
         try {
             ProductCRUD pcrud = new ProductCRUD();
 
             productsList.addAll(pcrud.showAllProducts());
+            Collections.reverse(productsList);
 
             prod.addAll(getData());
+            Collections.reverse(prod);
 
             int column = 0;
             int row = 1;
@@ -120,16 +128,26 @@ public class ProductsFrontController implements Initializable {
 
     }
 
-    public List<Product> filteredSearch = new ArrayList<>();
     private List<Product> productss = new ArrayList<>();
+    private List<Product> filteredSearch = new ArrayList<>();
 
     @FXML
     private void onClickSearch(ActionEvent event) {
         filteredSearch = new ArrayList<>();
-        if (searchBar.getText().equals("")) {
-            filteredSearch = productss;
-        } else {
-            for (Product p : productss) {
+
+        if (searchBar.getText().equals("") && priceSlider.getValue() <= 0) {
+            filteredSearch = productsList;
+
+        }
+        if (searchBar.getText().equals("") && priceSlider.getValue() > 0) {
+            filteredSearch = filtredPrixServices;
+
+        }
+
+        if (!searchBar.getText().equals("") && priceSlider.getValue() <= 0) {
+
+            for (Product p : productsList) {
+
                 if (p.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
                     filteredSearch.add(p);
                 }
@@ -137,7 +155,27 @@ public class ProductsFrontController implements Initializable {
 
         }
 
-        System.out.println(filteredSearch);
+        if (!searchBar.getText().equals("") && priceSlider.getValue() > 0) {
+
+            for (Product p : filtredPrixServices) {
+
+                if (p.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+                    filteredSearch.add(p);
+                }
+            }
+
+        }
+//        if (searchBar.getText().equals("")) {
+//            filteredSearch = productsList;
+//        } else {
+//            for (Product p : productsList) {
+//                if (p.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+//                    filteredSearch.add(p);
+//                }
+//            }
+//
+//            System.out.println(filteredSearch);
+//        }
 
         int column = 0;
         int row = 1;
@@ -198,6 +236,82 @@ public class ProductsFrontController implements Initializable {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    List<Product> filtredPrixServices = new ArrayList<>();
+    private int productSlider = 0;
+
+    @FXML
+    private void filterByPrice(MouseEvent event) {
+        filtredPrixServices = new ArrayList<>();
+        productSlider = (int) priceSlider.getValue();
+
+        if (searchBar.getText().equals("") && priceSlider.getValue() <= 0) {
+            filtredPrixServices = productsList;
+        }
+
+        if (searchBar.getText().equals("") && priceSlider.getValue() > 0) {
+            for (Product p : productsList) {
+
+                if (p.getPrice() >= productSlider) {
+                    filtredPrixServices.add(p);
+                }
+            }
+        }
+        if (!searchBar.getText().equals("") && priceSlider.getValue() > 0) {
+            for (Product p : filteredSearch) {
+
+                if (p.getPrice() >= productSlider) {
+                    filtredPrixServices.add(p);
+                }
+            }
+        }
+
+        if (!searchBar.getText().equals("") && priceSlider.getValue() <= 0) {
+
+            for (Product p : filteredSearch) {
+
+                if (p.getName().toLowerCase().contains(searchBar.getText().toLowerCase())) {
+                    filtredPrixServices.add(p);
+                }
+            }
+
+        }
+        int column = 0;
+        int row = 1;
+        try {
+            grid.getChildren().clear();
+            for (int i = 0; i < filtredPrixServices.size(); i++) {
+
+                FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("ItemProduct.fxml"));
+                AnchorPane anchorPane = (AnchorPane) fxmlLoader.load();
+
+                ItemProductController itemController = fxmlLoader.getController();
+                itemController.setData(filtredPrixServices.get(i), myListener);
+
+                if (column == 3) {
+                    column = 0;
+                    row++;
+                }
+
+                grid.add(anchorPane, column++, row); //(child,column,row)
+                //set grid width
+                grid.setMinWidth(Region.USE_COMPUTED_SIZE);
+                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                grid.setMaxWidth(Region.USE_PREF_SIZE);
+
+                //set grid height
+                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
+                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                grid.setMaxHeight(Region.USE_PREF_SIZE);
+
+                GridPane.setMargin(anchorPane, new Insets(10));
+            }
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
 }

@@ -5,10 +5,9 @@
  */
 package edu.arena.gui;
 
-import static edu.arena.gui.ItemProductController.product;
-import edu.arena.gui.MyListener;
-import com.jfoenix.controls.JFXButton;
 import edu.arena.entities.Product;
+import static edu.arena.gui.ItemProductController.product;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
