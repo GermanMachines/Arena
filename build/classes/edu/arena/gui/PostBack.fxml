@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1215.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.PostBackController">
+   <center>
+      <AnchorPane fx:id="ap" prefHeight="728.0" prefWidth="1088.0" style="-fx-background-color: grey;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane layoutX="14.0" layoutY="15.0" prefHeight="212.0" prefWidth="1190.0" style="-fx-background-color: white;" />
+            <TextField fx:id="tfTitre" layoutX="85.0" layoutY="63.0" promptText="titre">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
+            <TextField fx:id="tfAuteur" layoutX="85.0" layoutY="114.0" promptText="auteur">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
+            <TextField fx:id="tfImage" layoutX="336.0" layoutY="63.0" promptText="image">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
+            <TextField fx:id="tfDate" layoutX="336.0" layoutY="115.0" promptText="date">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></TextField>
+            <Button layoutX="541.0" layoutY="62.0" mnemonicParsing="false" onAction="#addPost" prefHeight="32.0" prefWidth="76.0" style="-fx-background-color: grey;" text="add" />
+            <Button layoutX="543.0" layoutY="114.0" mnemonicParsing="false" onAction="#updatePost" prefHeight="32.0" prefWidth="75.0" style="-fx-background-color: grey;" text="update" />
+            <Button layoutX="541.0" layoutY="165.0" mnemonicParsing="false" onAction="#deletePost" prefHeight="32.0" prefWidth="78.0" style="-fx-background-color: grey;" text="delete" />
+            <TableView fx:id="tabPost" layoutX="13.0" layoutY="241.0" onMouseClicked="#selectPost" prefHeight="523.0" prefWidth="1192.0">
+               <columns>
+                  <TableColumn fx:id="ColId" prefWidth="75.0" text="id" visible="false" />
+                  <TableColumn fx:id="ColTitre" prefWidth="191.00003051757812" text="titre" />
+                  <TableColumn fx:id="ColAuteur" prefWidth="262.0" text="auteur" />
+                  <TableColumn fx:id="ColImage" prefWidth="284.0" text="image" />
+                  <TableColumn fx:id="ColDate" prefWidth="462.0" text="date d'ajout" />
+               </columns>
+            </TableView>
+            <Button layoutX="633.0" layoutY="63.0" mnemonicParsing="false" onAction="#pdf" prefHeight="31.0" prefWidth="68.0" style="-fx-background-color: grey;" text="pdf" />
+            <TextField fx:id="search" layoutX="31.0" layoutY="14.0" onKeyTyped="#search" prefHeight="31.0" prefWidth="1162.0" promptText="search" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

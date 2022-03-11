@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="649.0" prefWidth="1087.0" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.DashbordJeuxController">
+   <children>
+      <TabPane prefHeight="649.0" prefWidth="1087.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab text="Jeux">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox layoutX="14.0" layoutY="57.0" prefHeight="175.0" prefWidth="99.0">
+                           <children>
+                              <Label prefHeight="53.0" prefWidth="78.0" text="NomJeux" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font></Label>
+                              <Label prefHeight="83.0" prefWidth="99.0" text="ImageJeux" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Black" size="15.0" />
+                                 </font></Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="113.0" layoutY="73.0" prefHeight="171.0" prefWidth="244.0" spacing="30.0">
+                           <children>
+                              <TextField fx:id="tfNomJeux" prefHeight="0.0" prefWidth="244.0" styleClass="tf" />
+                              <TextField fx:id="tfImageJeux" prefHeight="31.0" prefWidth="129.0" style="-fx-text-inner-color: white;" styleClass="tf">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin></TextField>
+                           </children>
+                        </VBox>
+                        <TableView fx:id="tvJeux" layoutX="427.0" layoutY="34.0" onMouseClicked="#handleMouseAction" prefHeight="345.0" prefWidth="349.0" stylesheets="@fullpackstyling.css">
+                          <columns>
+                            <TableColumn fx:id="colid" minWidth="0.0" prefWidth="0.0" text="ID" />
+                            <TableColumn fx:id="colNomJeux" prefWidth="164.0" text="NomJeux" />
+                              <TableColumn fx:id="colImageJeux" prefWidth="183.0" text="ImageJeux" />
+                          </columns>
+                        </TableView>
+                        <ImageView fx:id="JeuxImage" fitHeight="150.0" fitWidth="200.0" layoutX="486.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button layoutX="373.0" layoutY="132.0" mnemonicParsing="false" onAction="#upload" prefHeight="39.0" prefWidth="39.0" styleClass="btn" text="upload" />
+                        <JFXTextField fx:id="searchTF" layoutX="517.0" layoutY="3.0" onKeyTyped="#filter" promptText="Search" style="-fx-text-inner-color: white;" />
+                        <JFXButton fx:id="btnInsert" layoutX="48.0" layoutY="232.0" onAction="#handleButtonAction" ripplerFill="#eb4c4c" styleClass="btn" text="insert" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons8_add_16px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnUpdate" layoutX="146.0" layoutY="232.0" onAction="#handleButtonAction" styleClass="btn" text="Update" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons8_update_16px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnDelete" layoutX="274.0" layoutY="232.0" onAction="#handleButtonAction" styleClass="btn" text="Delete" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons8_delete_16px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="btnSendMail" layoutX="427.0" layoutY="382.0" onAction="#Sendmail" ripplerFill="#eb4c4c" text="sendmail" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Stat">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <PieChart fx:id="piechart" layoutX="225.0" layoutY="53.0" />
+                        <Text fill="WHITE" layoutX="12.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombres du tournois par jeux :" textAlignment="CENTER" wrappingWidth="426.2958984375">
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font></Text>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="free games">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="587.0" prefWidth="1033.0">
+                           <children>
+                              <Text fill="#9b1d20" strokeType="OUTSIDE" strokeWidth="0.0" text="Free Games List">
+                                 <VBox.margin>
+                                    <Insets left="300.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Ink Free" size="60.0" />
+                                 </font>
+                              </Text>
+                              <ListView fx:id="FreeGamesList" onMouseClicked="#displaySelected" prefHeight="249.0" prefWidth="994.0">
+                                 <VBox.margin>
+                                    <Insets left="50.0" top="60.0" />
+                                 </VBox.margin></ListView>
+                              <ImageView fx:id="Imagejeux" fitHeight="167.0" fitWidth="1004.0" pickOnBounds="true" preserveRatio="true">
+                                 <VBox.margin>
+                                    <Insets left="40.0" />
+                                 </VBox.margin></ImageView>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

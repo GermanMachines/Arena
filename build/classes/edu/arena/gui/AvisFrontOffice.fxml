@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onContextMenuRequested="#load" prefHeight="400.0" prefWidth="647.0" stylesheets="@frontoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.AvisFrontOfficeController">
+   <children>
+      <Label fx:id="lnomproduit" layoutX="217.0" layoutY="50.0" prefHeight="27.0" prefWidth="67.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="lidproduit" layoutX="270.0" layoutY="50.0" prefHeight="17.0" prefWidth="51.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="lnomproduit1" layoutX="498.0" layoutY="50.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="lidproduit1" layoutX="566.0" layoutY="50.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="lnomproduit2" layoutX="210.0" layoutY="213.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="lidproduit2" layoutX="263.0" layoutY="213.0" text="Label" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="iduser" layoutX="14.0" layoutY="14.0" text="Label" />
+      <Label layoutX="87.0" layoutY="50.0" text="Nom Produit :" textFill="#d3d3d3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="370.0" layoutY="50.0" text="Nom Produit :" textFill="#d3d3d3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="87.0" layoutY="213.0" text="Nom Produit :" textFill="#d3d3d3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Rating fx:id="rating" layoutX="93.0" layoutY="81.0" rating="0.0" />
+      <Rating fx:id="rating1" layoutX="377.0" layoutY="85.0" rating="0.0" />
+      <Rating fx:id="rating2" layoutX="101.0" layoutY="252.0" rating="0.0" />
+      <JFXTextField id="tf" fx:id="tfCommentaire" layoutX="109.0" layoutY="128.0" promptText="Comment" styleClass="tf" />
+      <JFXTextField fx:id="tfCommentaire1" layoutX="411.0" layoutY="141.0" promptText="Comment" styleClass="tf" />
+      <JFXTextField fx:id="tfCommentaire2" layoutX="109.0" layoutY="298.0" promptText="Comment" styleClass="tf" />
+      <JFXButton fx:id="btn1" layoutX="150.0" layoutY="173.0" onAction="#sendBtn" styleClass="btn" text="Send Avis" />
+      <JFXButton fx:id="btn2" layoutX="447.0" layoutY="173.0" onAction="#sendBtn" styleClass="btn" text="Send Avis" />
+      <JFXButton fx:id="btn3" layoutX="163.0" layoutY="345.0" onAction="#sendBtn" styleClass="btn" text="Send Avis" />
+   </children>
+</Pane>

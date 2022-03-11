@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" onMousePressed="#ClickedItem" prefHeight="323.0" prefWidth="304.0" stylesheets="@GamesStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ItemGameController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="307.0" prefWidth="304.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="img" fitHeight="117.0" fitWidth="304.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/League-of-legends-logo.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="225.0">
+               <VBox.margin>
+                  <Insets right="20.0" top="10.0" />
+               </VBox.margin>
+               <children>
+                  <ImageView fitHeight="61.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../resources/Play%20Games_64px.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="nameLabel" prefHeight="54.0" prefWidth="499.0" text="League of Legends" textFill="WHITE">
+                     <font>
+                        <Font name="Candara" size="27.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <Rating fx:id="rating" rating="0.0">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Rating>
+            <JFXTextField fx:id="tfCommentaire" prefHeight="31.0" prefWidth="210.0" promptText="Comment...">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </JFXTextField>
+            <JFXButton fx:id="sendBtn" onAction="#ActionButtonClick" styleClass="btn" text="Save Avis">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+   <styleClass>
+      <String fx:value="item-game" />
+      <String fx:value="shadow" />
+   </styleClass>
+</AnchorPane>

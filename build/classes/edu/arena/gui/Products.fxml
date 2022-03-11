@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ProductsController">
+   <children>
+      <Pane prefHeight="600.0" prefWidth="722.0" style="-fx-background-color: #c4c4c4;">
+         <children>
+            <Pane layoutX="14.0" layoutY="14.0" onMouseClicked="#release" prefHeight="282.0" prefWidth="694.0" style="-fx-background-color: #f4f4f4;">
+               <children>
+                  <JFXTextField fx:id="nameFld" layoutX="21.0" layoutY="44.0" promptText="Product Name" />
+                  <JFXTextField fx:id="qtyFld" layoutX="21.0" layoutY="75.0" promptText="Quantity" />
+                  <JFXTextField fx:id="descFld" layoutX="21.0" layoutY="109.0" promptText="Description" />
+                  <JFXComboBox fx:id="catFld" layoutX="193.0" layoutY="77.0" prefHeight="25.0" prefWidth="135.0" promptText="Category" />
+                  <JFXButton fx:id="addBtn" layoutX="31.0" layoutY="201.0" onAction="#addProduct" prefHeight="25.0" prefWidth="49.0" style="-fx-background-color: #c4c4c4;" text="Add" />
+                  <JFXButton layoutX="85.0" layoutY="201.0" onAction="#updateProduct" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: #c4c4c4;" text="Update" />
+                  <JFXButton layoutX="158.0" layoutY="201.0" onAction="#deleteProduct" prefHeight="25.0" prefWidth="57.0" style="-fx-background-color: #c4c4c4;" text="Delete" />
+                  <JFXTextField fx:id="priceFld" layoutX="193.0" layoutY="108.0" promptText="Price" />
+                  <Label fx:id="productsNumberLbl" layoutX="193.0" layoutY="158.0" prefHeight="25.0" prefWidth="96.0" />
+                  <JFXTextField fx:id="imageFld" layoutX="193.0" layoutY="44.0" prefHeight="25.0" prefWidth="104.0" promptText="Image" />
+                  <JFXTextField fx:id="searchByNameFld" layoutX="21.0" layoutY="158.0" onKeyTyped="#search" prefHeight="25.0" prefWidth="152.0" promptText="Search by product name..." />
+                  <JFXButton layoutX="220.0" layoutY="201.0" onAction="#exportTable" prefHeight="25.0" prefWidth="96.0" style="-fx-background-color: #c4c4c4;" text="Export" />
+                  <Button layoutX="304.0" layoutY="46.0" mnemonicParsing="false" onAction="#upload" prefHeight="25.0" prefWidth="19.0" text="Button" />
+                  <PieChart fx:id="productsChart" clockwise="false" labelLineLength="2.0" layoutX="335.0" layoutY="8.0" prefHeight="264.0" prefWidth="352.0" titleSide="BOTTOM" />
+               </children>
+            </Pane>
+            <TableView fx:id="productsTable" layoutX="14.0" layoutY="312.0" onMouseClicked="#selectProduct" prefHeight="282.0" prefWidth="694.0">
+              <columns>
+                <TableColumn fx:id="nameCol" prefWidth="137.0" text="Name" />
+                <TableColumn fx:id="qtyCol" minWidth="3.0" prefWidth="58.0" text="Quantity" />
+                  <TableColumn fx:id="descCol" prefWidth="167.0" text="Description" />
+                  <TableColumn fx:id="catCol" prefWidth="104.0" text="Category" />
+                  <TableColumn fx:id="priceCol" prefWidth="47.0" text="Price" />
+                  <TableColumn fx:id="imageCol" prefWidth="180.0" text="Image" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

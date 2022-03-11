@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="backroung-game" stylesheets="@GamesStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.SignInController">
+   <children>
+      <JFXTextField fx:id="tfmdpp1" focusColor="WHITE" layoutX="485.0" layoutY="396.0" prefHeight="31.0" prefWidth="218.0" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <JFXTextField fx:id="tfmdpp" focusColor="WHITE" layoutX="485.0" layoutY="341.0" prefHeight="31.0" prefWidth="218.0" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <AnchorPane layoutX="442.0" layoutY="40.0" opacity="0.21" prefHeight="518.0" prefWidth="350.0" style="-fx-background-color: #D3D3D3;" stylesheets="@GamesStyle.css">
+         <children>
+            <Label layoutX="106.0" layoutY="34.0" text="SIGN IN" textFill="#e10a0a">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <JFXCheckBox fx:id="check1" checkedColor="WHITE" layoutX="271.0" layoutY="308.0" onAction="#see1" text="See" unCheckedColor="WHITE" />
+            <JFXCheckBox fx:id="check2" checkedColor="WHITE" layoutX="271.0" layoutY="361.0" onAction="#see2" text="See" unCheckedColor="WHITE" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="btnSignIn" layoutX="479.0" layoutY="511.0" mnemonicParsing="false" onAction="#AjoutUser" prefHeight="28.0" prefWidth="292.0" styleClass="backroung-game" text="Sign in" textFill="#ab1c1c">
+         <font>
+            <Font name="Arial Bold" size="15.0" />
+         </font>
+      </Button>
+      <JFXTextField fx:id="tfImagee" focusColor="WHITE" layoutX="485.0" layoutY="248.0" prefHeight="31.0" prefWidth="218.0" promptText="Picture" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <Button layoutX="717.0" layoutY="247.0" mnemonicParsing="false" onAction="#upload" styleClass="backroung-game" stylesheets="@GamesStyle.css" text="upload" textFill="#bf1212">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="15.0" />
+         </font>
+      </Button>
+      <JFXPasswordField fx:id="tfmdp" focusColor="WHITE" layoutX="485.0" layoutY="341.0" prefHeight="31.0" prefWidth="218.0" promptText="Password" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <JFXPasswordField fx:id="tfmdp1" focusColor="WHITE" layoutX="485.0" layoutY="396.0" prefHeight="31.0" prefWidth="218.0" promptText="Confirm Password" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <Label fx:id="lblTelll" layoutX="723.0" layoutY="453.0" text="Label" textFill="#b52f2f" />
+      <JFXTextField fx:id="tfnom" focusColor="WHITE" layoutX="485.0" layoutY="156.0" prefHeight="31.0" prefWidth="218.0" promptText="Name" style="-fx-text-inner-color: white;" styleClass="backroung-game" stylesheets="@GamesStyle.css" unFocusColor="WHITE" />
+      <JFXTextField fx:id="tfsurnom" focusColor="WHITE" layoutX="485.0" layoutY="199.0" prefHeight="31.0" prefWidth="218.0" promptText="Username" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <JFXTextField fx:id="tfemail" focusColor="WHITE" layoutX="485.0" layoutY="295.0" prefHeight="31.0" prefWidth="218.0" promptText="Email" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <JFXTextField fx:id="tftel" focusColor="WHITE" layoutX="485.0" layoutY="449.0" prefHeight="31.0" prefWidth="218.0" promptText="Phone number" style="-fx-text-inner-color: white;" styleClass="backroung-game" unFocusColor="WHITE" />
+      <ImageView fitHeight="575.0" fitWidth="359.0" layoutX="48.0" layoutY="13.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/gaming.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="74.0" layoutY="39.0" prefHeight="80.0" prefWidth="290.0" text="Are you " textFill="WHITE">
+         <font>
+            <Font name="Chiller" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="88.0" layoutY="72.0" prefHeight="80.0" prefWidth="145.0" text="a player ?" textFill="WHITE">
+         <font>
+            <Font name="Chiller" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="17.0" layoutY="521.0" text="Enjoy ARENA to become one" textFill="WHITE">
+         <font>
+            <Font name="Chiller" size="46.0" />
+         </font>
+      </Label>
+      <Label layoutX="343.0" layoutY="30.0" text="ARENA" textFill="#d02525">
+         <font>
+            <Font size="43.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

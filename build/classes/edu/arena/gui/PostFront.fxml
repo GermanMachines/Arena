@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1369.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.PostFrontController">
+   <children>
+      <BorderPane layoutX="-88.0" layoutY="73.0" prefHeight="871.0" prefWidth="1120.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+         <center>
+            <VBox prefHeight="788.0" prefWidth="1071.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="100.0" prefWidth="108.0" />
+                        <HBox prefHeight="105.0" prefWidth="370.0" style="-fx-background-color: red;" styleClass="available-games-card" stylesheets="@GamesStyle.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="277.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="201.0" text="total des Commentaires">
+                                       <font>
+                                          <Font name="Cambria" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="totalcom" prefHeight="26.0" prefWidth="189.0" text="Available Comments">
+                                       <font>
+                                          <Font name="Cambria" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #1c10a1;">
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="108.0" HBox.hgrow="ALWAYS" />
+                        <HBox prefHeight="105.0" prefWidth="370.0" style="-fx-background-color: #1c10a1;" styleClass="available-onlnie-card" stylesheets="@GamesStyle.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="277.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="193.0" text="total des Posts" textFill="#d30404">
+                                       <font>
+                                          <Font name="Cambria Bold Italic" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="totalpost" prefHeight="26.0" prefWidth="145.0" text="Posts Online" textFill="RED">
+                                       <font>
+                                          <Font name="Cambria" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets top="20.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="108.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="699.0" prefWidth="1329.0" styleClass="transparent" stylesheets="@GamesStyle.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="0.0" prefWidth="24.0">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <ImageView fitHeight="65.0" fitWidth="98.0" layoutX="765.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="846.0" layoutY="14.0" prefHeight="65.0" prefWidth="122.0" text="UserName" textFill="RED">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="14.0" prefHeight="65.0" prefWidth="523.0" text="daily news" textFill="#3311cd">
+         <font>
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

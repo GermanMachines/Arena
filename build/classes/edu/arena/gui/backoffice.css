@@ -1,0 +1,30 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.jfx-combo-box {
+    -fx-text-inner-color:#c3c3c3;
+    -jfx-label-float:true;
+    -fx-region-background:#c3c3c3;
+    -fx-background-color:#c3c3c3;
+    -jfx-unfocus-color:#ababab;
+}
+
+
+.tf{
+    -fx-text-inner-color:#c3c3c3;
+    -jfx-label-float:true;
+    -jfx-unfocus-color:#ababab;
+    -fx-prompt-text-fill:black;
+    -fx-text-inner-color:black;
+}
+
+.btn{
+    -fx-background-color: #81171B;
+    -fx-text-fill:#ffffff;
+    -jfx-rippler-fill:#eb4c4c;
+}

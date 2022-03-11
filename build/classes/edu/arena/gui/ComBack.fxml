@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="1096.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ComBackController">
+   <center>
+      <AnchorPane prefHeight="551.0" prefWidth="995.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tabPost" layoutY="35.0" prefHeight="309.0" prefWidth="513.0">
+               <columns>
+                  <TableColumn fx:id="ColId" prefWidth="75.0" text="id" visible="false" />
+                  <TableColumn fx:id="ColTitre" prefWidth="75.0" text="titre" />
+                  <TableColumn fx:id="ColAuteur" prefWidth="75.0" text="auteur" />
+                  <TableColumn fx:id="ColImage" prefWidth="75.0" text="image" />
+                  <TableColumn fx:id="ColDate" prefWidth="221.0" text="date d'ajout" />
+               </columns>
+            </TableView>
+            <TableView fx:id="tvtabCom" layoutX="666.0" layoutY="39.0" onMouseClicked="#selectCom" prefHeight="200.0" prefWidth="378.0">
+              <columns>
+                <TableColumn fx:id="colIdcom" prefWidth="75.0" text="id" visible="false" />
+                <TableColumn fx:id="colNomuser" prefWidth="75.0" text="nom" />
+                  <TableColumn fx:id="colcom" prefWidth="118.0" text="commentaire" />
+                  <TableColumn fx:id="coldatecom" prefWidth="184.0" text="date" />
+              </columns>
+            </TableView>
+            <Button layoutX="666.0" layoutY="264.0" mnemonicParsing="false" onAction="#selectPostcom" style="-fx-background-color: grey;" stylesheets="@GamesStyle.css" text="select" />
+            <Button layoutX="753.0" layoutY="264.0" mnemonicParsing="false" onAction="#deletecom" style="-fx-background-color: grey;" stylesheets="@GamesStyle.css" text="delete" />
+            <Button layoutX="849.0" layoutY="264.0" mnemonicParsing="false" onAction="#updatecom" style="-fx-background-color: grey;" stylesheets="@GamesStyle.css" text="update" />
+            <TextField fx:id="tfCOM" layoutX="526.0" layoutY="351.0" promptText="comentaire" />
+            <TextField fx:id="tfDatecom" layoutX="526.0" layoutY="402.0" promptText="date" />
+            <Label layoutX="38.0" layoutY="4.0" prefHeight="21.0" prefWidth="162.0" text="liste des postes" textFill="#4b6586">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="666.0" layoutY="4.0" prefHeight="35.0" prefWidth="257.0" text="liste des commentaires" textFill="#4b6586">
+               <font>
+                  <Font name="System Italic" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchCom" layoutX="528.0" layoutY="463.0" onKeyTyped="#SearchC" prefHeight="31.0" prefWidth="185.0" promptText="search" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
