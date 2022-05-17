@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Arena.jar" size="70576605" download="eager" />
+    <jar href="Arena.jar" size="70584036" download="eager" />
     <jar href="lib\AbsoluteLayout.jar" size="2903" download="eager" />
     <jar href="lib\AnimateFX-1.2.0.jar" size="85823" download="eager" />
     <jar href="lib\JavaFileUploader.jar" size="4633" download="eager" />

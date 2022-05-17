@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.DashbordTournoisFrontController">
+   <children>
+      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="962.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <VBox prefHeight="600.0" prefWidth="309.0" stylesheets="@GamesStyle.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" text="Matches" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria Bold" size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" stylesheets="@GamesStyle.css">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" />
+                     </VBox.margin>
+                     <children>
+                        <TextField prefHeight="31.0" prefWidth="156.0" promptText="type here to search" styleClass="transparent" stylesheets="@GamesStyle.css" />
+                        <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="80.0" styleClass="search-button" stylesheets="@GamesStyle.css" text="Search" textFill="WHITE" />
+                     </children>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </HBox>
+                  <Pane prefHeight="44.0" prefWidth="309.0" />
+               </children>
+               <styleClass>
+                  <String fx:value="right-bar" />
+                  <String fx:value="backroung-game" />
+               </styleClass>
+            </VBox>
+         </left>
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="backroung-game" stylesheets="@GamesStyle.css" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label prefHeight="25.0" prefWidth="81.0" text="language" textFill="#9b1d20">
+                           <font>
+                              <Font name="Cambria Italic" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="25.0" prefWidth="81.0" text="English" textFill="WHITE" underline="true">
+                           <font>
+                              <Font name="Cambria" size="18.0" />
+                           </font>
+                        </Label>
+                        <Pane prefHeight="65.0" prefWidth="374.0" HBox.hgrow="ALWAYS" />
+                        <Label prefHeight="62.0" prefWidth="124.0" text="My Account" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Black" size="18.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="50.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../resources/jhjhjh.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" styleClass="backroung-game" stylesheets="@GamesStyle.css">
+                     <children>
+                        <Pane prefHeight="100.0" prefWidth="108.0" />
+                        <HBox prefHeight="105.0" prefWidth="370.0" styleClass="available-games-card" stylesheets="@GamesStyle.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="277.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="145.0" text="Available Matches" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="26.0" prefWidth="145.0" text="over 20$ order" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/epic_games_24px.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="40.0" top="20.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="108.0" HBox.hgrow="ALWAYS" />
+                        <HBox prefHeight="105.0" prefWidth="370.0" styleClass="available-onlnie-card" stylesheets="@GamesStyle.css">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="277.0">
+                                 <children>
+                                    <Label prefHeight="26.0" prefWidth="145.0" text="Matches Online" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="26.0" prefWidth="145.0" text="Get Yours now" textFill="#878787">
+                                       <font>
+                                          <Font name="Cambria" size="13.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <ImageView fitHeight="49.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/icons8_easy_listening_filled_50px.png" />
+                                 </image>
+                                 <HBox.margin>
+                                    <Insets right="40.0" top="20.0" />
+                                 </HBox.margin>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <Pane prefHeight="100.0" prefWidth="108.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ScrollPane fx:id="scroll" prefHeight="500.0" prefWidth="700.0" styleClass="transparent" stylesheets="@GamesStyle.css">
+                           <content>
+                              <GridPane fx:id="grid" prefHeight="1.0" prefWidth="2.0" styleClass="backroung-game" stylesheets="@GamesStyle.css">
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </content>
+                           <HBox.margin>
+                              <Insets top="10.0" />
+                           </HBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -78,6 +78,7 @@ public class DashboardEquipeController implements Initializable {
     private Button btnSuppEq;
          public ObservableList<Equipe> EquipeData = FXCollections.observableArrayList();
  
+    @FXML
     private JFXButton btnquit;
 
     
@@ -299,7 +300,8 @@ if (tvboxEq.getSelectionModel().getSelectedItem() != null) {
             tfScoreEq.setText(String.valueOf(equipe.getScore()));
         
     }
-
+/*
+    @FXML
     private void quitter(ActionEvent event) {
            try{
             btnquit.getScene().getWindow().hide();
@@ -314,6 +316,7 @@ if (tvboxEq.getSelectionModel().getSelectedItem() != null) {
         }
         
     }
+*/
 
     @FXML
     private void upload(ActionEvent event) {

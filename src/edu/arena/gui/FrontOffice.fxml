@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="554.0" maxWidth="899.0" minHeight="550.0" minWidth="750.0" prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: #0F1E2F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.FrontOfficeController">
+   <top>
+      <Pane prefHeight="80.0" prefWidth="750.0" style="-fx-background-color: #28303F;" BorderPane.alignment="CENTER">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #161D29;">
+               <children>
+                  <ImageView fitHeight="49.0" fitWidth="152.0" layoutX="31.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../utils/images/logoGlow.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Label fx:id="exit" layoutX="854.0" layoutY="20.0" text="x" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="422.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane fx:id="contentArea" layoutX="-3.0" layoutY="-2.0" prefHeight="473.0" prefWidth="746.0" style="-fx-background-color: #28303F;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0" />
+         </children>
+      </AnchorPane>
+   </center>
+   <left>
+      <Pane prefHeight="461.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="-1.0" prefHeight="470.0" prefWidth="200.0" spacing="20.0" style="-fx-background-color: #161D29;">
+               <children>
+                  <Line endX="100.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
+                  <Button fx:id="btnHome" mnemonicParsing="false" onAction="#home" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Home" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnProfile" layoutX="10.0" layoutY="47.0" mnemonicParsing="false" onAction="#profile" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Profile" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnTeams" layoutX="10.0" layoutY="102.0" mnemonicParsing="false" onAction="#teams" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Teams" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets top="2.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="btnReclamationCategory" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ajouterReclamation" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Ajouter Reclamation" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnAvis" layoutX="10.0" layoutY="216.0" mnemonicParsing="false" onAction="#avis" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #161D29;" text="Avis" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>

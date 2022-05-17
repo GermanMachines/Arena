@@ -1,0 +1,79 @@
+.search-box{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius:100;
+}
+
+
+.transparent{
+     -fx-background-color: rgba(0,0,0,0); 
+   
+}
+
+
+.search-button{
+    -fx-background-color:#828282;
+    -fx-background-radius:30;
+}
+
+.right-bar{
+    -fx-background-color:#D3D3D3;
+}
+
+.shadow{
+    -fx-effect: dropshadow(three-pass-box,rgba(0,0,0,0.1),10.0,0.0,0.0,10.0);
+}
+
+
+.chosen-game-card{
+   /* -fx-background-color:#F16C31;*/
+    -fx-background-color:#540e0e;
+    -fx-background-radius:30;
+}
+
+.add-btn{
+    -fx-background-color:#FFFFFF;
+    -fx-background-radius:100;
+}
+
+.available-games-card{
+    -fx-background-color:#D3D3D3;
+    -fx-background-radius:30;
+}
+
+.available-onlnie-card{
+    -fx-background-color:#D3D3D3;
+    -fx-background-radius:30;
+}
+
+.item-game{
+     -fx-background-color:#28303F;
+   /* -fx-background-radius:30;*/
+}
+
+.backroung-game{
+    -fx-background-color:#0F1E2F;
+}
+
+.jfx-combo-box {
+    -fx-text-inner-color:#c3c3c3;
+    -jfx-label-float:true;
+    -fx-region-background:#c3c3c3;
+    -fx-background-color:#c3c3c3;
+    -jfx-focus-color:#d76e6e;
+    -jfx-unfocus-color:#ababab;
+}
+
+
+.tf{
+    -fx-text-inner-color:#c3c3c3;
+    -jfx-label-float:true;
+    -jfx-focus-color: #d76e6e;
+    -jfx-unfocus-color:#ababab;
+    -fx-prompt-text-fill:#000000;
+}
+
+.btn{
+    -fx-background-color: #81171B;
+    -fx-text-fill:#ffffff;
+    -jfx-rippler-fill:#eb4c4c;
+}

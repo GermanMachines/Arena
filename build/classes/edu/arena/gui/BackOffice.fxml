@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="867.0" maxWidth="1164.0" minHeight="950.0" minWidth="1400.0" prefHeight="867.0" prefWidth="1164.0" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.BackOfficeController">
+<BorderPane maxHeight="941.0" maxWidth="1164.0" minHeight="550.0" minWidth="750.0" prefHeight="941.0" prefWidth="1164.0" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.BackOfficeController">
    <top>
       <Pane prefHeight="80.0" prefWidth="750.0" style="-fx-background-color: #C4C4C4;" BorderPane.alignment="CENTER">
          <children>
@@ -44,7 +44,7 @@
    <left>
       <Pane prefHeight="823.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox layoutX="-1.0" prefHeight="788.0" prefWidth="202.0" spacing="20.0" style="-fx-background-color: #0F1E2F;">
+            <VBox layoutX="-1.0" prefHeight="863.0" prefWidth="202.0" spacing="20.0" style="-fx-background-color: #0F1E2F;">
                <children>
                   <Line endX="100.0" startX="-100.0" stroke="WHITE" strokeWidth="2.0" />
                   <Button fx:id="btnHome" mnemonicParsing="false" onAction="#Home" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Home" textFill="WHITE">
@@ -121,7 +121,7 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btnProducts2" mnemonicParsing="false" onAction="#products" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Products" textFill="WHITE">
+                  <Button fx:id="btnOrders" mnemonicParsing="false" onAction="#orders" prefHeight="42.0" prefWidth="200.0" style="-fx-background-color: #0F1E2F;" text="Orders" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>

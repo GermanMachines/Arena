@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane id="AnchorPane" prefHeight="280" prefWidth="400" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ProductDetailsController">
+   <children>
+      <Pane prefHeight="280.0" prefWidth="400.0" style="-fx-background-color: #0f1e2f;">
+         <children>
+            <Label fx:id="closeIcon" layoutX="384.0" layoutY="-1.0" onMouseClicked="#close" text="X" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLbl" layoutX="37.0" layoutY="26.0" prefHeight="17.0" prefWidth="123.0" text="Name" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Separator layoutX="22.0" layoutY="60.0" prefHeight="3.0" prefWidth="356.0" />
+            <Label fx:id="descLbl" layoutX="26.0" layoutY="91.0" prefHeight="106.0" prefWidth="166.0" text="description" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="imageLbl" fitHeight="106.0" fitWidth="166.0" layoutX="209.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="priceLbl" layoutX="252.0" layoutY="26.0" prefHeight="17.0" prefWidth="123.0" text="Price" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="275.0" layoutY="241.0" onAction="#addToCart" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #81171b;" text="Add To Cart" textFill="WHITE" />
+            <Rating fx:id="rating" layoutX="11.0" layoutY="238.0" prefHeight="32.0" prefWidth="72.0" />
+            <JFXButton layoutX="200.0" layoutY="242.0" onAction="#rate" prefHeight="25.0" prefWidth="26.0" style="-fx-background-color: #81171b;" text="&gt;" textFill="WHITE" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

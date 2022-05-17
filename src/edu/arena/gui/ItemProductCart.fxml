@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane onMousePressed="#click" prefHeight="160.0" prefWidth="533.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.ItemProductCartController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="236.0" prefWidth="220.0" style="-fx-background-color: #0f1e2f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox prefHeight="51.0" prefWidth="185.0">
+                    <children>
+                        <Label fx:id="nameLbl" prefHeight="49.0" prefWidth="137.0" text="Product" textFill="WHITE">
+                            <font>
+                                <Font name="Cambria" size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="20.0" top="20.0" />
+                    </VBox.margin>
+                </HBox>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                      <ImageView fx:id="img" fitHeight="131.0" fitWidth="164.0" layoutX="355.0" layoutY="-35.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label fx:id="priceLbl" layoutX="21.0" layoutY="-10.0" prefHeight="49.0" prefWidth="101.0" text="20 DT" textFill="WHITE">
+                            <font>
+                                <Font name="Cambria Bold" size="18.0" />
+                            </font>
+                        </Label>
+                  <Label fx:id="descLbl" layoutX="21.0" layoutY="23.0" prefHeight="49.0" prefWidth="101.0" text="description" textFill="WHITE">
+                     <font>
+                        <Font name="Cambria Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="rmvBtn" layoutX="278.0" layoutY="64.0" onAction="#removeProduct" prefHeight="32.0" prefWidth="65.0" style="-fx-background-color: #81171b; -fx-text-fill: #ffffff;" text="Remove" />
+                  <JFXButton layoutX="217.0" layoutY="64.0" onAction="#orderThisProduct" prefHeight="32.0" prefWidth="55.0" style="-fx-background-color: #81171b; -fx-text-fill: #ffffff;" text="Order" />
+               </children>
+            </Pane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

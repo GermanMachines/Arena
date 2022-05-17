@@ -15,7 +15,7 @@ import java.sql.SQLException;
  */
 
 public class DataBase {
-     String url = "jdbc:mysql://localhost:3306/arena";
+     String url = "jdbc:mysql://localhost:3306/pi";
      String login = "root";
      String pwd = "";
     public  static DataBase db;
@@ -23,7 +23,6 @@ public class DataBase {
     private DataBase() {
          try {
              con=DriverManager.getConnection(url, login, pwd);
-             System.out.println("connexion etablie");
          } catch (SQLException ex) {
              System.out.println(ex);
          }

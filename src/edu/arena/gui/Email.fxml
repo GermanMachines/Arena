@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@backoffice.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.EmailController">
+   <children>
+      <JFXTextField fx:id="tfAdresse" layoutX="219.0" layoutY="39.0" prefHeight="30.0" prefWidth="220.0" promptText="adresse@gmail.com" styleClass="tf">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="tfSubject" layoutX="219.0" layoutY="91.0" prefHeight="30.0" prefWidth="220.0" promptText="Subject" styleClass="tf">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextArea fx:id="taMessage" layoutX="213.0" layoutY="147.0" prefHeight="130.0" prefWidth="232.0" promptText="Message..." styleClass="tf">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextArea>
+      <JFXButton fx:id="btnSend" layoutX="286.0" layoutY="300.0" onAction="#send" prefHeight="38.0" prefWidth="87.0" styleClass="btn" text="Send">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

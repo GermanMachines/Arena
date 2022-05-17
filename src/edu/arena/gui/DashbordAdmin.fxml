@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1087.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.arena.gui.DashbordAdminController">
+   <children>
+      <AnchorPane prefHeight="850.0" prefWidth="1087.0">
+         <children>
+            <BorderPane fx:id="DashbordPane" prefHeight="800.0" prefWidth="1087.0" styleClass="backroung-game" stylesheets="@GamesStyle.css">
+               <top>
+                  <MenuBar prefHeight="24.0" prefWidth="1087.0" stylesheets="@GamesStyle.css">
+                    <menus>
+                      <Menu mnemonicParsing="false" style="-fx-background-color: #9B1D20; -fx-text-base-color: white;" text="File">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Close" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" style="-fx-background-color: #9B1D20; -fx-text-base-color: white;" text="Edit">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#FullScreen" text="FullScreen" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" style="-fx-background-color: #9B1D20; -fx-text-base-color: white;" text="Help">
+                        <items>
+                          <MenuItem mnemonicParsing="false" onAction="#AboutUsAction" text="AboutUs" />
+                        </items>
+                      </Menu>
+                    </menus>
+                  </MenuBar>
+               </top>
+               <right>
+                  <VBox prefHeight="706.0" prefWidth="174.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <JFXButton prefHeight="91.0" prefWidth="175.0" style="-fx-background-color: #9B1D20; -fx-background-radius: 10;" text="Profile" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="92.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/profile_100px.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Microsoft JhengHei UI Bold" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="91.0" prefWidth="175.0" style="-fx-background-color: #9B1D20; -fx-background-radius: 10;" text="Users" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="48.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/user_32px.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="101.0" onAction="#TournoisAction" prefHeight="91.0" prefWidth="175.0" style="-fx-background-color: #9B1D20; -fx-background-radius: 10;" text="Tournois" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="31.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/trophy_40px.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="192.0" prefHeight="91.0" prefWidth="175.0" style="-fx-background-color: #9B1D20; -fx-background-radius: 10;" text="Actualite" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="42.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/news_48px.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="283.0" prefHeight="91.0" prefWidth="175.0" style="-fx-background-color: #9B1D20; -fx-background-radius: 10;" text="Shop" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="48.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/shop_40px.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="374.0" prefHeight="91.0" prefWidth="175.0" style="-fx-background-color: #9B1D20; -fx-background-radius: 10;" text="Reclamation" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="37.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/phone_ringing_24px.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="21.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                        <JFXButton layoutX="10.0" layoutY="390.0" onAction="#JeuxAction" prefHeight="91.0" prefWidth="175.0" style="-fx-background-color: #9B1D20; -fx-background-radius: 10;" text="Jeux" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="43.0" fitWidth="83.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../resources/epic_games_24px.png" />
+                                 </image></ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets top="30.0" />
+                     </BorderPane.margin>
+                  </VBox>
+               </right>
+               <center>
+                  <TabPane fx:id="PaneAdmin" prefHeight="768.0" prefWidth="886.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                    <tabs>
+                      <Tab style="-fx-text-base-color: white; -fx-background-color: #0F1E2F;" text="Untitiled Tab">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="913.0" styleClass="backroung-game" stylesheets="@GamesStyle.css" />
+                        </content>
+                      </Tab>
+                      <Tab style="-fx-text-base-color: white; -fx-background-color: #0F1E2F;" text="new">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        </content>
+                      </Tab>
+                        <Tab style="-fx-text-base-color: white; -fx-background-color: #0F1E2F;" text="new">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="729.0" prefWidth="931.0" />
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
